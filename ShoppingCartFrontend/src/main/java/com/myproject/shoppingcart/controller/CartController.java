@@ -9,29 +9,38 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.myproject.shoppingcart.dao.CartDAO;
+import com.myproject.shoppingcart.dao.ProductDAO;
 import com.myproject.shoppingcart.domain.Cart;
+import com.myproject.shoppingcart.domain.Product;
 
 @Controller
 public class CartController {
 
 	Logger log= LoggerFactory.getLogger(CartController.class);
 	
+	@Autowired 
+	HttpSession httpSession;
+
 	@Autowired
 	private CartDAO cartDAO; 
 	
 	@Autowired
 	private Cart cart; 
 	
-	@Autowired 
-	HttpSession httpSession;
+	@Autowired
+	private ProductDAO productDAO;
 	
-	@PostMapping("product/cart/add")
-	public ModelAndView addToCart(@RequestParam String productName, @RequestParam String quantity, @RequestParam int price)
+	@Autowired
+	private Product product;
+		
+	@GetMapping("product/cart/add")
+	public ModelAndView addToCart(@RequestParam("productID") String productId)
 	{
 		ModelAndView mv= new ModelAndView("Home");
 		String loggedInUserID= (String)httpSession.getAttribute("loggedInUserID");
@@ -40,11 +49,14 @@ public class CartController {
 			mv.addObject("errormsg", "Please login to add any product to cart");
 			return mv;
 		}
+		product= productDAO.get(productId);
 		
-//		cart.setEmailID(httpSession.getAttribute("loggedInUserID"));
-		cart.setEmailid(loggedInUserID);				//from Cart.java domain class
-		cart.setPrice(price);
-		cart.setQuantity(Integer.parseInt(quantity));
+		cart.setEmailid(loggedInUserID); 				//from Cart.java domain class
+		cart.setProductName(product.getName());
+		cart.setPrice(product.getPrice());
+		cart.setQuantity(1);
+		cart.setProductID(productId);
+		cart.setId();
 		
 		if (cartDAO.save(cart)){
 			mv.addObject("successmsg", "Product added to cart successfully");

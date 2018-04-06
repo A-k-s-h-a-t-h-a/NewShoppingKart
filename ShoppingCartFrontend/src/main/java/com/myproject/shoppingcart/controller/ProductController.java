@@ -1,8 +1,11 @@
 package com.myproject.shoppingcart.controller;
 
 import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,13 +30,10 @@ import com.myproject.util.FileUtil;
 public class ProductController {
 
 	@Autowired
-	private ProductDAO productDAO; 
-	
-	@Autowired
 	private Product product; 
-	
+
 	@Autowired
-	HttpSession httpSession;
+	private ProductDAO productDAO; 
 	
 	@Autowired
 	private CategoryDAO categoryDAO; 
@@ -41,14 +41,19 @@ public class ProductController {
 	@Autowired
 	private SupplierDAO supplierDAO; 
 	
-	private static final String imageDirectory = "ShoppingCartImages";
-	private static String rootPath = System.getProperty("catalina.home");
+	@Autowired
+	HttpSession httpSession;
+
+	@Autowired
+	FileUtil fileUtil;
+	
+	
 
 	@PostMapping("/product/save/")
 	public ModelAndView saveProduct(@RequestParam("product_id") String id, @RequestParam("name") String name,
 			@RequestParam("price") String price, @RequestParam("stock") String stock, 
 			@RequestParam("category_id") String categoryID, @RequestParam("supplier_id") String supplierID, 
-			@RequestParam("file") MultipartFile file){
+			@RequestParam("file") MultipartFile file,HttpServletRequest req){
 		
 		ModelAndView mv= new ModelAndView("redirect:/manageproducts"); 
 		product.setProduct_id(id);
@@ -70,15 +75,16 @@ public class ProductController {
 			
 			List<Product> products = productDAO.list();
 			httpSession.setAttribute("products", products);
-//			
-//			if (FileUtil.fileCopyNIO(file, id+".png"))
-//			{
-//				mv.addObject("uploadmsg", "Product image successfully uploaded");
-//			}
-//			else
-//			{
-//				mv.addObject("uploadmsg", "Product image could not be uploaded");
-//			}
+			
+			if (FileUtil.fileCopyNIO(file, id+".png",req))
+			{
+				System.out.println("Product image successfully uploaded");
+				mv.addObject("uploadmsg", "Product image successfully uploaded");
+			}
+			else
+			{
+				mv.addObject("uploadmsg", "Product image could not be uploaded");
+			}
 		}
 		else{
 			mv.addObject("producterror", "Couldn't save");
@@ -129,13 +135,14 @@ public class ProductController {
 		return mv;
 	}
 	
-	@GetMapping("/product/get/{id}")
-	public ModelAndView getSelectedProduct(@PathVariable("id") String id, RedirectAttributes redirectAttributes)
+	@GetMapping("/product/get/{product_id}")
+	public ModelAndView getSelectedProduct(@PathVariable("product_id") String product_id, RedirectAttributes redirectAttributes)
 	{
 		ModelAndView mv= new ModelAndView("redirect:/");
-		redirectAttributes.addFlashAttribute("selectedProduct", productDAO.get(id));
 		redirectAttributes.addFlashAttribute("isUserSelectedProduct", true);
-		redirectAttributes.addFlashAttribute("selectedProductImage", rootPath+ File.separator+ imageDirectory+ File.separator);
+		redirectAttributes.addFlashAttribute("selectedProductImage","resources/images/ShoppingCartImages/"+product_id+".png");
+		redirectAttributes.addFlashAttribute("selectedProduct", productDAO.get(product_id));
+		redirectAttributes.addFlashAttribute("productID", product_id);
 		return mv;
 	}
 }

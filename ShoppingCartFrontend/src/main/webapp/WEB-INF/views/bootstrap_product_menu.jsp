@@ -35,19 +35,24 @@
 <!-- 	</div>    -->
 	
 	<div class="container">
-		<div class="dropdown">
-		    <c:forEach items="${categories}" var="category">
+	<c:forEach items="${categories}" var="category">
+		<div class="dropdown col-md-1">
+		    
+		    
 				<button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">${category.name}
 					<span class="caret"></span>
 				</button>
-			</c:forEach>
-	
-    		<ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+				
+				<ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
 				<c:forEach var="product" items="${category.products}">
 					<li><a href="product/get/${product.product_id}">${product.name}</a></li>
 				</c:forEach>  
    			</ul>
-  		</div>
+   			
+			
+	
+    		</div>
+  		</c:forEach>
 	</div>
 
 </body>

@@ -107,6 +107,28 @@ button:hover {
 			
 			<label for="mob"><b>Mobile number</b></label> 
 			<input type="text" placeholder="Enter mobile no" name="mob" required>
+			
+			<div class="form-group">
+			      <label for="sel1">Select State:</label>
+			      <select class="form-control" id="sel1">
+			        <option>Delhi</option>
+			        <option>Goa</option>
+			        <option>Jammu and Kashmir</option>
+			        <option>Karnataka</option>
+			        <option>Kerala</option>
+			        <option>Madhya Pradeh</option>
+			        <option>Maharashtra</option>
+			        <option>Manipur</option>
+			        <option>Mizoram</option>
+			        <option>Nagaland</option>
+			        <option>Odisha</option>
+			        <option>Rajasthan</option>
+			        <option>Tamil Nadu</option>
+			        <option>Uttar Pradesh</option>
+			        <option>West Bengal</option>
+			      </select>
+			      <br>
+		      </div>
 
 			<div class="clearfix">
 				<button type="submit" class="signupbtn">Sign Up</button>

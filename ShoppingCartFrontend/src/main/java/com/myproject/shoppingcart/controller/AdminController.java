@@ -1,6 +1,6 @@
 package com.myproject.shoppingcart.controller;
 
-  import java.util.List;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-  import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.myproject.shoppingcart.dao.CategoryDAO;
 import com.myproject.shoppingcart.dao.ProductDAO;
@@ -19,11 +19,11 @@ import com.myproject.shoppingcart.daoimpl.UserDAOImpl;
 import com.myproject.shoppingcart.domain.Category;
 import com.myproject.shoppingcart.domain.Product;
 import com.myproject.shoppingcart.domain.Supplier;
-//This is for Admin
+
 @Controller
 public class AdminController {
 
-	 @Autowired
+	@Autowired
 	HttpSession httpSession;
 	
 	@Autowired

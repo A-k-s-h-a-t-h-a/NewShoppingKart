@@ -91,7 +91,9 @@ input[type=text], input[type=password] {
 					<td>Product Stock</td>
 					<td>Category ID</td>
 					<td>Supplier ID</td>
-					<td>Action</td></h4>
+					<td>Image</td>
+					<td>Action</td>
+					</h4>
 				</tr>
 				<c:forEach var="product" items="${products}">
 					<tr>
@@ -101,6 +103,7 @@ input[type=text], input[type=password] {
 						<td>${product.stock} </td>
 						<td>${product.cat_id} </td>
 						<td>${product.sup_id} </td>
+						<td><img src="resources/images/ShoppingCartImages/${product.product_id}.png" height="100px" width="75px"> </td>
 						<td>
 							<button type="button" class="btn btn-danger btn-sm">
 								<a href="product/delete/?id=${product.product_id}">Delete</a> | 

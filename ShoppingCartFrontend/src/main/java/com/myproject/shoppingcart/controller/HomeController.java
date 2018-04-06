@@ -30,9 +30,10 @@ public class HomeController {
 	public ModelAndView h()
 	{
 		ModelAndView mv= new ModelAndView("Home");
-		List<Category> categories= categoryDAO.list();		//		mv.addObject("username", "Rupsa");
-		//mv.addObject("categories", categories); 			//		mv.addObject("error","no error");
+		List<Category> categories= categoryDAO.list();
+		//mv.addObject("categories", categories);
 		httpSession.setAttribute("categories", categories);
+//		httpSession.setAttribute("imageDirectory", imageDirectory);
 		return mv;										
 	}
 	

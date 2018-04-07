@@ -5,10 +5,10 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<title>Insert title here</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<title>Drop down of all items</title>
 </head>
 
 <body>
@@ -35,23 +35,18 @@
 <!-- 	</div>    -->
 	
 	<div class="container">
-	<c:forEach items="${categories}" var="category">
-		<div class="dropdown col-md-1">
-		    
-		    
-				<button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">${category.name}
+		<c:forEach items="${categories}" var="category">
+			<div class="dropdown col-md-1">
+			    <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">${category.name}
 					<span class="caret"></span>
 				</button>
-				
+					
 				<ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-				<c:forEach var="product" items="${category.products}">
-					<li><a href="product/get/${product.product_id}">${product.name}</a></li>
-				</c:forEach>  
-   			</ul>
-   			
-			
-	
-    		</div>
+					<c:forEach var="product" items="${category.products}">
+						<li><a href="product/get/${product.product_id}">${product.name}</a></li>
+					</c:forEach>  
+	   			</ul>
+	   		</div>
   		</c:forEach>
 	</div>
 

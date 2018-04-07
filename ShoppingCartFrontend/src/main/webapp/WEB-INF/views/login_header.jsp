@@ -4,7 +4,7 @@
 
 <html>
 <head>
-  <title>Bootstrap Example</title>
+  <title>Navigation Bar</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -18,14 +18,14 @@
 	    <ul class="nav navbar-nav navbar-right">
 	      <c:if test= "${ifLoggedIn==true}">
 		      <li><a href="home">Home</a></li>
-		      <li><a href="logout"><span class="glyphicon glyphicon-log-out"></span> Log out</a></li>
+		      <li><a href="signout"><span class="glyphicon glyphicon-log-out"></span> Log out</a></li>
 		      <li><a href="mycart"><span class="glyphicon glyphicon-shopping-cart"></span> My Cart(${size })</a></li>
 	      </c:if>
 	    </ul>
 	    
 	    <ul class="nav navbar-nav navbar-left">
-	      <li><a href="login"><span class="glyphicon glyphicon-log-in"></span> Log in</a></li>
-	      <li><a href="register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li> 
+	      <li><a href="signin"><span class="glyphicon glyphicon-log-in"></span> Log in</a></li>
+	      <li><a href="signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li> 
 	    </ul>
 	  </div>
 	</nav>

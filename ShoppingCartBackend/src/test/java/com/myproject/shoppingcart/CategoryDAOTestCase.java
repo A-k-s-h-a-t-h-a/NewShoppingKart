@@ -26,7 +26,7 @@ public class CategoryDAOTestCase {
 	public static void init()
 	{
 		context= new AnnotationConfigApplicationContext();
-		context.scan("com.niit");
+		context.scan("com.myproject");
 		context.refresh();
 		categoryDAO= (CategoryDAO)context.getBean("categoryDAO");
 		category= (Category)context.getBean("category");
@@ -59,15 +59,25 @@ public class CategoryDAOTestCase {
 	}
 	
 	@Test
-	public void getCategoryTestCase(){
+	public void getCategorySucceedsTestCase(){
 		category= categoryDAO.get("Mob-001");
 		assertNotNull("get Category Test Case", category);
 	}
+	@Test
+	public void getCategoryFailsTestCase(){
+		category= categoryDAO.get("Mob-003");
+		assertNull("get Category Test Case fails", category);
+	}
 	
 	@Test
-	public void deleteCategoryTestCase(){
+	public void deleteCategorySucceedsTestCase(){
 		boolean status= categoryDAO.delete("Mob-003");
-		assertEquals("delete Category Test Case", true, status);
+		assertEquals("delete Category Test Case succeeds", true, status);
+	}
+	@Test
+	public void deleteCategoryFailsTestCase(){
+		boolean status= categoryDAO.delete("Mob-002");
+		assertEquals("delete Category Test Case fails", false, status);
 	}
 	
 	@Test

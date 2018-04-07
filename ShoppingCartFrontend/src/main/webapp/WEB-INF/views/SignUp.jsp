@@ -53,12 +53,16 @@ button:hover {
 	opacity: 1;
 }
 
-/* Extra styles for the cancel button */
+/* Extra styles for the cancel and signup buttons */
 .cancelbtn {
 	padding: 14px 20px;
 	background-color: #f44336;
 }
 
+.signupbtn {
+	padding: 14px 20px;
+	background-color: #008CBA;
+}
 /* Float cancel and signup buttons and add an equal width */
 .cancelbtn, .signupbtn {
 	float: left;
@@ -132,7 +136,7 @@ button:hover {
 
 			<div class="clearfix">
 				<button type="submit" class="signupbtn">Sign Up</button>
-				<button type="button" class="cancelbtn">Cancel</button>
+				<button type="reset" class="cancelbtn">Cancel</button>
 			</div>
 			
 			<label> 

@@ -26,7 +26,7 @@ public class SupplierDAOTestCase {
 	public static void init()
 	{
 		context= new AnnotationConfigApplicationContext();
-		context.scan("com.myproject");
+		context.scan("com.niit");
 		context.refresh();
 		supplier= (Supplier)context.getBean("supplier");
 		supplierDAO= (SupplierDAO)context.getBean("supplierDAO");

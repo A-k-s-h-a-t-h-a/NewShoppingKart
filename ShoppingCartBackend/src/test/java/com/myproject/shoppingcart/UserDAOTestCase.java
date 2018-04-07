@@ -27,7 +27,7 @@ public class UserDAOTestCase {
 	public static void init()
 	{
 		context= new AnnotationConfigApplicationContext();
-		context.scan("com.myproject");
+		context.scan("com.niit");
 		context.refresh();
 		userDAO= (UserDAO)context.getBean("userDAO");
 		user= (User)context.getBean("user");
@@ -40,15 +40,13 @@ public class UserDAOTestCase {
 		user.setMobile("9871201670");
 		user.setFullname("Jaskaran Singh");
 		user.setPwd("jas@123");
-		user.setState("Delhi");
 		boolean status= userDAO.save(user);
 		assertEquals("save user test case", true, status);
 		
-		user.setEmailID("kiran@gmail.com");
+		user.setEmailID("kiran11@gmail.com");
 		user.setMobile("9472198218");
 		user.setFullname("Kiran Rao");
 		user.setPwd("kir@123");
-		user.setState("Karnataka");
 		boolean status1= userDAO.save(user);
 		assertEquals("save user test case", true, status1);
 		
@@ -56,7 +54,6 @@ public class UserDAOTestCase {
 		user.setMobile("8812836718");
 		user.setFullname("Michelle Gomes");
 		user.setPwd("mic@123");
-		user.setState("Goa");
 		boolean status2= userDAO.save(user);
 		assertEquals("save user test case", true, status2);
 }
@@ -71,26 +68,26 @@ public class UserDAOTestCase {
 	}
 	
 	@Test
-	public void getUserSucceedsTestCase()
+	public void getUserSuccessTestCase()
 	{
 		user= userDAO.get("jaskaran2@gmail.com");
 		assertNotNull("get user test case", user);
 	}
 	@Test
-	public void getUserFailsTestCase()
+	public void getUserFailureTestCase()
 	{
-		user= userDAO.get("jaya@gmail.com");
+		user= userDAO.get("jaya@gmail3.com");
 		assertNull("get user test case fails", user);
 	}
 	
 	@Test
-	public void deleteUserSucceedsTestCase()	
+	public void deleteUserSuccessTestCase()	
 	{
 		boolean status= userDAO.delete("michelle1@gmail.com");
 		assertEquals("delete user success test case", true, status);
 	}
 	@Test
-	public void deleteUserFailsTestCase()	
+	public void deleteUserFailureTestCase()	
 	{
 		boolean status= userDAO.delete("mahesh2@gmail.com");
 		assertEquals("delete user failure test case", false, status);

@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Home page of Shopping Kart</title>
+<title>This is home page</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -38,16 +38,16 @@ body {
 		<jsp:include page="admin/adminhome.jsp"></jsp:include>
 	</c:if>
 
-	<c:if test="${sinceUserClickedSignIn== true}">
-		<jsp:include page="SignIn.jsp"></jsp:include>
+	<c:if test="${sinceUserClickedLogin== true}">
+		<jsp:include page="Login.jsp"></jsp:include>
 	</c:if>
 
-	<c:if test="${sinceUserClickedSignUp== true}">
-		<jsp:include page="SignUp.jsp"></jsp:include>
+	<c:if test="${sinceUserClickedRegister== true}">
+		<jsp:include page="Registration.jsp"></jsp:include>
 	</c:if>
 	
 	
-	<c:if test="${sinceUserClickedMyCart== true}">
+	<c:if test="${isUserClickedMyCart== true}">
 	<jsp:include page="Cart.jsp"></jsp:include>
 	</c:if>
 	

@@ -25,7 +25,7 @@ public class ProductDAOTestCase {
 	@BeforeClass
 	public static void init(){
 		context= new AnnotationConfigApplicationContext();
-		context.scan("com.myproject");
+		context.scan("com.niit");
 		context.refresh();
 		productDAO= (ProductDAO)context.getBean("productDAO");
 		product= (Product)context.getBean("product");
@@ -64,25 +64,15 @@ public class ProductDAOTestCase {
 	}
 	
 	@Test
-	public void getProductSucceedsTestCase(){
+	public void getProductTestCase(){
 		product= productDAO.get("02");
 		assertNotNull("get product test case", product);
 	}
-	@Test
-	public void getProductFailsTestCase(){
-		product= productDAO.get("04");
-		assertNull("get product test case fails", product);
-	}
 	
 	@Test
-	public void deleteProductSucceedsTestCase(){
+	public void deleteProductTestCase(){
 		boolean status= productDAO.delete("02");
 		assertEquals("Successfully deleted", true, status); 
-	}
-	@Test
-	public void deleteProductFailsTestCase(){
-		boolean status= productDAO.delete("06");
-		assertEquals("Unsuccessfully deleted", false, status); 
 	}
 	
 	@Test

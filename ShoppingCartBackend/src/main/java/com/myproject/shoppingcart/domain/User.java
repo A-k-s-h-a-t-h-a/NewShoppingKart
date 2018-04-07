@@ -24,7 +24,6 @@ public class User {
 	private String mobile;
 	private Character role;
 	private Date registeredDate;
-	private String state;
 	
 	public String getEmailID() {
 		return emailID;
@@ -61,12 +60,6 @@ public class User {
 	}
 	public void setRegisteredDate(Date date) {
 		this.registeredDate = date;
-	}
-	public String getState() {
-		return state;
-	}
-	public void setState(String state) {
-		this.state = state;
 	}
 	
 }

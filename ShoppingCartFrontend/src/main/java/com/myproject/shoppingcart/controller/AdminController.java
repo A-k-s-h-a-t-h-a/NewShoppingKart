@@ -9,11 +9,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.myproject.shoppingcart.dao.CategoryDAO;
 import com.myproject.shoppingcart.dao.ProductDAO;
 import com.myproject.shoppingcart.dao.SupplierDAO;
+import com.myproject.shoppingcart.daoimpl.UserDAOImpl;
 import com.myproject.shoppingcart.domain.Category;
 import com.myproject.shoppingcart.domain.Product;
 import com.myproject.shoppingcart.domain.Supplier;
@@ -42,7 +44,13 @@ public class AdminController {
 	@Autowired
 	private Category category;
 	
-	Logger log= LoggerFactory.getLogger(AdminController.class);
+	Logger log= LoggerFactory.getLogger(UserDAOImpl.class);
+	
+	@ModelAttribute("category")
+	public Category creatingcat()
+	{
+		return new Category();
+	}
 	
 	@GetMapping("/managecategories")
 	public ModelAndView adminClickCategories()
@@ -92,7 +100,6 @@ public class AdminController {
 	public ModelAndView adminClickProducts()
 	{
 		log.debug("Start of the method AdminClickedProducts");
-		
 		ModelAndView mv= new ModelAndView("Home");
 		mv.addObject("isadminClickProducts", true);
 		List<Product> products= productDAO.list();		//to fetch the table

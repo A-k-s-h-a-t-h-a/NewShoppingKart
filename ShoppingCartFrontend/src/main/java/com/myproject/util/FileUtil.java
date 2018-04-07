@@ -12,6 +12,38 @@ import org.springframework.web.multipart.MultipartFile;
 
 @Component(value="fileUtil")
 public class FileUtil {
+
+//	@Autowired
+//	HttpSession httpSession;
+	
+//	public static boolean copyFile(MultipartFile file, String filename)
+//	{
+//		if (!file.isEmpty()) {
+//			try {
+//				byte[] bytes = file.getBytes();
+//
+//				// Creating the directory to store file
+//				String rootPath = System.getProperty("catalina.home");
+//				File dir = new File(rootPath + File.separator + "filename");
+//				if (!dir.exists())
+//					dir.mkdirs();
+//
+//				// Create the file on server
+//				File serverFile = new File(dir.getAbsolutePath() + File.separator + filename);
+//				BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serverFile));
+//				stream.write(bytes);
+//				stream.close();
+//
+//				logger.info("Server File Location=" + serverFile.getAbsolutePath());
+//
+//				return true;
+//			} catch (Exception e) {
+//				return false;
+//			}
+//		} else {
+//			return false;
+//		}
+//	}
 	
 	private static final Logger logger = LoggerFactory.getLogger(FileUtil.class);
 
@@ -31,8 +63,8 @@ public class FileUtil {
 		try {
 			file.transferTo(dest);
 			return true;
-		} 
-		catch (Exception e) {
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return false;

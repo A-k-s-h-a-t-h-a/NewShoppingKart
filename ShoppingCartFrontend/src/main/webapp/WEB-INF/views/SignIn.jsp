@@ -100,7 +100,7 @@ span.psw {
 		</div>
 
 		<div class="container" style="background-color: white">
-			<button type="button" class="cancelbtn">Cancel</button>
+			<button type="reset" class="cancelbtn">Cancel</button>
 			<span class="psw">Forgot <a href="#">password?</a></span>
 		</div>
 	</form>

@@ -4,8 +4,6 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,21 +28,16 @@ public class CategoryController {
 	@Autowired 
 	HttpSession httpSession;
 	
-	Logger log= LoggerFactory.getLogger(CategoryController.class);
-	
 	@PostMapping("/category/save/")
 	public ModelAndView saveCategory(@RequestParam("category_id") String id, @RequestParam("name") String name, 
-									 @RequestParam("description") String description)
-	{
-		log.debug("Start of the category save method");
-		
+																@RequestParam("description") String description){
 		ModelAndView mv= new ModelAndView("redirect:/managecategories");
+		
 		category.setCategory_id(id);
 		category.setName(name);
 		category.setDescription(description);
 		
-		if (categoryDAO.save(category))
-		{
+		if (categoryDAO.save(category)){
 			mv.addObject("categorysuccess", "Category saved successfully");
 			category.setCategory_id("");
 			category.setName("");
@@ -56,46 +49,35 @@ public class CategoryController {
 		else{
 			mv.addObject("categoryerror", "Couldn't save");
 		}
-		
-		log.debug("End of the category save method");
 		return mv;
 	}
 		
 	@PutMapping("/category/update/")
 	public ModelAndView updateCategory(@ModelAttribute Category category)
 	{
-		log.debug("Start of the category update method");
-		
 		ModelAndView mv= new ModelAndView("Home");
+		
 		if (categoryDAO.update(category)==true){
 			mv.addObject("categorysuccess", "Successfully updated");
 		}
 		else{
 			mv.addObject("categoryerror", "Failed to update");
 		}
-
-		log.debug("End of the category update method");
-		return mv;
+		return mv; 
 	}
 	
 	@GetMapping("/Allcategories")
 	public ModelAndView  getAllCategories()
 	{
-		log.debug("Start of the get all categories method");
-		
 		ModelAndView mv= new ModelAndView("Home");
 		List<Category> categories= categoryDAO.list();
 		mv.addObject("categories", categories);
-
-		log.debug("End of the get all categories method");
 		return mv;
 	}
 	
 	@GetMapping("/category/delete")
 	public ModelAndView deleteCategory(@RequestParam("id") String id) //@RequestParam("category_id")
 	{
-		log.debug("Start of the category delete method");
-		
 		ModelAndView mv= new ModelAndView("redirect:/managecategories");
 		if (categoryDAO.delete(id)==true){
 			mv.addObject("categorysuccess", "Deleted");
@@ -103,33 +85,23 @@ public class CategoryController {
 		else{
 			mv.addObject("categoryerror", "Not deleted");
 		}
-
-		log.debug("End of the category delete method");
 		return mv;
 	}
 	
 	@GetMapping("/category/edit")
 	public ModelAndView editCategory(@RequestParam("id") String id)
 	{
-		log.debug("Start of the category edit method");
-		
 		ModelAndView mv= new ModelAndView("redirect:/managecategories");
 		category= categoryDAO.get(id);
 		httpSession.setAttribute("category", category);
-
-		log.debug("End of the category edit method");
 		return mv;
 	}	
 
 //	@GetMapping("/category/get/{category_id}")
 //	public ModelAndView getCategory(@RequestParam("category_id") String id)
 //	{
-//		log.debug("Start of the get category method");
-//	
 //		category= categoryDAO.get(id);
 //		ModelAndView mv= new ModelAndView("Home");
-//		
-//		log.debug("End of the get category method");
 //		return mv.addObject("category", category); //"category"
 //	}
 	

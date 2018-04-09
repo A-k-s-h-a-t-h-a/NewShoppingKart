@@ -85,6 +85,7 @@ public class UserController {
 		userDAO.save(user);
 		
 		httpSession.setAttribute("success", "Welcome "+ user.getFullname()+ ". You have successfully created an account with us ");
+		httpSession.setAttribute("Registered", true);
 		mv.addObject("sinceUserClickedLogin", true);
 
 		log.debug("End of the from_form method");

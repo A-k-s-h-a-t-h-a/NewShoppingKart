@@ -46,7 +46,8 @@ input[type=text], input[type=password] {
 					<td><input type="text" name='address' value="${supplier.address}" required></td>
 				</tr>
 			</table>
-			<input type="submit" value='Submit Supplier'><br><br>
+			<input type="submit" value='Submit Supplier'>
+			<button type="reset" class="btn btn-default">Cancel</button><br><br>
 		</form> 	
 	</div>
 	
@@ -67,12 +68,12 @@ input[type=text], input[type=password] {
 						<td>${supplier.name} </td>
 						<td>${supplier.address} </td>
 						<td>
-							<button type="button" class="btn btn-danger">
-								<a href="supplier/delete/?id=${supplier.supplier_id}">Delete</a> | 
-							</button>
-							<button type="button" class="btn btn-info">
-								<a href="supplier/edit/?id=${supplier.supplier_id}">Edit</a>
-							</button>
+							
+								<a href="supplier/delete/?id=${supplier.supplier_id}"><button type="button" class="btn btn-danger">Delete</button></a> | 
+							
+							
+								<a href="supplier/edit/?id=${supplier.supplier_id}"><button type="button" class="btn btn-info">Edit</button></a>
+							
 						</td>
 					</tr>
 				</c:forEach>

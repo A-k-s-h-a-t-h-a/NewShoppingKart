@@ -46,7 +46,8 @@ input[type=text], input[type=password] {
 					<td><input type="text" name='description' value="${category.description}" /></td>
 				</tr>
 			</table>
-			<input type="submit" value='Submit Category'><br><br>
+			<input type="submit" value='Submit Category'>
+			<button type="reset" class="btn btn-default">Cancel</button><br><br><br><br>
 		</form> 
 	</div>
 	
@@ -67,12 +68,12 @@ input[type=text], input[type=password] {
 						<td>${category.name} </td>
 						<td>${category.description} </td>
 						<td>
-							<button type="button" class="btn btn-danger">
-								<a href="category/delete/?id=${category.category_id}">Delete</a> | 
-							</button>
-							<button type="button" class="btn btn-info">
-								<a href="category/edit/?id=${category.category_id}">Edit</a>
-							</button>
+							
+								<a href="category/delete/?id=${category.category_id}"><button type="button" class="btn btn-danger">Delete</button></a> | 
+							
+							
+								<a href="category/edit/?id=${category.category_id}"><button type="button" class="btn btn-info">Edit</button></a>
+							
 						</td>
 					</tr>
 				</c:forEach>

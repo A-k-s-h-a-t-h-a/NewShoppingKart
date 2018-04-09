@@ -9,6 +9,11 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <style>
+
+.container{
+	width: 70%;
+}
+
 body {
 	font-family: Arial, Helvetica, sans-serif;
 }
@@ -18,7 +23,7 @@ body {
 }
 
 /* Full-width input fields */
-input[type=text], input[type=password] {
+input {
 	width: 100%;
 	padding: 15px;
 	margin: 5px 0 22px 0;
@@ -89,24 +94,26 @@ button:hover {
 <body>
 	<form action="from_form" method="post" style="border: 1px solid #ccc">
 		<div class="container">
+		<div class="col-md-12 col-sm-4 col-xs-12">
 			<h1>Sign Up</h1>
+			<a href="signin" style="float:right">Already a member? Log in</a>
 			<p>Please fill in this form to create an account.</p>
 			<hr>
 
 			<label for="fullname"><b>Full Name</b></label> 
-			<input type="text" placeholder="Enter Name" name="fullname" required> 
+			<input class="form-control" type="text" placeholder="Enter Name" name="fullname" required> 
 			
 			<label for="email"><b>Email</b></label> 
-			<input type="text" placeholder="Enter Email" name="email" required> 
+			<input class="form-control" type="email" placeholder="Enter Email" name="email" required> 
 			
 			<label for="psw"><b>Password</b></label> 
-			<input type="password" placeholder="Enter Password" name="psw" required> 
+			<input class="form-control" type="password" placeholder="Enter Password" name="psw" required> 
 			
 			<label for="psw-repeat"><b>Repeat Password</b></label> 
-			<input type="password" placeholder="Repeat Password" name="psw-repeat"required> 
+			<input class="form-control" type="password" placeholder="Repeat Password" name="psw-repeat"required> 
 			
 			<label for="mob"><b>Mobile number</b></label> 
-			<input type="text" placeholder="Enter mobile no" name="mob" required>
+			<input class="form-control" type="text" placeholder="Enter mobile no" name="mob" required>
 			
 			<div class="form-group">
 			      <label for="sel1">Select State</label>
@@ -132,7 +139,7 @@ button:hover {
 
 			<div class="clearfix">
 				<button type="submit" class="signupbtn">Sign Up</button>
-				<button type="button" class="cancelbtn">Cancel</button>
+				<button type=reset class="cancelbtn">Cancel</button>
 			</div>
 			
 			<label> 
@@ -142,6 +149,7 @@ button:hover {
 			<p>
 				By creating an account you agree to our <a href="#" style="color: dodgerblue">Terms & Privacy</a>.
 			</p>
+		</div>
 		</div>
 	</form>
 </body>

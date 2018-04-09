@@ -74,7 +74,8 @@ input[type=text], input[type=password] {
 				</tr>
 			</table>
 			<input type="file" name="file">	<br>
-			<input type="submit" value='Submit Product'><br><br>
+			<input type="submit" value='Submit Product'>
+			<button type="reset" class="btn btn-default">Cancel</button><br><br><br><br>
 		</form>
 	</div>
 	
@@ -105,12 +106,12 @@ input[type=text], input[type=password] {
 						<td>${product.sup_id} </td>
 						<td><img src="resources/images/ShoppingCartImages/${product.product_id}.png" height="100px" width="75px"> </td>
 						<td>
-							<button type="button" class="btn btn-danger btn-sm">
-								<a href="product/delete/?id=${product.product_id}">Delete</a> | 
-							</button>
-							<button type="button" class="btn btn-info btn-sm">
-								<a href="product/edit/?id=${product.product_id}">Edit</a>
-							</button>
+							
+								<a href="product/delete/?id=${product.product_id}"><button type="button" class="btn btn-danger btn-sm">Delete</button></a> | 
+							
+							
+								<a href="product/edit/?id=${product.product_id}"><button type="button" class="btn btn-info btn-sm">Edit</button></a>
+							
 						</td>
 					</tr>
 				</c:forEach>

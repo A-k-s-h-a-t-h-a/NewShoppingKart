@@ -11,11 +11,11 @@
 </head>
 
 <body>
-	<h3>
+	<h3><center>
 		<a href="managecategories">Manage categories</a> 
 		<a href="managesuppliers">Manage suppliers</a> 
 		<a href="manageproducts">Manage products</a>
-	</h3>
+	</center></h3>
 
 	<c:if test="${isadminClickCategories== true}">
 		<jsp:include page="category.jsp"></jsp:include>

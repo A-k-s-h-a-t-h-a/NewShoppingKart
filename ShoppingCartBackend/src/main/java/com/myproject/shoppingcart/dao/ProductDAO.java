@@ -19,4 +19,6 @@ public interface ProductDAO {
 	
 	public boolean delete(String code);
 	
+	public List<Product> search(String searchString);
+	
 }

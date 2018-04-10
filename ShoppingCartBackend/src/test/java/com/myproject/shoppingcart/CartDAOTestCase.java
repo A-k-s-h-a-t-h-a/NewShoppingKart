@@ -59,26 +59,26 @@ public class CartDAOTestCase {
 	@Test
 	public void getCartSuccessTestCase()
 	{
-		cart= cartDAO.get("Ace-02");
+		cart= cartDAO.get(1);
 		assertNotNull("get cart test case", cart);
 	}
 	@Test
 	public void getCartFailureTestCase()
 	{
-		cart= cartDAO.get("Ace-02");
+		cart= cartDAO.get(2);
 		assertNull("get cart test case fails", cart);
 	}
 	
 	@Test
 	public void deleteCartSuccessTestCase()	
 	{
-		boolean status= cartDAO.delete("Len-03");
+		boolean status= cartDAO.delete(3);
 		assertEquals("delete cart success test case", true, status);
 	}
 	@Test
 	public void deleteCartFailureTestCase()	
 	{
-		boolean status= cartDAO.delete("Len-08");
+		boolean status= cartDAO.delete(4);
 		assertEquals("delete cart failure test case", false, status);
 	}
 	

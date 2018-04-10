@@ -9,15 +9,29 @@
 </head>
 
 <body>
-	<c:forEach var="a" items="${cartList}">
+	${noItems}
 	
-	<img alt="" src="${ImagesFolder}${a.productId}.png">
-	<img alt="" src="resources/images/ShoppingCartImages/${a.productID}.png">
-	
-	Name: <input type="text" name="productName" value="${a.productName}"><br>
-	Price: <input type="text" name="price" value="${a.price}"><br>
-	Quantity: <input type="text" name="quantity" value="${a.quantity}"><br>
-	
-	</c:forEach>
+	<c:if test="${cartDetails== true}">
+		<c:forEach var="a" items="${cartList}">
+			<div class="container">
+				<table class="table table-bordered">
+					
+					<img alt="" src="resources/images/ShoppingCartImages/${a.productID}.png">
+				<tr>
+					<td><h4>Name</h4></td>
+					<td><h4>Price</h4></td>
+					<td><h4>Quantity</h4></td>
+				</tr>
+				<tr>
+					<td><input type="text" name="productName" value="${a.productName}"></td>>
+					<td><input type="text" name="price" value="${a.price}"></td>>
+					<td><input type="text" name="quantity" value="${a.quantity}"></td>>
+					<<td><a href="buy">BUY</a><br></td>
+				</tr>
+				</table>
+			</div>
+		</c:forEach>
+	</c:if>
+
 </body>
 </html>

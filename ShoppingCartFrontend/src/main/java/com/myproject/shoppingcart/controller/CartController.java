@@ -9,6 +9,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -37,25 +39,25 @@ public class CartController {
 	@Autowired
 	private Product product;
 		
-	@GetMapping("product/cart/add")
-	public ModelAndView addToCart(@RequestParam("productID") String productId)
+	@GetMapping("cart/add/{productID}")					//Get or Post? //@PathVariable for both?
+	public ModelAndView addToCart(@PathVariable("productID") String p_id)
 	{
 		log.debug("Starting of the addToCart method");
 		
-		ModelAndView mv= new ModelAndView("Home");
-		String loggedInUserID= (String)httpSession.getAttribute("loggedInUserID");
+		ModelAndView mv= new ModelAndView("redirect:/");
+		String loggedInUserID= (String)httpSession.getAttribute("loggedInUserId");
 		if (loggedInUserID== null)
 		{
 			mv.addObject("errormsg", "Please login to add any product to cart");
 			return mv;
 		}
-		product= productDAO.get(productId);
+		product= productDAO.get(p_id);
 		
 		cart.setEmailid(loggedInUserID); 				//from Cart.java domain class
 		cart.setProductName(product.getName());
 		cart.setPrice(product.getPrice());
 		cart.setQuantity(1);
-		cart.setProductID(productId);
+		cart.setProductID(p_id);
 		cart.setId();
 		
 		if (cartDAO.save(cart)){
@@ -75,7 +77,8 @@ public class CartController {
 		log.debug("Starting of the method getMyCartDetails");
 		
 		ModelAndView mv= new ModelAndView("Home");
-		String loggedInUserID= (String) httpSession.getAttribute("loggedInUserID");
+		mv.addObject("sinceUserClickedMyCart", true);
+		String loggedInUserID= (String) httpSession.getAttribute("loggedInUserId");
 		
 		log.info("Logged in user id: "+ loggedInUserID);
 		
@@ -84,12 +87,39 @@ public class CartController {
 			mv.addObject("errormsg", "Please login to see your cart details");
 			return mv;
 		}
-		List<Cart> cartList= cartDAO.list(loggedInUserID);
-		mv.addObject("cartList", cartList);
-//		mv.addObject("sinceUserClickedMyCart", true);
 		
-		log.debug("No of products in cart"+ cartList.size());
-		log.debug("Ending of the method getMyCartDetails");
-		return mv;
+		else
+		{
+			List<Cart> carts= cartDAO.list(loggedInUserID);
+			if (carts==null)
+			{
+				mv.addObject("noItems", "Your cart is empty");
+			}
+			else
+			{
+				mv.addObject("cartDetails", true);
+				mv.addObject("cartList", carts);
+				mv.addObject("size", carts.size());
+				log.debug("No of products in cart"+ carts.size());
+				log.debug("Ending of the method getMyCartDetails");
+			}
+			return mv;
+		}
 	}
+	
+//	@GetMapping("/buy")
+//	public ModelAndView order()
+//	{
+//		ModelAndView mv= new ModelAndView("Home");
+//		String loggedInUserID= (String) httpSession.getAttribute("loggedInUserId");
+//		if (cartDAO.update(loggedInUserID))
+//		{
+//			mv.addObject("cartSuccess", "Your order was placed successfully");
+//		}
+//		else
+//		{
+//			mv.addObject("cartFailure", "Your order could not be placed. Please try again after sometime.");
+//		}
+//		return mv;
+//	}
 }

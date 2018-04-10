@@ -20,21 +20,12 @@ import com.myproject.shoppingcart.domain.Supplier;
 
 @Controller
 public class AdminController {
-
-	@Autowired
-	HttpSession httpSession;
 	
 	@Autowired
 	private CategoryDAO categoryDAO;
 	
 	@Autowired
-	private Product product;
-	
-	@Autowired
 	private ProductDAO productDAO;
-	
-	@Autowired
-	private Supplier supplier;
 	
 	@Autowired
 	private SupplierDAO supplierDAO;
@@ -42,6 +33,15 @@ public class AdminController {
 	@Autowired
 	private Category category;
 	
+	@Autowired
+	private Product product;
+	
+	@Autowired
+	private Supplier supplier;
+	
+	@Autowired
+	HttpSession httpSession;
+
 	Logger log= LoggerFactory.getLogger(AdminController.class);
 	
 	@GetMapping("/managecategories")
@@ -66,8 +66,8 @@ public class AdminController {
 		log.debug("Starting of the method adminClickedCategories");
 		
 		mv.addObject("isadminClickCategories", true);
-		category=(Category) httpSession.getAttribute("category");
-		mv.addObject("category",category);
+//		category=(Category) httpSession.getAttribute("category");
+//		mv.addObject("category",category);
 		List<Category> categories= categoryDAO.list();					//fetches all categories again
 		httpSession.setAttribute("categories", categories);
 		

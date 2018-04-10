@@ -13,7 +13,11 @@
 <style>
 
 .bg{
-	background: url("resources\images\ShoppingCartImages\background.jpg") no-repeat; width: 100%; height: 100vh;
+	background: url("resources/images/background.jpg");
+	height: 100%; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 form.container{
@@ -27,7 +31,7 @@ form.container{
 
 #cancel{
 	width: 10%;
-	float: center;
+	float: left;
 }
 
 a{
@@ -106,7 +110,8 @@ span.psw {
 
 <div class="container-fluid bg">
 <div class="row">
-<div class="col-md-5 col-sm-4 col-xs-12">
+<div class="col-md-3"></div>
+<div class="col-md-6 col-sm-4 col-xs-12">
 
 <form class= "form-container" action="validate" method="post">
 	<h2>Sign In</h2>
@@ -130,12 +135,13 @@ span.psw {
 				<label> <input type="checkbox" checked="checked" name="remember"> Remember me </label>
 				<span class="psw">Forgot <a href="#"> password?</a></span>
 			</div>
-			<div class="container" style="background-color: white">
-			<button type="reset" class="btn btn-info btn-sm" id="cancel">Cancel</button></div>
+			
+			<button type="reset" class="btn btn-info btn-sm" id="cancel">Cancel</button>
 	</form>
 
 	</div>
-	<div class="col-md-4 col-sm-4 col-xs-12"></div>
+	<div class="col-md-3"></div>
+	
 	</div>
 	</div>
 </body>

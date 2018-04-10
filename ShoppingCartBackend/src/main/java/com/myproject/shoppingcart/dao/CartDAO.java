@@ -13,10 +13,10 @@ public boolean save(Cart cart);
 	
 	public boolean update(Cart cart);
 	
-	public Cart get(String id);
+	public Cart get(int id);
 	
-	public List<Cart> list(String emailid);
+	public List<Cart> list(String userid);
 	
-	public boolean delete(String id);
+	public boolean delete(int id);
 
 }

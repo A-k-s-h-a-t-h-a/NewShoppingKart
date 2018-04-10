@@ -2,8 +2,10 @@ package com.myproject.shoppingcart.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.omg.CORBA.Request;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,22 +30,42 @@ public class HomeController {
 	
 	Logger log= LoggerFactory.getLogger(HomeController.class);
 	
+//	private static String imageDirectory= "D:\\aks\\NewShoppingKart\\ShoppingCartFrontend\\src\\main\\webapp\\resources\\images\\ShoppingCartImages";
+	
 	@GetMapping("/")										//http://localhost:8080/ShoppingCartFrontend
-	public ModelAndView h()
+	public ModelAndView h(/*HttpServletRequest request*/)
 	{
 		log.debug("Start of the home method");
 		
 		ModelAndView mv= new ModelAndView("Home");
 		List<Category> categories= categoryDAO.list();
-		//mv.addObject("categories", categories);
 		httpSession.setAttribute("categories", categories);
+		mv.addObject("carouselDisplayedOnce", true);
+		
 //		httpSession.setAttribute("imageDirectory", imageDirectory);
+//		String root= request.getContextPath();
+//		String imageFolder =  root + File.separator +"src" + File.separator + "main" +File.separator + "webapp"+File.separator + "resources"+File.separator;	
+//	    httpSession.setAttribute("imageFolder", imageFolder);
 		
 		log.debug("End of the home method");
 		return mv;										
 	}
 	
-	@GetMapping("/signin") //mapping
+	@GetMapping("/home")
+	public ModelAndView home()
+	{
+		log.debug("Start of the home method for one instance");
+		
+		ModelAndView mv= new ModelAndView("Home");
+		mv.addObject("brandLogoClicked", true);
+		mv.addObject("carouselDisplayedOnce", true);
+		
+		log.debug("End of the home method for one instance");
+		return mv;
+	}
+	
+	
+	@GetMapping("/signin")
 	public ModelAndView l()
 	{
 		log.debug("Start of the sign in method");

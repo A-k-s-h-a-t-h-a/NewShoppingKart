@@ -52,11 +52,11 @@ public class UserController {
 		{
 			httpSession.setAttribute("success", "Welcome "+ user.getFullname());
 			httpSession.setAttribute("loggedInUserId", user.getEmailID());
-			httpSession.setAttribute("ifLoggedIn", true);					//?
+			httpSession.setAttribute("ifLoggedIn", true);					//? where is it used?
 			
 			List<Cart> carts= cartDAO.list(user.getEmailID());
-			httpSession.setAttribute("size", carts.size());
-			httpSession.setAttribute("carts", carts);
+			httpSession.setAttribute("size", carts.size());			//to display in the navbar
+			httpSession.setAttribute("carts", carts);				//? where is it used?
 			
 			if (user.getRole()=='A'){
 				httpSession.setAttribute("isAdmin", true);

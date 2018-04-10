@@ -1,5 +1,6 @@
 package com.myproject.shoppingcart.domain;
 
+import java.io.Serializable;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -14,7 +15,7 @@ import org.springframework.stereotype.Component;
 @Entity
 @Component
 @Table
-public class Category{
+public class Category implements Serializable {
 
 	@Id
 	private String category_id;

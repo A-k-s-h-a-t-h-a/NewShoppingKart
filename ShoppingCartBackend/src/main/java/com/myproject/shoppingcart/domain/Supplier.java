@@ -1,5 +1,6 @@
 package com.myproject.shoppingcart.domain;
 
+import java.io.Serializable;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -13,7 +14,7 @@ import org.springframework.stereotype.Component;
 @Entity
 @Component
 @Table
-public class Supplier {
+public class Supplier implements Serializable {
 
 	@Id
 	private String supplier_id;

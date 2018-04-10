@@ -51,8 +51,8 @@ public class CartDAOImpl implements CartDAO {
 		}
 	}
 
-	public Cart get(String cart_id) {
-		return sessionFactory.getCurrentSession().get(Cart.class, cart_id);
+	public Cart get(int ID) {
+		return sessionFactory.getCurrentSession().get(Cart.class, ID);
 	}
 
 	public List<Cart> list(String emailid) {
@@ -61,7 +61,7 @@ public class CartDAOImpl implements CartDAO {
 				.add(Restrictions.eq("emailid", "emailid")).list();
 	}
 
-	public boolean delete(String id) {
+	public boolean delete(int id) {
 		log.debug("Starting of the delete method");
 		try{
 			cart= get(id);
@@ -73,6 +73,25 @@ public class CartDAOImpl implements CartDAO {
 			return true;}
 		} 
 		catch(HibernateException e){
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
+	public boolean update(String emailid){
+		log.debug("Staring of the update by emailid method");
+		log.debug("Going to place order of" + emailid);
+		
+		String hql= "Update cart set status='O' where emailid='" + emailid + "'";
+		
+		log.info("The given query is " + hql);
+		
+		try{
+			sessionFactory.getCurrentSession().createQuery(hql).executeUpdate();
+			log.debug("Ending of the update by emailid method");
+			return true;
+		}
+		catch(Exception e){
 			e.printStackTrace();
 			return false;
 		}

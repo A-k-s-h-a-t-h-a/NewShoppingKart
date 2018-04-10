@@ -10,6 +10,14 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <style>
 
+.bg{
+	background: url("resources/images/background2.jpg");
+	height: 100%; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 .container{
 	width: 70%;
 }
@@ -33,7 +41,7 @@ input {
 }
 
 input[type=text]:focus, input[type=password]:focus {
-	background-color: #ddd;
+	background-color: #fff;
 	outline: none;
 }
 
@@ -92,9 +100,10 @@ button:hover {
 </head>
 
 <body>
+<div class="container-fluid bg">
 	<form action="from_form" method="post" style="border: 1px solid #ccc">
 		<div class="container">
-		<div class="col-md-12 col-sm-4 col-xs-12">
+		
 			<h1>Sign Up</h1>
 			<a href="signin" style="float:right">Already a member? Log in</a>
 			<p>Please fill in this form to create an account.</p>
@@ -150,7 +159,7 @@ button:hover {
 				By creating an account you agree to our <a href="#" style="color: dodgerblue">Terms & Privacy</a>.
 			</p>
 		</div>
-		</div>
 	</form>
+	</div>
 </body>
 </html>

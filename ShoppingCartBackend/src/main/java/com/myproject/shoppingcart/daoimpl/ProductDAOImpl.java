@@ -82,4 +82,10 @@ public class ProductDAOImpl implements ProductDAO{
 			return false;
 		}
 	}
+
+	public List<Product> search(String searchString) {
+		String hql= "select * from Product where description is '%" + searchString + "%'";
+		sessionFactory.getCurrentSession().createQuery(hql).list();
+		return null;
+	}
 }

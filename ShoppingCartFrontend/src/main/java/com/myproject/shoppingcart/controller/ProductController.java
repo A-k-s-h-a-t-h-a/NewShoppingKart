@@ -78,7 +78,7 @@ public class ProductController {
 			List<Product> products = productDAO.list();
 			httpSession.setAttribute("products", products);
 			
-			if (FileUtil.fileCopyNIO(file, id+".png",req)){
+			if (FileUtil.fileCopyNIO(file, id+".png", req)){
 				System.out.println("Product image successfully uploaded");
 				mv.addObject("uploadmsg", "Product image successfully uploaded");
 			}
@@ -167,6 +167,22 @@ public class ProductController {
 		redirectAttributes.addFlashAttribute("productID", product_id);
 
 		log.debug("End of the get product by id method");
+		return mv;
+	}
+	
+	@GetMapping("search")
+	public ModelAndView searchProduct(@RequestParam("searchString") String searchString)
+	{
+		log.debug("Start of the search method");
+		
+		ModelAndView mv= new ModelAndView("Home");
+		List<Product> products= productDAO.search(searchString);
+		mv.addObject("products", products);
+		mv.addObject("didUserSelectProducts", true);
+		
+		log.info("Number of products with search string" + searchString + "is/are" + products.size());
+		log.debug("End of the search method");
+		
 		return mv;
 	}
 }

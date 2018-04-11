@@ -32,7 +32,7 @@ public class HomeController {
 	
 //	private static String imageDirectory= "D:\\aks\\NewShoppingKart\\ShoppingCartFrontend\\src\\main\\webapp\\resources\\images\\ShoppingCartImages";
 	
-	@GetMapping("/")										//http://localhost:8080/ShoppingCartFrontend
+	@GetMapping("/")
 	public ModelAndView h(/*HttpServletRequest request*/)
 	{
 		log.debug("Start of the home method");
@@ -45,7 +45,8 @@ public class HomeController {
 //		httpSession.setAttribute("imageDirectory", imageDirectory);
 //		String root= request.getContextPath();
 //		String imageFolder =  root + File.separator +"src" + File.separator + "main" +File.separator + "webapp"+File.separator + "resources"+File.separator;	
-//	    httpSession.setAttribute("imageFolder", imageFolder);
+//		String p= request.getContextPath();
+//	    String path= httpSession.getServletContext().getContextPath();
 		
 		log.debug("End of the home method");
 		return mv;										
@@ -57,6 +58,9 @@ public class HomeController {
 		log.debug("Start of the home method for one instance");
 		
 		ModelAndView mv= new ModelAndView("Home");
+		
+		List<Category> categories= categoryDAO.list();
+		httpSession.setAttribute("categories", categories);
 		mv.addObject("brandLogoClicked", true);
 		mv.addObject("carouselDisplayedOnce", true);
 		
@@ -101,6 +105,7 @@ public class HomeController {
 		httpSession.removeAttribute("ifLoggedIn");
 		httpSession.removeAttribute("isAdmin");
 		httpSession.removeAttribute("success");
+		mv.addObject("carouselDisplayedOnce", true);
 		mv.addObject("logoutmessage", "You have successfully logged out");
 		
 		log.debug("End of the logout method");

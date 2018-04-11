@@ -20,6 +20,7 @@ public class Product implements Serializable {
 	private String product_id;
 	private String name;
 	private int price;
+	private String description;
 	private Date date_created;
 	private int stock;
 	private String cat_id;
@@ -65,6 +66,12 @@ public class Product implements Serializable {
 	}
 	public void setPrice(int price) {
 		this.price = price;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	public Date getDate_created() {
 		return date_created;

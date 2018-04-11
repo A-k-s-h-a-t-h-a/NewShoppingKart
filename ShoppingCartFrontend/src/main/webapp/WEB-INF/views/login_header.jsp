@@ -10,16 +10,6 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-<script type="text/javascript">
-    var button = document.getElementById('show_button')
-    button.addEventListener('click',hideshow,false);
-
-    function hideshow() {
-        document.getElementById('hidden-div').style.display = 'block'; 
-        this.style.display = 'none'
-    }   
-</script>
 </head>
 
 <body style="padding-top:75px">
@@ -32,8 +22,8 @@
 	    </div>
 	   
     	<ul class="nav navbar-nav navbar-left">
-	      <li><a href="signin"><button class="btn btn-success navbar-btn"  id="show_button"><span class="glyphicon glyphicon-log-in"></span> Log in</button></a></li>
-	      <li><a href="signup"><button class="btn btn-warning navbar-btn" id="show_button"><span class="glyphicon glyphicon-user"></span> Sign Up</button></a></li> 
+	      <c:if test="${ifLoggedIn!=true}"><li><a href="signin"><button class="btn btn-success navbar-btn"><span class="glyphicon glyphicon-log-in"></span> Log in</button></a></li></c:if>
+	     <c:if test="${ifLoggedIn!=true}"> <li><a href="signup"><button class="btn btn-warning navbar-btn"><span class="glyphicon glyphicon-user"></span> Sign Up</button></a></li> </c:if>
 	    </ul>
 
 	    <ul class="nav navbar-nav navbar-right">

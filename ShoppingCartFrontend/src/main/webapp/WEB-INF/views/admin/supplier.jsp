@@ -32,7 +32,7 @@ input[type=text], input[type=password] {
 				<c:if test="${empty supplier.supplier_id}">
 					<tr>
 						<td>ID</td>
-						<td><input type="text" name='supplier_id' /></td>
+						<td><input type="text" name='supplier_id' required/></td>
 					</tr>
 				</c:if>
 	
@@ -62,7 +62,7 @@ input[type=text], input[type=password] {
 					<td>Supplier Address</td>
 					<td>Action</td></h4>
 				</tr>
-				<c:forEach var="supplier" items="${suppliers}">
+				<c:forEach var="supplier" items="${supplierList}">
 					<tr>
 						<td>${supplier.supplier_id} </td>
 						<td>${supplier.name} </td>
@@ -70,8 +70,6 @@ input[type=text], input[type=password] {
 						<td>
 							
 								<a href="supplier/delete/?id=${supplier.supplier_id}"><button type="button" class="btn btn-danger">Delete</button></a> | 
-							
-							
 								<a href="supplier/edit/?id=${supplier.supplier_id}"><button type="button" class="btn btn-info">Edit</button></a>
 							
 						</td>

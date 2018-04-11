@@ -48,7 +48,7 @@ body {
 	
 	
 	<c:if test="${sinceUserClickedMyCart== true}">
-	<jsp:include page="Cart.jsp"></jsp:include>
+	<jsp:include page="MyCart.jsp"></jsp:include>
 	</c:if>
 	
 	<c:if test="${isUserSelectedProduct}">
@@ -56,16 +56,39 @@ body {
 	</c:if>
 	
 	
-	
 	<c:if test="${brandLogoClicked== true}">
 		<jsp:include page="login_header.jsp"></jsp:include>
 	</c:if>
 	
 	<c:if test="${carouselDisplayedOnce== true}">
-		<jsp:include page="carousels.jsp"></jsp:include>
+		<c:if test="${isAdmin!= true}">
+			<c:if test="${didUserSearchProducts!= true}">
+				<c:if test="${isUserSelectedProduct!= true}">
+					<jsp:include page="carousels.jsp"></jsp:include>
+				</c:if>
+			</c:if>
+		</c:if>
 	</c:if>
 	
-	<br> ${fail}
+	<c:if test="${didUserSearchProducts== true}">
+		<jsp:include page="add_to_cart.jsp"></jsp:include>
+	</c:if>
+	
+
+	
+	<br>
+	 ${fail}
+	 ${suppliersuccess}
+	 ${supplierfailure}
+	 ${productsuccess}
+	 ${producterror}
+	 ${uploadmsg}
+	 ${categorysuccess}
+	 ${categoryerror}
+	 ${successmsg}
+	 ${erroremsg}
+	 ${cartSuccess}
+	 ${cartFailure}
 
 </body>
 </html>

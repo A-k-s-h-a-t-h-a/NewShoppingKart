@@ -10,8 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.myproject.shoppingcart.dao.CartDAO;
@@ -107,19 +105,20 @@ public class CartController {
 		}
 	}
 	
-//	@GetMapping("/buy")
-//	public ModelAndView order()
-//	{
-//		ModelAndView mv= new ModelAndView("Home");
-//		String loggedInUserID= (String) httpSession.getAttribute("loggedInUserId");
-//		if (cartDAO.update(loggedInUserID))
-//		{
-//			mv.addObject("cartSuccess", "Your order was placed successfully");
-//		}
-//		else
-//		{
-//			mv.addObject("cartFailure", "Your order could not be placed. Please try again after sometime.");
-//		}
-//		return mv;
-//	}
+	@GetMapping("/buy")
+	public ModelAndView order()
+	{
+		ModelAndView mv= new ModelAndView("Home");
+		mv.addObject("sinceUserClickedBuy", true);
+		String loggedInUserID= (String) httpSession.getAttribute("loggedInUserId");
+		if (cartDAO.update(loggedInUserID))
+		{
+			mv.addObject("cartSuccess", "Your order was placed successfully");
+		}
+		else
+		{
+			mv.addObject("cartFailure", "Your order could not be placed. Please try again after sometime.");
+		}
+		return mv;
+	}
 }

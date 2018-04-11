@@ -9,7 +9,6 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
 <style>
 input[type=text], input[type=password] {
 	width: 100%;
@@ -32,30 +31,35 @@ input[type=text], input[type=password] {
 				<c:if test="${empty selectedProduct.product_id}">
 					<tr>
 						<td>ID</td>
-						<td><input type="text" name='product_id' /></td>
+						<td><input id="textfield1" type="text" name='product_id' required/></td>
 					</tr>
 				</c:if>
 
 				<tr>
 					<td>Name</td>
-					<td><input type="text" name='name' value="${selectedProduct.name}" required></td>
+					<td><input id="textfield2" type="text" name='name' value="${selectedProduct.name}" required></td>
+				</tr>
+	
+				<tr>
+					<td>Description</td>
+					<td><input id="textfield3" type="text" name='description' value="${selectedProduct.description}"></td>
 				</tr>
 	
 				<tr>
 					<td>Price</td>
-					<td><input type="text" name='price' value="${selectedProduct.price}" required></td>
+					<td><input id="textfield4" type="text" name='price' value="${selectedProduct.price}" required></td>
 				</tr>
 				
 				<tr>
 					<td>Stock</td>
-					<td><input type="text" name='stock' value="${selectedProduct.stock}" required></td>
+					<td><input id="textfield5" type="text" name='stock' value="${selectedProduct.stock}" required></td>
 				</tr>
 	
 				<tr>
 					<td>Select Category</td>
 					<td>
 						<select name="category_id">
-							<c:forEach var="category" items="${categories}">
+							<c:forEach var="category" items="${categoryList}">
 								<option value="${category.category_id }"> ${category.name} </option>
 							</c:forEach>
 						</select>
@@ -66,16 +70,20 @@ input[type=text], input[type=password] {
 					<td>Select Supplier</td>
 					<td>
 						<select name="supplier_id">
-							<c:forEach var="supplier" items="${suppliers}">
+							<c:forEach var="supplier" items="${supplierList}">
 								<option value="${supplier.supplier_id }"> ${supplier.name} </option>
 							</c:forEach>
 						</select>
 					</td>
 				</tr>
 			</table>
+									
 			<input type="file" name="file">	<br>
+			<div>
+			    <input type="reset" onclick="clearFields()" value="New Product" />
+			</div><br>
 			<input type="submit" value='Submit Product'>
-			<button type="reset" class="btn btn-default">Cancel</button><br><br><br><br>
+			<input type="reset" value="Cancel" /><br><br><br><br>
 		</form>
 	</div>
 	
@@ -85,31 +93,30 @@ input[type=text], input[type=password] {
 	
 	<div class="container">
 		<table class="table table-striped table-bordered table-hover">
-				<tr><h4>
-					<td>Product ID</td>
-					<td>Product Name</td>
-					<td>Product Price</td>
-					<td>Product Stock</td>
-					<td>Category ID</td>
-					<td>Supplier ID</td>
-					<td>Image</td>
-					<td>Action</td>
-					</h4>
+				<tr style="text-align:center">
+					<td><h4>Product ID</h4></td>
+					<td><h4>Product Name</h4></td>
+					<td><h4>Product Description</h4></td>
+					<td><h4>Product Price</h4></td>
+					<td><h4>Product Stock</h4></td>
+					<td><h4>Category ID</h4></td>
+					<td><h4>Supplier ID</h4></td>
+					<td><h4>Image</h4></td>
+					<td><h4>Action</h4></td>
 				</tr>
-				<c:forEach var="product" items="${products}">
-					<tr>
+				<c:forEach var="product" items="${productList}">
+					<tr style="text-align:center">
 						<td>${product.product_id} </td>
 						<td>${product.name} </td>
+						<td>${product.description} </td>
 						<td>${product.price} </td>
 						<td>${product.stock} </td>
 						<td>${product.cat_id} </td>
 						<td>${product.sup_id} </td>
 						<td><img src="resources/images/ShoppingCartImages/${product.product_id}.png" height="100px" width="75px"> </td>
 						<td>
-							
+			
 								<a href="product/delete/?id=${product.product_id}"><button type="button" class="btn btn-danger btn-sm">Delete</button></a> | 
-							
-							
 								<a href="product/edit/?id=${product.product_id}"><button type="button" class="btn btn-info btn-sm">Edit</button></a>
 							
 						</td>

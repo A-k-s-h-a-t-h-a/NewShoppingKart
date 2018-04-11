@@ -51,7 +51,7 @@ public class CategoryController {
 			category.setDescription("");
 			
 			List<Category> categories = categoryDAO.list();					//fetches all categories again
-			httpSession.setAttribute("categories", categories);				//and sets to http session
+			httpSession.setAttribute("categoryList", categories);				//and sets to http session
 		}
 		else{
 			mv.addObject("categoryerror", "Couldn't save");
@@ -85,7 +85,7 @@ public class CategoryController {
 		
 		ModelAndView mv= new ModelAndView("Home");
 		List<Category> categories= categoryDAO.list();
-		mv.addObject("categories", categories);
+		mv.addObject("categoryList", categories);
 
 		log.debug("End of the get all categories method");
 		return mv;
@@ -115,7 +115,7 @@ public class CategoryController {
 		
 		ModelAndView mv= new ModelAndView("redirect:/managecategories");
 		category= categoryDAO.get(id);
-		httpSession.setAttribute("category", category);
+		mv.addObject("category", category);
 
 		log.debug("End of the category edit method");
 		return mv;

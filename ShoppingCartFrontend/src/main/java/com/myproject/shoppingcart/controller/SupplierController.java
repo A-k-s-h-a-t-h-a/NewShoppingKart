@@ -50,7 +50,7 @@ public class SupplierController {
 			supplier.setAddress("");
 			
 			List<Supplier> suppliers = supplierDAO.list();
-			httpSession.setAttribute("suppliers", suppliers);	
+			httpSession.setAttribute("supplierList", suppliers);	
 		}
 		else{
 			mv.addObject("supplierfailure", "Couldn't save");
@@ -84,7 +84,7 @@ public class SupplierController {
 		
 		ModelAndView mv= new ModelAndView("Home");
 		List<Supplier> suppliers= supplierDAO.list();
-		mv.addObject("suppliers", suppliers);
+		mv.addObject("supplierList", suppliers);
 
 		log.debug("End of the get all suppliers method");
 		return mv;
@@ -114,7 +114,7 @@ public class SupplierController {
 		
 		ModelAndView mv= new ModelAndView("redirect:/managesuppliers");
 		supplier= supplierDAO.get(id);
-		httpSession.setAttribute("supplier", supplier);
+		mv.addObject("supplier", supplier);
 
 		log.debug("End of the supplier save method");
 		return mv;

@@ -54,6 +54,8 @@ public class UserController {
 			httpSession.setAttribute("loggedInUserId", user.getEmailID());
 			httpSession.setAttribute("ifLoggedIn", true);					//? where is it used?
 			
+			mv.addObject("carouselDisplayedOnce", true);
+
 			List<Cart> carts= cartDAO.list(user.getEmailID());
 			httpSession.setAttribute("size", carts.size());			//to display in the navbar
 			httpSession.setAttribute("carts", carts);				//? where is it used?

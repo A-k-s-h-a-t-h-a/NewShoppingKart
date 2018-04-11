@@ -13,7 +13,6 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.myproject.shoppingcart.dao.ProductDAO;
-import com.myproject.shoppingcart.domain.Category;
 import com.myproject.shoppingcart.domain.Product;
 
 @Transactional
@@ -61,9 +60,9 @@ public class ProductDAOImpl implements ProductDAO{
 	}
 
 	public List<Product> list() {
-//		return sessionFactory.getCurrentSession().createQuery("from Product").list();
 		log.debug("Starting and ending of the list method");
-		return(List<Product>)sessionFactory.getCurrentSession().createCriteria(Product.class).setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
+		return sessionFactory.getCurrentSession().createQuery("from Product").list();
+//		return(List<Product>)sessionFactory.getCurrentSession().createCriteria(Product.class).setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
 	}
 
 	public boolean delete(String product_id) {
@@ -84,8 +83,19 @@ public class ProductDAOImpl implements ProductDAO{
 	}
 
 	public List<Product> search(String searchString) {
-		String hql= "select * from Product where description is '%" + searchString + "%'";
-		sessionFactory.getCurrentSession().createQuery(hql).list();
-		return null;
+		String hql= "from Product where description like '%" + searchString + "%' or name like '%" + searchString + "%'";
+		return sessionFactory.getCurrentSession().createQuery(hql).list();
 	}
+
+	public List<Product> search(String searchString, int maxPrice) {
+		String hql= "from Product where description like '%" + searchString + "%' and price " + maxPrice;
+		return sessionFactory.getCurrentSession().createQuery(hql).list();
+	}
+
+	public List<Product> search(String searchString, int minPrice, int maxPrice) {
+		String hql= "from Product where description like '%" + searchString + "%' and price between" + minPrice + "and" + maxPrice;
+		return sessionFactory.getCurrentSession().createQuery(hql).list();
+	}
+	
+	
 }

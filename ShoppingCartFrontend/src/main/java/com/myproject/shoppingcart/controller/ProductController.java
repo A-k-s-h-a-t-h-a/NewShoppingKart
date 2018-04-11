@@ -52,13 +52,15 @@ public class ProductController {
 	public ModelAndView saveProduct(@RequestParam("product_id") String id, 		@RequestParam("name") String name,
 								@RequestParam("price") String price, 			@RequestParam("stock") String stock, 
 								@RequestParam("category_id") String categoryID, @RequestParam("supplier_id") String supplierID, 
-								@RequestParam("file") MultipartFile file, 		HttpServletRequest req)
+								@RequestParam("description") String description,@RequestParam("file") MultipartFile file, 
+								HttpServletRequest req)
 	{
 		log.debug("Start of the product save method");
 		
 		ModelAndView mv= new ModelAndView("redirect:/manageproducts"); 
 		product.setProduct_id(id);
 		product.setName(name);
+		product.setDescription(description);
 		price= price.replace(", ", "");
 		product.setPrice(Integer.parseInt(price));
 		product.setStock(Integer.parseInt(stock));
@@ -72,11 +74,12 @@ public class ProductController {
 			mv.addObject("productsuccess", "Product saved successfully");
 			product.setProduct_id("");
 			product.setName("");
+			product.setDescription("");
 			product.setPrice(0);
 			product.setStock(0);
 			
 			List<Product> products = productDAO.list();
-			httpSession.setAttribute("products", products);
+			httpSession.setAttribute("productList", products);
 			
 			if (FileUtil.fileCopyNIO(file, id+".png", req)){
 				System.out.println("Product image successfully uploaded");
@@ -119,7 +122,7 @@ public class ProductController {
 		
 		ModelAndView mv= new ModelAndView("Home");
 		List<Product> products= productDAO.list();
-		mv.addObject("products", products);
+		mv.addObject("productList", products);
 
 		log.debug("End of the get all products method");
 		return mv;
@@ -149,7 +152,7 @@ public class ProductController {
 		
 		ModelAndView mv= new ModelAndView("redirect:/manageproducts");
 		product= productDAO.get(id);
-		httpSession.setAttribute("selectedProduct", product); 
+		mv.addObject("selectedProduct", product); 
 
 		log.debug("End of the product edit method");
 		return mv;
@@ -162,7 +165,7 @@ public class ProductController {
 		
 		ModelAndView mv= new ModelAndView("redirect:/");
 		redirectAttributes.addFlashAttribute("isUserSelectedProduct", true);
-		redirectAttributes.addFlashAttribute("selectedProductImage","resources/images/ShoppingCartImages/"+product_id+".png");
+		redirectAttributes.addFlashAttribute("selectedProductImage","resources//images//ShoppingCartImages//"+product_id+".png");
 		redirectAttributes.addFlashAttribute("selectedProduct", productDAO.get(product_id));
 		redirectAttributes.addFlashAttribute("productID", product_id);
 
@@ -177,8 +180,8 @@ public class ProductController {
 		
 		ModelAndView mv= new ModelAndView("Home");
 		List<Product> products= productDAO.search(searchString);
-		mv.addObject("products", products);
-		mv.addObject("didUserSelectProducts", true);
+		mv.addObject("selectedProduct", products);
+		mv.addObject("didUserSearchProducts", true);
 		
 		log.info("Number of products with search string" + searchString + "is/are" + products.size());
 		log.debug("End of the search method");

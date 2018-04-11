@@ -9,17 +9,33 @@
 </head>
 
 <body>
+	<c:if test="${didUserSearchProducts}">
 	<div class="container">
-		<form action="cart/add/" method="post">
-			<img alt="" src="${selectedProductImage}"><br><br>
+		<form action="cart/add/" method="get">
+		<c:forEach var="p" items="${categories}">
+			<img src="${selectedProductImage}"><br><br>
+			<p>
+				${p.name}<br>
+				${p.price}
+			</p>
+				<a href="cart/add/${p.product_id}">Add To Cart</a>
+		</c:forEach>
+		</form>
+	</div>
+	</c:if>
+	
+	<c:if test="${isUserSelectedProduct}">
+	<div class="container">
+		<form action="cart/add/" method="get">
+			<img src="${selectedProductImage}"><br><br>
 			<p>
 				${selectedProduct.name}<br>
 				${selectedProduct.price}
 			</p>
-			<c:if test="${ifLoggedIn== true}">
 				<a href="cart/add/${selectedProduct.product_id}">Add To Cart</a>
-			</c:if>
 		</form>
 	</div>
+	</c:if>
+	
 </body>
 </html>

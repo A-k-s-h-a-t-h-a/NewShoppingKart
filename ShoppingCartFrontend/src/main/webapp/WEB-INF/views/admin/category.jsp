@@ -32,7 +32,7 @@ input[type=text], input[type=password] {
 				<c:if test="${empty category.category_id}">
 					<tr>
 						<td>ID</td>
-						<td><input type="text" name='category_id' /></td>
+						<td><input type="text" name='category_id' required/></td>
 					</tr>
 				</c:if>
 	
@@ -62,7 +62,7 @@ input[type=text], input[type=password] {
 					<td>Category Description</td>
 					<td>Action</td></h4>
 				</tr>
-				<c:forEach var="category" items="${categories}"> <!-- list of categories from database attached to httpsession in homecontroller-->
+				<c:forEach var="category" items="${categoryList}"> <!-- list of categories from database attached to httpsession in homecontroller-->
 					<tr>
 						<td>${category.category_id} </td>
 						<td>${category.name} </td>
@@ -70,8 +70,6 @@ input[type=text], input[type=password] {
 						<td>
 							
 								<a href="category/delete/?id=${category.category_id}"><button type="button" class="btn btn-danger">Delete</button></a> | 
-							
-							
 								<a href="category/edit/?id=${category.category_id}"><button type="button" class="btn btn-info">Edit</button></a>
 							
 						</td>

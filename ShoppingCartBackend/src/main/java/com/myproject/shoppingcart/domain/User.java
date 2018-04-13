@@ -26,6 +26,22 @@ public class User {
 	private Date registeredDate;
 	private String state;
 	
+	private String address;
+	private String pincode;
+	
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	public String getPincode() {
+		return pincode;
+	}
+	public void setPincode(String pincode) {
+		this.pincode = pincode;
+	}
+	
 	public String getEmailID() {
 		return emailID;
 	}

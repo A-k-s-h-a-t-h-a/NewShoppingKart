@@ -39,7 +39,7 @@ public class HomeController {
 		
 		ModelAndView mv= new ModelAndView("Home");
 		List<Category> categories= categoryDAO.list();
-		httpSession.setAttribute("categories", categories);
+		httpSession.setAttribute("categoryList", categories);
 		mv.addObject("carouselDisplayedOnce", true);
 		
 //		httpSession.setAttribute("imageDirectory", imageDirectory);

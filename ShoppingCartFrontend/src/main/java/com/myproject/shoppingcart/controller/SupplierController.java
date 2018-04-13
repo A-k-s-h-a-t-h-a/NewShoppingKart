@@ -114,21 +114,21 @@ public class SupplierController {
 		
 		ModelAndView mv= new ModelAndView("redirect:/managesuppliers");
 		supplier= supplierDAO.get(id);
-		mv.addObject("supplier", supplier);
+		httpSession.setAttribute("supplier", supplier);
 
 		log.debug("End of the supplier save method");
 		return mv;
 	}	
 	
-//	@GetMapping("/supplier/get/{supplier_id}")
-//	public ModelAndView getSupplier(@RequestParam("supplier_id") String id)
-//	{
-//		log.debug("Start of the get supplier by id method");
-//	
-//		supplier= supplierDAO.get(id);
-//		ModelAndView mv= new ModelAndView("Home");
-//
-//		log.debug("End of the get all suppliers method");
-//		return mv.addObject("supplier", supplier);
-//	}
+	@GetMapping("/supplier/get/{supplier_id}")
+	public ModelAndView getSupplier(@RequestParam("supplier_id") String id)
+	{
+		log.debug("Start of the get supplier by id method");
+	
+		supplier= supplierDAO.get(id);
+		ModelAndView mv= new ModelAndView("Home");
+
+		log.debug("End of the get all suppliers method");
+		return mv.addObject("supplier", supplier);
+	}
 }

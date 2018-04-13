@@ -74,6 +74,14 @@ body {
 		<jsp:include page="add_to_cart.jsp"></jsp:include>
 	</c:if>
 	
+	<c:if test="${sinceUserClickedBuy== true}">
+		<jsp:include page="Shipping.jsp"></jsp:include>
+	</c:if>
+	
+	<c:if test="${proceedingToPayment== true}">
+		<jsp:include page="Payment.jsp"></jsp:include>
+	</c:if>
+
 
 	
 	<br>

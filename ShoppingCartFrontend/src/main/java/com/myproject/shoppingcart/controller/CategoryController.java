@@ -115,22 +115,22 @@ public class CategoryController {
 		
 		ModelAndView mv= new ModelAndView("redirect:/managecategories");
 		category= categoryDAO.get(id);
-		mv.addObject("category", category);
+		httpSession.setAttribute("category", category);
 
 		log.debug("End of the category edit method");
 		return mv;
 	}	
 
-//	@GetMapping("/category/get/{category_id}")
-//	public ModelAndView getCategory(@RequestParam("category_id") String id)
-//	{
-//		log.debug("Start of the get category method");
-//	
-//		category= categoryDAO.get(id);
-//		ModelAndView mv= new ModelAndView("Home");
-//		
-//		log.debug("End of the get category method");
-//		return mv.addObject("category", category); //"category"
-//	}
+	@GetMapping("/category/get/{category_id}")
+	public ModelAndView getCategory(@RequestParam("category_id") String id)
+	{
+		log.debug("Start of the get category method");
+	
+		category= categoryDAO.get(id);
+		ModelAndView mv= new ModelAndView("Home");
+		
+		log.debug("End of the get category method");
+		return mv.addObject("category", category); //"category"
+	}
 	
 }

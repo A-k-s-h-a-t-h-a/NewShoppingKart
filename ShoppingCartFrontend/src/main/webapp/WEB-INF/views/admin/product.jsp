@@ -18,10 +18,14 @@ input[type=text], input[type=password] {
 	border: 1px solid #ccc;
 	box-sizing: border-box;
 }
-</style>
+</style>]
+
 </head>
 
 <body>
+<script type="text/javascript">
+document.getElementById("pimage").value="hfds";
+</script>
 	<div class="container">
 		<form action="product/save/" method="post" enctype="multipart/form-data">
 			<table class="table table-bordered">
@@ -58,11 +62,14 @@ input[type=text], input[type=password] {
 				<tr>
 					<td>Select Category</td>
 					<td>
+					
 						<select name="category_id">
+						<option value="${selectedProduct.cat_id}"> Select Category </option>
 							<c:forEach var="category" items="${categoryList}">
 								<option value="${category.category_id }"> ${category.name} </option>
 							</c:forEach>
 						</select>
+					
 					</td>
 				</tr>
 				
@@ -70,6 +77,7 @@ input[type=text], input[type=password] {
 					<td>Select Supplier</td>
 					<td>
 						<select name="supplier_id">
+						<option value="${selectedProduct.sup_id}"> Select supplier </option>
 							<c:forEach var="supplier" items="${supplierList}">
 								<option value="${supplier.supplier_id }"> ${supplier.name} </option>
 							</c:forEach>
@@ -78,10 +86,7 @@ input[type=text], input[type=password] {
 				</tr>
 			</table>
 									
-			<input type="file" name="file">	<br>
-			<div>
-			    <input type="reset" onclick="clearFields()" value="New Product" />
-			</div><br>
+			<input id="pimage" type="file" name="file" >	<br>
 			<input type="submit" value='Submit Product'>
 			<input type="reset" value="Cancel" /><br><br><br><br>
 		</form>

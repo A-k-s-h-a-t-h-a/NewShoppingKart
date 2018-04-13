@@ -152,8 +152,8 @@ public class ProductController {
 		
 		ModelAndView mv= new ModelAndView("redirect:/manageproducts");
 		product= productDAO.get(id);
-		mv.addObject("selectedProduct", product); 
-
+		httpSession.setAttribute("selectedProduct", product); 
+System.out.println(product.getName());
 		log.debug("End of the product edit method");
 		return mv;
 	}
@@ -165,7 +165,7 @@ public class ProductController {
 		
 		ModelAndView mv= new ModelAndView("redirect:/");
 		redirectAttributes.addFlashAttribute("isUserSelectedProduct", true);
-		redirectAttributes.addFlashAttribute("selectedProductImage","resources//images//ShoppingCartImages//"+product_id+".png");
+		redirectAttributes.addFlashAttribute("selectedProductImage","//resources//images//ShoppingCartImages//"+product_id+".png");
 		redirectAttributes.addFlashAttribute("selectedProduct", productDAO.get(product_id));
 		redirectAttributes.addFlashAttribute("productID", product_id);
 

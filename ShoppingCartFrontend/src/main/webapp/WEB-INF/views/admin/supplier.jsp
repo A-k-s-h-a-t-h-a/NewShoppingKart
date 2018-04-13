@@ -56,11 +56,11 @@ input[type=text], input[type=password] {
 	
 	<div class="container">
 		<table class="table table-striped table-bordered table-hover">
-				<tr><h4>
-					<td>Supplier ID</td>
-					<td>Supplier Name</td>
-					<td>Supplier Address</td>
-					<td>Action</td></h4>
+				<tr style="text-align:center">
+					<td><h4>Supplier ID</h4></td>
+					<td><h4>Supplier Name</h4></td>
+					<td><h4>Supplier Address</h4></td>
+					<td><h4>Action</h4></td>
 				</tr>
 				<c:forEach var="supplier" items="${supplierList}">
 					<tr>

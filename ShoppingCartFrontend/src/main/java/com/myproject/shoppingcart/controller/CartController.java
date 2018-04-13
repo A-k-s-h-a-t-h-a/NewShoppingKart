@@ -109,15 +109,14 @@ public class CartController {
 	public ModelAndView order()
 	{
 		ModelAndView mv= new ModelAndView("Home");
-		mv.addObject("sinceUserClickedBuy", true);
-		String loggedInUserID= (String) httpSession.getAttribute("loggedInUserId");
-		if (cartDAO.update(loggedInUserID))
+		boolean checkLoggedIn= (Boolean) httpSession.getAttribute("ifLoggedIn");
+		if(checkLoggedIn== true)
 		{
-			mv.addObject("cartSuccess", "Your order was placed successfully");
+			String loggedInUserID= (String) httpSession.getAttribute("loggedInUserId");
+			mv.addObject("sinceUserClickedBuy", true);
 		}
-		else
-		{
-			mv.addObject("cartFailure", "Your order could not be placed. Please try again after sometime.");
+		else{
+			mv.addObject("buyingError", "Please login to continue with the purchase");
 		}
 		return mv;
 	}

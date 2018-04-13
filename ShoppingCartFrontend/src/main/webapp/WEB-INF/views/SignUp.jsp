@@ -18,10 +18,6 @@
     background-size: cover;
 }
 
-.container{
-	width: 70%;
-}
-
 body {
 	font-family: Arial, Helvetica, sans-serif;
 }
@@ -81,6 +77,7 @@ button:hover {
 /* Add padding to container elements */
 .container {
 	padding: 16px;
+	width: 75%;
 }
 
 /* Clear floats */

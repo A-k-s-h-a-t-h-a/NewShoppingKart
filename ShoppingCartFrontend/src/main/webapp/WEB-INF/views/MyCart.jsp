@@ -26,7 +26,7 @@
 					<td><input type="text" name="productName" value="${cart.productName}"></td>
 					<td><input type="text" name="price" value="${cart.price}"></td>
 					<td><input type="text" name="quantity" value="${cart.quantity}"></td>
-					<td><a href="buy">BUY</a><br></td>
+					<td><a href="buy">Buy</a><br></td>
 				</tr>
 				</table>
 			</div>

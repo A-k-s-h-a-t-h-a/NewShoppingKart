@@ -33,6 +33,7 @@
 				${selectedProduct.price}
 			</p>
 				<a href="cart/add/${selectedProduct.product_id}">Add To Cart</a>
+				<a href="buy">Buy</a>
 		</form>
 	</div>
 	</c:if>

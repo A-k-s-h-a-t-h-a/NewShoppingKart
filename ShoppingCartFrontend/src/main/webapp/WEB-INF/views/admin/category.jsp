@@ -56,11 +56,11 @@ input[type=text], input[type=password] {
 	
 	<div class="container">
 		<table class="table table-striped table-bordered table-hover">
-				<tr><h4>
-					<td>Category ID</td>
-					<td>Category Name</td>
-					<td>Category Description</td>
-					<td>Action</td></h4>
+				<tr style="text-align:center">
+					<td><h4>Category ID</h4></td>
+					<td><h4>Category Name</h4></td>
+					<td><h4>Category Description</h4></td>
+					<td><h4>Action</h4></td>
 				</tr>
 				<c:forEach var="category" items="${categoryList}"> <!-- list of categories from database attached to httpsession in homecontroller-->
 					<tr>

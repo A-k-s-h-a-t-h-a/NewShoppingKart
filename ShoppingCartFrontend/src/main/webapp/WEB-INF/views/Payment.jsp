@@ -66,12 +66,30 @@ body {
 
 <body>
 
-	Order Sumamry
-	Product ordered: 
-	Quantity: 
-	Ordered by:
-	Delivered to: 
-	Total Amount:
+	<div class="container">
+	<legend>Order Summary</legend>
+		<table class="table table-striped table-bordered table-hover">
+			<tr style="text-align:center">
+				<td><h4>Product Ordered</h4></td>
+				<td><h4>Quantity</h4></td>
+				<td><h4>Image</h4></td>
+				<td><h4>Product Price</h4></td>
+				<td><h4>Sub Total</h4></td>
+				<td><h4>Action</h4></td>
+			</tr>
+			<c:forEach var="product" items="${productList}">
+				<tr style="text-align:center">
+					<td>${product.name} </td>
+					<td>${product.quantity} </td>
+					<td><img src="resources/images/ShoppingCartImages/${product.product_id}.png" height="100px" width="75px"> </td>
+					<td>${product.price} </td>
+					<td>${product.subTotal} </td>
+					<td><a href="remove/?id=${product.product_id}"><button type="button" class="btn btn-danger btn-sm">Delete</button></a></td>
+				</tr>
+			</c:forEach>
+			Delivered to ${address}
+		</table>
+	</div>
 
 	<div class="container">
 		<form:form action="pay" method="post" modelAttribute="payment">
@@ -110,8 +128,8 @@ body {
 								<div class="row">
 									<div class="col-xs-12">
 										<div class="form-group">
-											<form:label >NAME ON CARD</form:label> 
-											<form:input type="text" class="form-control" name="nameOnCard" required />
+											<label>NAME ON CARD</label> 
+											<input type="text" class="form-control" name="nameOnCard" required />
 										</div>
 									</div>
 								</div>
@@ -119,9 +137,9 @@ body {
 								<div class="row">
 									<div class="col-xs-12">
 										<div class="form-group">
-											<form:label >CARD NUMBER</form:label>
+											<label>CARD NUMBER</label>
 											<div class="input-group">
-												<form:input  type="tel" class="form-control" name="cardNumber"
+												<input type="text" class="form-control" name="cardNumber"
 															placeholder="Valid Card Number" autocomplete="cc-number" required autofocus /> 
 													<span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
 											</div>
@@ -132,17 +150,17 @@ body {
 								<div class="row">
 									<div class="col-xs-7 col-md-7">
 										<div class="form-group">
-											<form:label >
+											<label>
 												<span class="hidden-xs">EXPIRY</span>
-												<span class="visible-xs-inline">EXP</span> DATE</form:label> 
-											<form:input  type="tel" class="form-control" name="cardExpiry" 
+												<span class="visible-xs-inline">EXP</span> DATE</label> 
+											<input type="text" class="form-control" name="cardExpiry" 
 														placeholder="MM / YY" autocomplete="cc-exp" required />
 										</div>
 									</div>
 									<div class="col-xs-5 col-md-5 pull-right">
 										<div class="form-group">
-											<form:label >CVV</form:label> 
-											<form:input type="tel" class="form-control" name="cardCVC" 
+											<label >CVV</label> 
+											<input type="text" class="form-control" name="cardCVC" 
 														placeholder="CVV" autocomplete="cc-csc" required />
 										</div>
 									</div>
@@ -150,7 +168,7 @@ body {
 							
 								<div class="row">
 									<div class="col-xs-12">
-										<i class="icon-lock"></i><button class="btn btn-success btn-lg btn-block" type="submit">Pay ${amount}</button>
+										<a href="check"><i class="icon-lock"></i><button class="btn btn-success btn-lg btn-block" type="submit">Pay ${amount}</button></a>
 									</div>
 								</div>
 							

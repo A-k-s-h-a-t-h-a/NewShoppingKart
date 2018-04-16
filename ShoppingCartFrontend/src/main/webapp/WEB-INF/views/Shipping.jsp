@@ -126,7 +126,7 @@ button:hover {
 			        </ol>
 			    </fieldset>
 			    
-			    <button class="btn btn-primary btn-lg" >Proceed To Pay</button>
+			    <a href="calculate"><button class="btn btn-primary btn-lg" >Proceed To Pay</button></a>
 			</div>
 		</form:form>
 	</div>

@@ -70,4 +70,34 @@ public class PaymentController {
 //		log.debug("End of the payment method");
 //		return mv;
 //	}
+	
+	@PostMapping("calculate")
+	public ModelAndView calculateTotal()
+	{
+		log.debug("Starting of the payment method");
+		
+		ModelAndView mv= new ModelAndView("Home");
+//		int subtotal= quantity*price;
+//		grandTotal= grandTotal + subtotal;
+		
+		log.debug("End of the payment method");
+		return mv;
+	}
+
+	@PostMapping("check")
+	public ModelAndView checkStock()
+	{
+		log.debug("Starting of the payment method");
+		
+		ModelAndView mv= new ModelAndView("Home");
+//		while (items>0)
+//		{
+//			items= stock- quantity;
+//		}
+		mv.addObject("over", "This product is out of stock");
+		
+		log.debug("End of the payment method");
+		return mv;
+	}
+	
 }

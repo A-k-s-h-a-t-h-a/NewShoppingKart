@@ -9,7 +9,7 @@ import com.myproject.shoppingcart.domain.Cart;
 @Repository("cartDAO")
 public interface CartDAO {
 
-public boolean save(Cart cart);
+	public boolean save(Cart cart);
 	
 	public boolean update(Cart cart);
 	

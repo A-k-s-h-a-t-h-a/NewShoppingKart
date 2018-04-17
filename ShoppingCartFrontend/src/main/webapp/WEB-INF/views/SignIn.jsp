@@ -13,7 +13,7 @@
 <style>
 
 .bg{
-	background: url("resources/images/background.jpg");
+	background: url("resources/images/background4.jpg");
 	height: 100%; 
     background-position: center;
     background-repeat: no-repeat;
@@ -27,11 +27,6 @@ form.container{
 	-webkit-box-shadow: -1px 4px 26px 11px rgba(0,0,0,0.75);
 	-moz-box-shadow:  -1px 4px 26px 11px rgba(0,0,0,0.75);
 	box-shadow:  -1px 4px 26px 11px rgba(0,0,0,0.75);
-}
-
-#cancel{
-	width: 10%;
-	float: left;
 }
 
 a{
@@ -70,12 +65,6 @@ button:hover {
     color: white;
 }
 
-.cancelbtn {
-	width: auto;
-	padding: 10px 18px;
-	background-color: lightblue;
-}
-
 .imgcontainer {
 	padding-top: 10px;
 	text-align: center;
@@ -109,40 +98,36 @@ span.psw {
 <body>
 
 <div class="container-fluid bg">
-<div class="row">
-<div class="col-md-3"></div>
-<div class="col-md-6 col-sm-4 col-xs-12">
-
-<form class= "form-container" action="validate" method="post">
-	<h2>Sign In</h2>
-	<a href="signup">New to this site? Sign Up</a><br>
-	
-		<div class="imgcontainer">
-			<img src="resources/images/avatar1.png" alt="Avatar" class="avatar">
-		</div>
-
-		<div class="form-group">
-			<label for="exampleInputEmail1"><b>Username / Email id</b></label> 
-			<input class="form-control" id="exampleInputEmail1" type="email" placeholder="Enter Email" name="mailid" required><br>
-
-			<label for="exampleInputPassword1"><b>Password</b></label> 
-			<input class="form-control" id="exampleInputPassword1" type="password" placeholder="Enter Password" name="psw" required>
-		</div>
-
-			<button type="submit">Sign In</button>
+	<div class="row">
+		<div class="col-md-3"></div>
+		<div class="col-md-6 col-sm-4 col-xs-12">
+		
+			<form class= "form-container" action="validate" method="post">
+				<h2>Sign In</h2>
+				<a href="signup" style="color: darkblue">New to this site? Sign Up</a><br>
+				
+					<div class="imgcontainer">
+						<img src="resources/images/avatar1.png" alt="Avatar" class="avatar">
+					</div>
 			
-			<div>
-				<label> <input type="checkbox" checked="checked" name="remember"> Remember me </label>
-				<span class="psw">Forgot <a href="#"> password?</a></span>
-			</div>
+					<div class="form-group">
+						<label for="exampleInputEmail1"><b>Username / Email id</b></label> 
+						<input class="form-control" id="exampleInputEmail1" type="email" placeholder="Enter Email" name="mailid" required><br>
 			
-			<button type="reset" class="btn btn-info btn-sm" id="cancel">Cancel</button>
-	</form>
-
+						<label for="exampleInputPassword1" style="color: lightblue"><b>Password</b></label> 
+						<input class="form-control" id="exampleInputPassword1" type="password" placeholder="Enter Password" name="psw" required><br><br>
+					
+						<div class="clearfix">
+							<button type="submit" class="btn btn-info btn-md">Sign In</button>
+							<button type="reset" class="btn btn-danger btn-md">Cancel</button>		
+						</div>	
+					
+					</div>
+			</form>
+		
+		</div>
+		<div class="col-md-3"></div>
 	</div>
-	<div class="col-md-3"></div>
-	
-	</div>
-	</div>
+</div>
 </body>
 </html>

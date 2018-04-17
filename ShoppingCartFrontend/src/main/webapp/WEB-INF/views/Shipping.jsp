@@ -98,16 +98,16 @@ button:hover {
 				    <legend>Contact details</legend>
 				        <ol>
 				            <li>
-				                <form:label path="fullname">Name</form:label>
-               					<form:input path="fullname"type="text" required />
-				            </li>
-				            <li>
-				                <form:label path="emailID">Email</form:label>
-               					<form:input path="emailID" type="email" required />
+				                <form:label path="name">Name</form:label>
+               					<form:input path="name" type="text" required="true" />
 				            </li>
 				             <li>
 				                <form:label path="mobile">Mobile</form:label>
-               					<form:input path="mobile" type="text" required />
+               					<form:input path="mobile" type="text" required="true" />
+				            </li>
+				            <li>
+				                <form:label path="quantity">Quantity</form:label>
+               					<form:input path="quantity" type="text" required="true" />
 				            </li>
 				        </ol>
 			    </fieldset>
@@ -116,17 +116,24 @@ button:hover {
 			        <legend>Delivery address</legend>
 			        <ol>
 			            <li>
-			                 <form:label path="address">Address</form:label>
-               				 <form:input path="address" type="text" required />
+			                 <form:label path="shippingAddress">Address</form:label>
+               				 <form:input path="shippingAddress" type="text" required="true" />
 			            </li>
 			            <li>
 			                 <form:label path="pincode">Pin Code</form:label>
-               				 <form:input path="pincode" type="text" required />
+               				 <form:input path="pincode" type="text" required="true" />
 			            </li>
 			        </ol>
 			    </fieldset>
 			    
-			    <a href="calculate"><button class="btn btn-primary btn-lg" >Proceed To Pay</button></a>
+			    <a href="calculate"><button class="btn btn-primary btn-lg" onclick="showPayment()">Proceed To Pay</button></a>
+			    
+			    <p id="order"></p>
+			    <script>
+			    	function showPayment(){
+			    		document.getElementById("order").innerHTML= "Hello";
+			    	}
+			    </script>
 			</div>
 		</form:form>
 	</div>

@@ -28,7 +28,7 @@
 
 	    <ul class="nav navbar-nav navbar-right">
 	      <c:if test= "${ifLoggedIn==true}">
-		      <li><a href="mycart"><button class="btn btn-primary navbar-btn"><span class="glyphicon glyphicon-shopping-cart"></span> My Cart(${size})</button></a></li>
+		     <c:if test= "${isAdmin!=true}"><li><a href="mycart"><button class="btn btn-primary navbar-btn"><span class="glyphicon glyphicon-shopping-cart"></span> My Cart(${size})</button></a></li></c:if>
 		      <li><a href="signout"><button class="btn btn-danger navbar-btn"><span class="glyphicon glyphicon-log-out"></span> Log out</button></a></li>
 	      </c:if>
 	    </ul>
@@ -46,6 +46,10 @@
 	    		
 	  </div>
 	</nav>
+
+<!-- 	<div class="container"> -->
+<!-- 		<footer>Copyright &copy; MyProject.com</footer> -->
+<!-- 	</div> -->
 
 </body>
 </html>

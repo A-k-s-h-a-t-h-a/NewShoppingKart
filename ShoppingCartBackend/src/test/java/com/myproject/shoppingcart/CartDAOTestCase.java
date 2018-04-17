@@ -37,7 +37,6 @@ public class CartDAOTestCase {
 	
 	@Test
 	public void saveCartTestCase() {
-		cart.setId();
 		cart.setEmailid("kiran@gmail.com");
 		cart.setProductName("Lenovo");
 		cart.setProductID("Len-01");

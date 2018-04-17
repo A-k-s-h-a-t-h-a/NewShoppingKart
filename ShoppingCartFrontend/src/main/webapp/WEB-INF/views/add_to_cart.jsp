@@ -26,15 +26,15 @@
 	
 	<c:if test="${isUserSelectedProduct}">
 	<div class="container">
-		<form action="cart/add/" method="get">
+		${buyingError}
 			<img src="${selectedProductImage}"><br><br>
 			<p>
 				${selectedProduct.name}<br>
 				${selectedProduct.price}
 			</p>
-				<a href="cart/add/${selectedProduct.product_id}">Add To Cart</a>
-				<a href="buy">Buy</a>
-		</form>
+				<a href="cart/add/${selectedProduct.product_id}"><button class="btn btn-default">Add To Cart</button></a>
+				<a href="buy"><button class="btn btn-default">Buy</button></a>
+		
 	</div>
 	</c:if>
 	

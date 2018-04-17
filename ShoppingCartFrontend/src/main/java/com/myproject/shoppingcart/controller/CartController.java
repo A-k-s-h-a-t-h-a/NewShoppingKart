@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.myproject.shoppingcart.dao.CartDAO;
@@ -56,7 +57,6 @@ public class CartController {
 		cart.setPrice(product.getPrice());
 		cart.setQuantity(1);
 		cart.setProductID(p_id);
-		cart.setId();
 		
 		if (cartDAO.save(cart)){
 			mv.addObject("successmsg", "Product added to cart successfully");
@@ -77,7 +77,7 @@ public class CartController {
 		ModelAndView mv= new ModelAndView("Home");
 		mv.addObject("sinceUserClickedMyCart", true);
 		String loggedInUserID= (String) httpSession.getAttribute("loggedInUserId");
-		
+
 		log.info("Logged in user id: "+ loggedInUserID);
 		
 		if (loggedInUserID== null)
@@ -88,21 +88,41 @@ public class CartController {
 		
 		else
 		{
-			List<Cart> carts= cartDAO.list(loggedInUserID);
-			if (carts==null)
+			List<Cart> usercart= cartDAO.list(loggedInUserID);
+			if (usercart==null)
 			{
 				mv.addObject("noItems", "Your cart is empty");
+				System.out.println("cart is empty");
 			}
 			else
 			{
-				mv.addObject("cartDetails", true);
-				mv.addObject("cartList", carts);
-				mv.addObject("size", carts.size());
-				log.debug("No of products in cart"+ carts.size());
+				httpSession.setAttribute("cartList", usercart);
+				for(Cart row:usercart)
+				{
+					System.out.println(row.getProductName()+" "+row.getEmailid());
+				}
+				mv.addObject("size", usercart.size());
+				log.debug("No of products in cart"+ usercart.size());
 				log.debug("Ending of the method getMyCartDetails");
 			}
 			return mv;
 		}
+	}
+	
+	@GetMapping("/remove")
+	public ModelAndView removeProductFromCart(@RequestParam("id") int id)
+	{
+		log.debug("Starting of the method removeProductFromCart");
+		ModelAndView mv= new ModelAndView("redirect:/");		
+		if (cartDAO.delete(id)==true){
+			mv.addObject("cartProductSucccess", "Product deleted from cart");
+			
+		}
+		else{
+			mv.addObject("cartProductFail", "Product could not be deleted from cart");
+		}
+		log.debug("Ending of the method removeProductFromCart");
+		return mv;
 	}
 	
 	@GetMapping("/buy")

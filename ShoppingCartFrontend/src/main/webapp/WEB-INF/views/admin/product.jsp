@@ -18,14 +18,11 @@ input[type=text], input[type=password] {
 	border: 1px solid #ccc;
 	box-sizing: border-box;
 }
-</style>]
+</style>
 
 </head>
 
 <body>
-<script type="text/javascript">
-document.getElementById("pimage").value="hfds";
-</script>
 	<div class="container">
 		<form action="product/save/" method="post" enctype="multipart/form-data">
 			<table class="table table-bordered">
@@ -73,7 +70,6 @@ document.getElementById("pimage").value="hfds";
 					</td>
 				</tr>
 				
-				<tr>
 					<td>Select Supplier</td>
 					<td>
 						<select name="supplier_id">
@@ -86,7 +82,7 @@ document.getElementById("pimage").value="hfds";
 				</tr>
 			</table>
 									
-			<input id="pimage" type="file" name="file" >	<br>
+			<input type="file" name="file" required>	<br>
 			<input type="submit" value='Submit Product'>
 			<input type="reset" value="Cancel" /><br><br><br><br>
 		</form>
@@ -99,15 +95,15 @@ document.getElementById("pimage").value="hfds";
 	<div class="container">
 		<table class="table table-striped table-bordered table-hover">
 				<tr style="text-align:center">
-					<td><h4>Product ID</h4></td>
-					<td><h4>Product Name</h4></td>
-					<td><h4>Product Description</h4></td>
-					<td><h4>Product Price</h4></td>
-					<td><h4>Product Stock</h4></td>
-					<td><h4>Category ID</h4></td>
-					<td><h4>Supplier ID</h4></td>
-					<td><h4>Image</h4></td>
-					<td><h4>Action</h4></td>
+					<td><b>Product ID</b></td>
+					<td><b>Product Name</b></td>
+					<td><b>Product Description</b></td>
+					<td><b>Product Price</b></td>
+					<td><b>Product Stock</b></td>
+					<td><b>Category ID</b></td>
+					<td><b>Supplier ID</b></td>
+					<td><b>Image</b></td>
+					<td><b>Action</b></td>
 				</tr>
 				<c:forEach var="product" items="${productList}">
 					<tr style="text-align:center">
@@ -119,7 +115,7 @@ document.getElementById("pimage").value="hfds";
 						<td>${product.cat_id} </td>
 						<td>${product.sup_id} </td>
 						<td><img src="resources/images/ShoppingCartImages/${product.product_id}.png" height="100px" width="75px"> </td>
-						<td>
+						<td style="text-align:left">
 			
 								<a href="product/delete/?id=${product.product_id}"><button type="button" class="btn btn-danger btn-sm">Delete</button></a> | 
 								<a href="product/edit/?id=${product.product_id}"><button type="button" class="btn btn-info btn-sm">Edit</button></a>

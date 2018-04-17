@@ -63,7 +63,7 @@ input[type=text], input[type=password] {
 					<td><h4>Action</h4></td>
 				</tr>
 				<c:forEach var="supplier" items="${supplierList}">
-					<tr>
+					<tr style="text-align:center">
 						<td>${supplier.supplier_id} </td>
 						<td>${supplier.name} </td>
 						<td>${supplier.address} </td>

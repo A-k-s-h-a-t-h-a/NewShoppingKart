@@ -35,7 +35,7 @@
 <!-- 	</div>    -->
 	
 	<div class="container">
-		<c:forEach var="category" items="${categories}">
+		<c:forEach var="category" items="${categoryList}">
 			<div class="dropdown col-md-1">
 			    <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">${category.name}
 					<span class="caret"></span>

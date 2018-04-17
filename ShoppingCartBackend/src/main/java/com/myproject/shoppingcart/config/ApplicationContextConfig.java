@@ -16,6 +16,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.myproject.shoppingcart.domain.Cart;
 import com.myproject.shoppingcart.domain.Category;
+import com.myproject.shoppingcart.domain.Payment;
 import com.myproject.shoppingcart.domain.Product;
 import com.myproject.shoppingcart.domain.Supplier;
 import com.myproject.shoppingcart.domain.User;
@@ -53,6 +54,7 @@ public class ApplicationContextConfig {
 		sessionBuilder.addAnnotatedClass(Category.class);
 		sessionBuilder.addAnnotatedClass(Supplier.class);
 		sessionBuilder.addAnnotatedClass(Cart.class);
+		sessionBuilder.addAnnotatedClass(Payment.class);
 		return sessionBuilder.buildSessionFactory();
 	}
 	

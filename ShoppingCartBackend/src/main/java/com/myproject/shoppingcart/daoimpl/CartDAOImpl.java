@@ -21,6 +21,9 @@ public class CartDAOImpl implements CartDAO {
 
 	@Autowired
 	private Cart cart;
+	
+	@Autowired
+	private CartDAO cartDAO;
 
 	@Autowired
 	private SessionFactory sessionFactory;
@@ -55,10 +58,17 @@ public class CartDAOImpl implements CartDAO {
 		return sessionFactory.getCurrentSession().get(Cart.class, ID);
 	}
 
+	public Cart get(String emailid, String productid) {
+		cart.getEmailid();
+		cart.getProductID();
+		cart.setQuantity(cart.getQuantity()+1);
+		cartDAO.update(cart);
+		return cart;
+	}
+
 	public List<Cart> list(String emailid) {
 		log.debug("Starting of the list method");
-		return (List<Cart>) sessionFactory.getCurrentSession().createCriteria(Cart.class)
-				.add(Restrictions.eq("emailid", "emailid")).list();
+		return (List<Cart>) sessionFactory.getCurrentSession().createCriteria(Cart.class).add(Restrictions.eq("emailid", emailid)).list();
 	}
 
 	public boolean delete(int id) {

@@ -1,11 +1,13 @@
 package com.myproject.shoppingcart.domain;
 
-import java.util.Random;
+import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -28,47 +30,60 @@ public class Cart {
 	
 	@Transient
 	private int total;
+
 	
 	public int getId() {
 		return id;
 	}
-	public void setId() {
-		this.id = new Random().nextInt();
+
+	public void setId(int id) {
+		this.id = id;
 	}
-	
+
 	public String getEmailid() {
 		return emailid;
 	}
+
 	public void setEmailid(String emailid) {
 		this.emailid = emailid;
 	}
+
 	public String getProductName() {
 		return productName;
 	}
+
 	public void setProductName(String productName) {
 		this.productName = productName;
 	}
+
 	public int getPrice() {
 		return price;
 	}
+
 	public void setPrice(int price) {
 		this.price = price;
 	}
+
 	public int getQuantity() {
 		return quantity;
 	}
+
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
+
 	public String getProductID() {
 		return productID;
 	}
+
 	public void setProductID(String productID) {
 		this.productID = productID;
 	}
+
 	public int getTotal() {
 		return total;
 	}
+
 	public void setTotal(int total) {
 		this.total = total;
 	}

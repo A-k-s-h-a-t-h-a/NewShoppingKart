@@ -63,7 +63,7 @@ input[type=text], input[type=password] {
 					<td><h4>Action</h4></td>
 				</tr>
 				<c:forEach var="category" items="${categoryList}"> <!-- list of categories from database attached to httpsession in homecontroller-->
-					<tr>
+					<tr style="text-align:center">
 						<td>${category.category_id} </td>
 						<td>${category.name} </td>
 						<td>${category.description} </td>

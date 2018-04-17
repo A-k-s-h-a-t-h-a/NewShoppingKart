@@ -70,24 +70,29 @@ body {
 	<legend>Order Summary</legend>
 		<table class="table table-striped table-bordered table-hover">
 			<tr style="text-align:center">
-				<td><h4>Product Ordered</h4></td>
-				<td><h4>Quantity</h4></td>
-				<td><h4>Image</h4></td>
-				<td><h4>Product Price</h4></td>
-				<td><h4>Sub Total</h4></td>
-				<td><h4>Action</h4></td>
+				Order no:		 ${u.id}
+				Name:			 ${u.nameOnCard}
+				<c:forEach var="u" items="${usercart}">
+				Product Ordered: ${u.productName}
+				Quantity:		 ${u.quantity}
+				Sub Total:		 ${u.subtotal}
+				</c:forEach>
+				Grand Total:	 ${u.grandTotal}
+				Shipping Address:${u.shippingAddress}
+				Pin Code:		 ${u.pincode}
 			</tr>
-			<c:forEach var="product" items="${productList}">
+			
 				<tr style="text-align:center">
-					<td>${product.name} </td>
-					<td>${product.quantity} </td>
-					<td><img src="resources/images/ShoppingCartImages/${product.product_id}.png" height="100px" width="75px"> </td>
-					<td>${product.price} </td>
-					<td>${product.subTotal} </td>
-					<td><a href="remove/?id=${product.product_id}"><button type="button" class="btn btn-danger btn-sm">Delete</button></a></td>
+					<td> </td>
+					<td> </td>
+					<td></td>
+					<td> </td>
+					<td> </td>
+					<td> </td>
+					<td> </td>
+					<td> </td>
 				</tr>
-			</c:forEach>
-			Delivered to ${address}
+			
 		</table>
 	</div>
 
@@ -113,8 +118,8 @@ body {
 								<div class="row">
 									<div class="col-xs-7 col-md-7">
 										<div class="form-group">
-											<form:label path="amount"><span class="hidden-xs">PAYMENT AMOUNT</span></form:label>
-											<form:input path="amount" type="text" class="form-control" name="amount" value="${amount}" disabled="disabled"/>
+											<form:label path="grandTotal"><span class="hidden-xs">PAYMENT AMOUNT</span></form:label>
+											<form:input path="grandTotal" type="text" class="form-control" value="${grandTotal}" disabled="disabled"/>
 										</div>
 									</div>
 		<!-- 							<div class="col-xs-3 col-md-3 pull-right"> -->
@@ -129,7 +134,7 @@ body {
 									<div class="col-xs-12">
 										<div class="form-group">
 											<label>NAME ON CARD</label> 
-											<input type="text" class="form-control" name="nameOnCard" required />
+											<input name="nameOnCard" type="text" class="form-control" required="true"/>
 										</div>
 									</div>
 								</div>
@@ -153,7 +158,7 @@ body {
 											<label>
 												<span class="hidden-xs">EXPIRY</span>
 												<span class="visible-xs-inline">EXP</span> DATE</label> 
-											<input type="text" class="form-control" name="cardExpiry" 
+												<input type="text" class="form-control" name="cardExpiry" 
 														placeholder="MM / YY" autocomplete="cc-exp" required />
 										</div>
 									</div>
@@ -168,7 +173,7 @@ body {
 							
 								<div class="row">
 									<div class="col-xs-12">
-										<a href="check"><i class="icon-lock"></i><button class="btn btn-success btn-lg btn-block" type="submit">Pay ${amount}</button></a>
+										<a href="check"><i class="icon-lock"></i><button class="btn btn-success btn-lg btn-block" type="submit">Pay ${grandTotal}</button></a>
 									</div>
 								</div>
 							

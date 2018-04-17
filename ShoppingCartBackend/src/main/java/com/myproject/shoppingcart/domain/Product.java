@@ -34,7 +34,6 @@ public class Product implements Serializable {
 	@JoinColumn(name="sup_id", updatable= false, nullable= false, insertable= false)
 	private Supplier supplier;
 	
-	
 	public String getCat_id() {
 		return cat_id;
 	}

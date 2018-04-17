@@ -22,7 +22,7 @@ public class Cart {
 	@GeneratedValue(strategy= GenerationType.AUTO)
 	private int id;
 	
-	private String emailid;
+	private String emailID;
 	private String productName;
 	private int price;
 	private int quantity;
@@ -40,12 +40,12 @@ public class Cart {
 		this.id = id;
 	}
 
-	public String getEmailid() {
-		return emailid;
+	public String getEmailID() {
+		return emailID;
 	}
 
-	public void setEmailid(String emailid) {
-		this.emailid = emailid;
+	public void setEmailID(String emailID) {
+		this.emailID = emailID;
 	}
 
 	public String getProductName() {

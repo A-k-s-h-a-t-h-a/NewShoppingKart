@@ -51,7 +51,7 @@ public class CategoryController {
 			category.setDescription("");
 			
 			List<Category> categories = categoryDAO.list();					//fetches all categories again
-			httpSession.setAttribute("categoryList", categories);				//and sets to http session
+			httpSession.setAttribute("categoryList", categories);			//and sets to http session
 		}
 		else{
 			mv.addObject("categoryerror", "Couldn't save");
@@ -121,7 +121,7 @@ public class CategoryController {
 		return mv;
 	}	
 
-	@GetMapping("/category/get/{category_id}")
+	@GetMapping("/category/get/{category_id}")								//to display fields in the text boxes on clicking edit
 	public ModelAndView getCategory(@RequestParam("category_id") String id)
 	{
 		log.debug("Start of the get category method");

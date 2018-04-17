@@ -52,7 +52,7 @@ public class CartController {
 		}
 		product= productDAO.get(p_id);
 		
-		cart.setEmailid(loggedInUserID); 				//from Cart.java domain class
+		cart.setEmailID(loggedInUserID); 				//from Cart.java domain class
 		cart.setProductName(product.getName());
 		cart.setPrice(product.getPrice());
 		cart.setQuantity(1);
@@ -99,7 +99,7 @@ public class CartController {
 				httpSession.setAttribute("cartList", usercart);
 				for(Cart row:usercart)
 				{
-					System.out.println(row.getProductName()+" "+row.getEmailid());
+					System.out.println(row.getProductName()+" "+row.getEmailID());
 				}
 				mv.addObject("size", usercart.size());
 				log.debug("No of products in cart"+ usercart.size());
@@ -107,6 +107,19 @@ public class CartController {
 			}
 			return mv;
 		}
+	}
+	
+	@GetMapping("/editcartqty/{id}")
+	public ModelAndView editProductQuantity(@PathVariable("id") int id)
+	{
+		log.debug("Starting of the method editProductQuantity");
+		ModelAndView mv= new ModelAndView("redirect:/");
+		cart=cartDAO.get(id);
+		cart.setQuantity((cart.getQuantity()+1));
+		cartDAO.save(cart);
+		
+		log.debug("Ending of the method editProductQuantity");
+		return mv;
 	}
 	
 	@GetMapping("/remove")
@@ -128,16 +141,19 @@ public class CartController {
 	@GetMapping("/buy")
 	public ModelAndView order()
 	{
+		log.debug("Starting of the method order");
 		ModelAndView mv= new ModelAndView("Home");
-		boolean checkLoggedIn= (Boolean) httpSession.getAttribute("ifLoggedIn");
-		if(checkLoggedIn== true)
+		
+		String loggedInUserID= (String) httpSession.getAttribute("loggedInUserId");
+		if(loggedInUserID!= null)
 		{
-			String loggedInUserID= (String) httpSession.getAttribute("loggedInUserId");
 			mv.addObject("sinceUserClickedBuy", true);
 		}
 		else{
 			mv.addObject("buyingError", "Please login to continue with the purchase");
 		}
+		log.debug("Ending of the method order");
+		
 		return mv;
 	}
 }

@@ -65,6 +65,7 @@ public class PaymentController {
 		return mv;
 	}
 	
+	
 	@ModelAttribute("payment")
 	public Payment f2()
 	{
@@ -87,6 +88,7 @@ public class PaymentController {
 		return mv;
 	}
 	
+	
 	@PostMapping("calculate")
 	public ModelAndView calculateTotal()
 	{
@@ -107,6 +109,7 @@ public class PaymentController {
 		return mv;
 	}
 
+	
 	@PostMapping("check")
 	public ModelAndView checkStock()
 	{

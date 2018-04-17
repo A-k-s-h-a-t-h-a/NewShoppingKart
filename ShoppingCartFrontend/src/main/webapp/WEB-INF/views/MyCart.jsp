@@ -31,7 +31,7 @@
 						<td><img alt="" src="resources/images/ShoppingCartImages/${a.productID}.png"></td>
 						<td>${a.productName}</td>
 						<td>${a.price}</td>
-						<td><input type="text" name="quantity" value="${a.quantity}"></td>
+						<td><a href="editcartqty/${a.id}"><button class="btn btn-primary">+</button></a></td>
 						<td><a href="remove/?id=${a.id}"><button type="button" class="btn btn-danger btn-sm">Delete</button></a><br></td>
 					</tr>
 				</c:forEach>

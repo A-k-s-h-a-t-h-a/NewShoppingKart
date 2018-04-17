@@ -30,10 +30,11 @@ public class CartDAOImpl implements CartDAO {
 
 	Logger log= LoggerFactory.getLogger(CartDAOImpl.class);
 	
+	
 	public boolean save(Cart cart) {
 		log.debug("Starting of the save method");
 		try {
-			sessionFactory.getCurrentSession().save(cart);
+			sessionFactory.getCurrentSession().saveOrUpdate(cart);
 			log.debug("Ending of the save method");
 			return true;
 		} catch (HibernateException e) {
@@ -42,6 +43,7 @@ public class CartDAOImpl implements CartDAO {
 		}
 	}
 
+	
 	public boolean update(Cart cart) {
 		log.debug("Starting of the update method");
 		try {
@@ -54,23 +56,26 @@ public class CartDAOImpl implements CartDAO {
 		}
 	}
 
+	
 	public Cart get(int ID) {
 		return sessionFactory.getCurrentSession().get(Cart.class, ID);
 	}
 
+	
 	public Cart get(String emailid, String productid) {
-		cart.getEmailid();
-		cart.getProductID();
+		Cart cart= (Cart) sessionFactory.getCurrentSession().createCriteria(Cart.class).add(Restrictions.eq("emailID", emailid)).add(Restrictions.eq("productID", productid));
 		cart.setQuantity(cart.getQuantity()+1);
 		cartDAO.update(cart);
 		return cart;
 	}
 
+	
 	public List<Cart> list(String emailid) {
 		log.debug("Starting of the list method");
 		return (List<Cart>) sessionFactory.getCurrentSession().createCriteria(Cart.class).add(Restrictions.eq("emailid", emailid)).list();
 	}
 
+	
 	public boolean delete(int id) {
 		log.debug("Starting of the delete method");
 		try{
@@ -87,6 +92,7 @@ public class CartDAOImpl implements CartDAO {
 			return false;
 		}
 	}
+	
 	
 	public boolean update(String emailid){
 		log.debug("Staring of the update by emailid method");

@@ -22,8 +22,10 @@
 	    </div>
 	   
     	<ul class="nav navbar-nav navbar-left">
-	      <c:if test="${ifLoggedIn!=true}"><li><a href="signin"><button class="btn btn-success navbar-btn"><span class="glyphicon glyphicon-log-in"></span> Log in</button></a></li></c:if>
-	     <c:if test="${ifLoggedIn!=true}"> <li><a href="signup"><button class="btn btn-warning navbar-btn"><span class="glyphicon glyphicon-user"></span> Sign Up</button></a></li> </c:if>
+	      <c:if test="${ifLoggedIn!=true}">
+	      	<li><a href="signin"><button class="btn btn-success navbar-btn"><span class="glyphicon glyphicon-log-in"></span> Log in</button></a></li>
+	     	<li><a href="signup"><button class="btn btn-warning navbar-btn"><span class="glyphicon glyphicon-user"></span> Sign Up</button></a></li> 
+	      </c:if>
 	    </ul>
 
 	    <ul class="nav navbar-nav navbar-right">

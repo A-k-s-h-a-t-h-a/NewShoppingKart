@@ -6,7 +6,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<link rel="stylesheet" href="paymentstyles.css">
+<title>Payment page</title>
 <style>
 body {
 	margin: 50px auto;
@@ -65,7 +66,6 @@ body {
 </head>
 
 <body>
-
 	<div class="container">
 	<legend>Order Summary</legend>
 		<table class="table table-striped table-bordered table-hover">
@@ -81,18 +81,6 @@ body {
 				Shipping Address:${u.shippingAddress}
 				Pin Code:		 ${u.pincode}
 			</tr>
-			
-				<tr style="text-align:center">
-					<td> </td>
-					<td> </td>
-					<td></td>
-					<td> </td>
-					<td> </td>
-					<td> </td>
-					<td> </td>
-					<td> </td>
-				</tr>
-			
 		</table>
 	</div>
 

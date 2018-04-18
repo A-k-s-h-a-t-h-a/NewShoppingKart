@@ -30,7 +30,7 @@ public class ApplicationContextConfig {
 	public DataSource getDataSource(){
 		DriverManagerDataSource dataSource= new DriverManagerDataSource();
 		dataSource.setDriverClassName("org.h2.Driver");
-		dataSource.setUrl("jdbc:h2:tcp://localhost/~/mycart");
+		dataSource.setUrl("jdbc:h2:tcp://localhost/~/mycarts");
 		dataSource.setUsername("sa");
 		dataSource.setPassword("");
 		return dataSource;

@@ -52,7 +52,7 @@ public class UserController {
 		{
 			httpSession.setAttribute("success", "Welcome "+ user.getFullname());
 			httpSession.setAttribute("loggedInUserId", user.getEmailID());
-//			httpSession.setAttribute("ifLoggedIn", true);					//? where is it used?
+			httpSession.setAttribute("ifLoggedIn", true);					//used in login-header to (not) display sign in/out 
 			
 			mv.addObject("carouselDisplayedOnce", true);
 

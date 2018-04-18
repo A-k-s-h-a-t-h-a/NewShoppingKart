@@ -17,6 +17,7 @@ import com.myproject.shoppingcart.dao.CartDAO;
 import com.myproject.shoppingcart.dao.ProductDAO;
 import com.myproject.shoppingcart.domain.Cart;
 import com.myproject.shoppingcart.domain.Product;
+import com.myproject.shoppingcart.domain.User;
 
 @Controller
 public class CartController {
@@ -38,6 +39,9 @@ public class CartController {
 	@Autowired
 	private Product product;
 		
+	@Autowired
+	private User user; 
+	
 	@GetMapping("cart/add/{productID}")					//Get or Post? //@PathVariable for both?
 	public ModelAndView addToCart(@PathVariable("productID") String p_id)
 	{
@@ -58,13 +62,20 @@ public class CartController {
 		cart.setQuantity(1);
 		cart.setProductID(p_id);
 		
-		if (cartDAO.save(cart)){
-			mv.addObject("successmsg", "Product added to cart successfully");
+		List<Cart> usercart= cartDAO.list(user.getEmailID());
+		if (usercart== null)
+		{
+			cartDAO.save(cart);
 		}
 		else{
-			mv.addObject("errormsg", "Could not add the product to cart. Please try again.");
+			cartDAO.update(cart);
 		}
+		
+			mv.addObject("successmsg", "Product added to cart successfully");		
+			httpSession.setAttribute("size", usercart.size());
+			httpSession.setAttribute("carts", usercart);
 
+		
 		log.debug("End of the addToCart method");
 		return mv;
 	}
@@ -109,27 +120,47 @@ public class CartController {
 		}
 	}
 	
-	@GetMapping("/editcartqty/{id}")
-	public ModelAndView editProductQuantity(@PathVariable("id") int id)
+	@GetMapping("/increase/{id}")
+	public ModelAndView increaseProductQuantity(@PathVariable("id") int id)
 	{
-		log.debug("Starting of the method editProductQuantity");
-		ModelAndView mv= new ModelAndView("redirect:/");
+		log.debug("Starting of the method increaseProductQuantity");
+		ModelAndView mv= new ModelAndView("redirect:/mycart");
 		cart=cartDAO.get(id);
 		cart.setQuantity((cart.getQuantity()+1));
 		cartDAO.save(cart);
 		
-		log.debug("Ending of the method editProductQuantity");
+		String loggedInUserID= (String) httpSession.getAttribute("loggedInUserId");
+		List<Cart> usercart= cartDAO.list(loggedInUserID);
+		
+		log.debug("Ending of the method increaseProductQuantity");
+		return mv;
+	}
+
+	@GetMapping("/decrease/{id}")
+	public ModelAndView decreaseProductQuantity(@PathVariable("id") int id)
+	{
+		log.debug("Starting of the method decreaseProductQuantity");
+		ModelAndView mv= new ModelAndView("redirect:/mycart");
+		
+		cart=cartDAO.get(id);
+		cart.setQuantity((cart.getQuantity()-1));
+		cartDAO.save(cart);
+		String loggedInUserID= (String) httpSession.getAttribute("loggedInUserId");
+		List<Cart> usercart= cartDAO.list(loggedInUserID);
+		
+		log.debug("Ending of the method decreaseProductQuantity");
 		return mv;
 	}
 	
-	@GetMapping("/remove")
-	public ModelAndView removeProductFromCart(@RequestParam("id") int id)
+	@GetMapping("/remove/{id}")
+	public ModelAndView removeProductFromCart(@PathVariable("id") int id)
 	{
 		log.debug("Starting of the method removeProductFromCart");
-		ModelAndView mv= new ModelAndView("redirect:/");		
+		ModelAndView mv= new ModelAndView("redirect:/mycart");		
 		if (cartDAO.delete(id)==true){
 			mv.addObject("cartProductSucccess", "Product deleted from cart");
-			
+			String loggedInUserID= (String) httpSession.getAttribute("loggedInUserId");
+			List<Cart> usercart= cartDAO.list(loggedInUserID);
 		}
 		else{
 			mv.addObject("cartProductFail", "Product could not be deleted from cart");
@@ -145,9 +176,14 @@ public class CartController {
 		ModelAndView mv= new ModelAndView("Home");
 		
 		String loggedInUserID= (String) httpSession.getAttribute("loggedInUserId");
+		List<Cart> usercart= cartDAO.list(loggedInUserID);
+		System.out.println(loggedInUserID + " buying" + usercart);
 		if(loggedInUserID!= null)
-		{
-			mv.addObject("sinceUserClickedBuy", true);
+		{	
+			if(usercart!= null)
+			{
+				mv.addObject("sinceUserClickedBuy", true);
+			}
 		}
 		else{
 			mv.addObject("buyingError", "Please login to continue with the purchase");

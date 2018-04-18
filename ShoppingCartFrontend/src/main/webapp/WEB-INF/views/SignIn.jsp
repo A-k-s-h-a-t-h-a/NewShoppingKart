@@ -5,11 +5,11 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sign up</title>
+<link rel="stylesheet" href="signINstyles.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link href="css/global.css" type="text/css" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
 <style>
 
 .bg{
@@ -38,16 +38,24 @@ body {
 }
 
 form {
-	border: 3px solid #f1f1f1;
+	border: 1px solid #ccc;
 }
 
-input[type=text], input[type=password] {
+input {
 	width: 100%;
-	padding: 12px 20px;
-	margin: 8px 0;
+	padding: 15px;
+	margin: 5px 0 22px 0;
 	display: inline-block;
-	border: 1px solid #ccc;
-	box-sizing: border-box;
+	border: none;
+	background:#000;
+	color:#fff;
+	filter:alpha(opacity=60);
+	opacity:0.6;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+	background-color: #fff;
+	outline: none;
 }
 
 button {
@@ -82,6 +90,12 @@ span.psw {
 	padding-top: 16px;
 }
 
+.clearfix::after {
+	content: "";
+	clear: both;
+	display: table;
+}
+
 /* Change styles for span and cancel button on extra small screens */
 @media screen and (max-width: 300px) {
 	span.psw {
@@ -112,9 +126,9 @@ span.psw {
 			
 					<div class="form-group">
 						<label for="exampleInputEmail1"><b>Username / Email id</b></label> 
-						<input class="form-control" id="exampleInputEmail1" type="email" placeholder="Enter Email" name="mailid" required><br>
+						<input class="form-control" id="exampleInputEmail1" type="email" placeholder="Enter Email" name="mailid" required>
 			
-						<label for="exampleInputPassword1" style="color: lightblue"><b>Password</b></label> 
+						<label for="exampleInputPassword1"><b>Password</b></label> 
 						<input class="form-control" id="exampleInputPassword1" type="password" placeholder="Enter Password" name="psw" required><br><br>
 					
 						<div class="clearfix">

@@ -92,7 +92,7 @@ public class CategoryController {
 	}
 	
 	@GetMapping("/category/delete")
-	public ModelAndView deleteCategory(@RequestParam("id") String id) //@RequestParam("category_id")
+	public ModelAndView deleteCategory(@RequestParam("id") String id)
 	{
 		log.debug("Start of the category delete method");
 		
@@ -130,7 +130,7 @@ public class CategoryController {
 		ModelAndView mv= new ModelAndView("Home");
 		
 		log.debug("End of the get category method");
-		return mv.addObject("category", category); //"category"
+		return mv.addObject("category", category);
 	}
 	
 }

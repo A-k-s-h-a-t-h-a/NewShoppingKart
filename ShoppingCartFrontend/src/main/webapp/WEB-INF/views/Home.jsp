@@ -82,21 +82,12 @@ body {
 		<jsp:include page="Payment.jsp"></jsp:include>
 	</c:if>
 
-
+	<c:if test="${orderPlaced== true}">
+		<jsp:include page="Confirmed.jsp"></jsp:include>
+	</c:if>
 	
 	<br>
 	 ${fail}
-	 ${suppliersuccess}
-	 ${supplierfailure}
-	 ${productsuccess}
-	 ${producterror}
-	 ${uploadmsg}
-	 ${categorysuccess}
-	 ${categoryerror}
-	 ${successmsg}
-	 ${erroremsg}
-	 ${cartSuccess}
-	 ${cartFailure}
-
+	 
 </body>
 </html>

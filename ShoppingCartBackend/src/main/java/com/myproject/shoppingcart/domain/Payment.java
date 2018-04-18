@@ -16,13 +16,13 @@ public class Payment {
 	@Id
 	@GeneratedValue(strategy= GenerationType.AUTO)
 	private int id; //Auto generated
-	private String nameOnCard; //nameoncard
+	private String name; //nameoncard
 	private String mobile;
-	private String productName; //product class
+//	private String productName; //product class
 	
 	private int quantity; //form
-	private int subtotal; 
-	private int grandTotal;
+//	private int subtotal; 
+//	private int grandTotal;
 	
 	private String shippingAddress; //form
 	private int pincode;
@@ -34,11 +34,11 @@ public class Payment {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getNameOnCard() {
-		return nameOnCard;
+	public String getName() {
+		return name;
 	}
-	public void setNameOnCard(String nameOnCard) {
-		this.nameOnCard = nameOnCard;
+	public void setName(String name) {
+		this.name = name;
 	}
 	public String getMobile() {
 		return mobile;
@@ -46,30 +46,30 @@ public class Payment {
 	public void setMobile(String mobile) {
 		this.mobile = mobile;
 	}
-	public String getProductName() {
-		return productName;
-	}
-	public void setProductName(String productName) {
-		this.productName = productName;
-	}
+//	public String getProductName() {
+//		return productName;
+//	}
+//	public void setProductName(String productName) {
+//		this.productName = productName;
+//	}
 	public int getQuantity() {
 		return quantity;
 	}
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
-	public int getSubtotal() {
-		return subtotal;
-	}
-	public void setSubtotal(int subtotal) {
-		this.subtotal = subtotal;
-	}
-	public int getGrandTotal() {
-		return grandTotal;
-	}
-	public void setGrandTotal(int grandTotal) {
-		this.grandTotal = grandTotal;
-	}
+//	public int getSubtotal() {
+//		return subtotal;
+//	}
+//	public void setSubtotal(int subtotal) {
+//		this.subtotal = subtotal;
+//	}
+//	public int getGrandTotal() {
+//		return grandTotal;
+//	}
+//	public void setGrandTotal(int grandTotal) {
+//		this.grandTotal = grandTotal;
+//	}
 	public String getShippingAddress() {
 		return shippingAddress;
 	}

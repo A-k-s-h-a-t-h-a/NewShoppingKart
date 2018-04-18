@@ -5,13 +5,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Sign up</title>
+<link rel="stylesheet" href="signUPstyles.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <style>
 
 .bg{
-	background: url("resources/images/background2.jpg");
+	background: url("resources/images/background4.jpg");
 	height: 100%; 
     background-position: center;
     background-repeat: no-repeat;
@@ -22,8 +23,21 @@ body {
 	font-family: Arial, Helvetica, sans-serif;
 }
 
-* {
-	box-sizing: border-box
+/* * { */
+/* 	box-sizing: border-box */
+/* } */
+
+form.container{
+	border:1px solid #fff; 
+	padding:50px 60px; 
+	margin-top:20vh;
+	-webkit-box-shadow: -1px 4px 26px 11px rgba(0,0,0,0.75);
+	-moz-box-shadow:  -1px 4px 26px 11px rgba(0,0,0,0.75);
+	box-shadow:  -1px 4px 26px 11px rgba(0,0,0,0.75);
+}
+
+form {
+	border: 1px solid grey;
 }
 
 /* Full-width input fields */
@@ -33,7 +47,10 @@ input {
 	margin: 5px 0 22px 0;
 	display: inline-block;
 	border: none;
-	background: #f1f1f1;
+	background:#000;
+	color:#fff;
+	filter:alpha(opacity=60);
+	opacity:0.6;
 }
 
 input[type=text]:focus, input[type=password]:focus {
@@ -97,14 +114,17 @@ button:hover {
 </head>
 
 <body>
-<div class="container-fluid bg">
-	<form action="from_form" method="post" style="border: 1px solid #ccc">
-		<div class="container">
+		<div class="container-fluid bg">
+		<div class="row">
+		<div class="col-md-3"></div>
+		<div class="col-md-6 col-sm-4 col-xs-12">
+		<form action="from_form" method="post" class="form-container">
+		<div class="form-group">
 		
 			<h1>Sign Up</h1>
-			<a href="signin" style="float:right">Already a member? Log in</a>
+			<a href="signin" style="float:right; color: darkblue">Already a member? Log in</a>
 			<p>Please fill in this form to create an account.</p>
-			<hr>
+			
 
 			<label for="fullname"><b>Full Name</b></label> 
 			<input class="form-control" type="text" placeholder="Enter Name" name="fullname" required> 
@@ -122,7 +142,7 @@ button:hover {
 			<input class="form-control" type="text" placeholder="Enter mobile no" name="mob" required>
 			
 			<div class="form-group">
-			      <label for="sel1">Select State</label>
+			      <label for="sel1" style="color: grey">Select State</label>
 			      <select class="form-control" id="sel1" placeholder="Select state" name="state">
 			        <option>Delhi</option>
 			        <option>Goa</option>
@@ -148,15 +168,14 @@ button:hover {
 				<button type=reset class="cancelbtn">Cancel</button>
 			</div>
 			
-			<label> 
-			<input type="checkbox" checked="checked" name="remember" style="margin-bottom: 15px"> Remember me
-			</label>
-
 			<p>
 				By creating an account you agree to our <a href="#" style="color: dodgerblue">Terms & Privacy</a>.
 			</p>
 		</div>
 	</form>
 	</div>
+		<div class="col-md-3"></div>
+	</div>
+</div>
 </body>
 </html>

@@ -61,7 +61,7 @@ public class ProductController {
 		product.setProduct_id(id);
 		product.setName(name);
 		product.setDescription(description);
-		price= price.replace(", ", "");
+		price= price.replace(",", "");
 		product.setPrice(Integer.parseInt(price));
 		product.setStock(Integer.parseInt(stock));
 //		product.setCategory(categoryDAO.get(categoryID));

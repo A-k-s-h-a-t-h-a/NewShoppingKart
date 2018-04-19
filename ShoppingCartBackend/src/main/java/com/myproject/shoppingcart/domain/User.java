@@ -22,12 +22,14 @@ public class User {
 	@Column(name="password") 					//to specify to map to a certain column in database table
 	private String pwd;
 	private String mobile;
-	private Character role;
+	private String role;
 	private Date registeredDate;
 	private String state;
 	
 	private String address;
 	private String pincode;
+	
+	private boolean status;
 	
 	public String getAddress() {
 		return address;
@@ -66,10 +68,11 @@ public class User {
 	public void setMobile(String mobile) {
 		this.mobile = mobile;
 	}
-	public Character getRole() {
+	
+	public String getRole() {
 		return role;
 	}
-	public void setRole(Character role) {
+	public void setRole(String role) {
 		this.role = role;
 	}
 	public Date getRegisteredDate() {
@@ -83,6 +86,13 @@ public class User {
 	}
 	public void setState(String state) {
 		this.state = state;
+	}
+	
+	public boolean isStatus() {
+		return status;
+	}
+	public void setStatus(boolean status) {
+		this.status = status;
 	}
 	
 }

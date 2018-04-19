@@ -37,22 +37,11 @@ body {
 	<c:if test="${isAdmin== true}">
 		<jsp:include page="admin/adminhome.jsp"></jsp:include>
 	</c:if>
-
 	<c:if test="${sinceUserClickedSignIn== true}">
 		<jsp:include page="SignIn.jsp"></jsp:include>
 	</c:if>
-
 	<c:if test="${sinceUserClickedSignUp== true}">
 		<jsp:include page="SignUp.jsp"></jsp:include>
-	</c:if>
-	
-	
-	<c:if test="${sinceUserClickedMyCart== true}">
-	<jsp:include page="MyCart.jsp"></jsp:include>
-	</c:if>
-	
-	<c:if test="${isUserSelectedProduct}">
-	<jsp:include page="add_to_cart.jsp"></jsp:include>
 	</c:if>
 	
 	
@@ -70,18 +59,26 @@ body {
 		</c:if>
 	</c:if>
 	
+	
+	<c:if test="${sinceUserClickedMyCart== true}">
+	<jsp:include page="MyCart.jsp"></jsp:include>
+	</c:if>
+	<c:if test="${isUserSelectedProduct}">
+	<jsp:include page="add_to_cart.jsp"></jsp:include>
+	</c:if>
+	
+	
 	<c:if test="${didUserSearchProducts== true}">
 		<jsp:include page="add_to_cart.jsp"></jsp:include>
 	</c:if>
 	
+	
 	<c:if test="${sinceUserClickedBuy== true}">
 		<jsp:include page="Shipping.jsp"></jsp:include>
 	</c:if>
-	
 	<c:if test="${proceedingToPayment== true}">
 		<jsp:include page="Payment.jsp"></jsp:include>
 	</c:if>
-
 	<c:if test="${orderPlaced== true}">
 		<jsp:include page="Confirmed.jsp"></jsp:include>
 	</c:if>

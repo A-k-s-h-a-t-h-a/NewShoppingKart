@@ -31,8 +31,9 @@ public class UserDAOImpl implements UserDAO{
 																		//stores in the database
 		log.debug("Starting of the save method");
 		try{
-			user.setRole('C');
+			user.setRole("ROLE_USER");
 			user.setRegisteredDate(new Date(System.currentTimeMillis()));
+			user.setStatus(false);
 			
 			sessionFactory.getCurrentSession().save(user);
 			log.debug("Ending of the save method");
@@ -59,6 +60,10 @@ public class UserDAOImpl implements UserDAO{
 
 	public User get(String emailId) { 								//based on emailId fetches the record & stores in User class
 		return sessionFactory.getCurrentSession().get(User.class, emailId);
+	}
+	
+	public User getbyname(String name) { 								//based on emailId fetches the record & stores in User class
+		return sessionFactory.getCurrentSession().get(User.class, name);
 	}
 
 	public boolean delete(String emailId) {

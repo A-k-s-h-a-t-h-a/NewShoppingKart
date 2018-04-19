@@ -42,49 +42,50 @@ public class CartDAOTestCase {
 		cart.setProductID("Len-01");
 		cart.setPrice(20000);
 		cart.setQuantity(1);
+		cartDAO.save(cart);
 	}
 	
-	@Test
-	public void updateCartTestCase(){
-		cart.setEmailID("kiran@gmail.com");
-		cart.setProductName("Acer");
-		cart.setProductID("Ace-01");
-		cart.setPrice(35000);
-		cart.setQuantity(1);
-		boolean status= cartDAO.update(cart);
-		assertEquals("update cart test case", true, status);
-	}
-	
-	@Test
-	public void getCartSuccessTestCase()
-	{
-		cart= cartDAO.get(1);
-		assertNotNull("get cart test case", cart);
-	}
-	@Test
-	public void getCartFailureTestCase()
-	{
-		cart= cartDAO.get(2);
-		assertNull("get cart test case fails", cart);
-	}
-	
-	@Test
-	public void deleteCartSuccessTestCase()	
-	{
-		boolean status= cartDAO.delete(3);
-		assertEquals("delete cart success test case", true, status);
-	}
-	@Test
-	public void deleteCartFailureTestCase()	
-	{
-		boolean status= cartDAO.delete(4);
-		assertEquals("delete cart failure test case", false, status);
-	}
-	
-	@Test
-	public void getAllCartsTestCase()
-	{
-		List<Cart> carts= cartDAO.list("michelle@gmail.com");
-		assertEquals("get all carts", 1, carts.size());
-	}
+//	@Test
+//	public void updateCartTestCase(){
+//		cart.setEmailID("kiran@gmail.com");
+//		cart.setProductName("Acer");
+//		cart.setProductID("Ace-01");
+//		cart.setPrice(35000);
+//		cart.setQuantity(1);
+//		boolean status= cartDAO.update(cart);
+//		assertEquals("update cart test case", true, status);
+//	}
+//	
+//	@Test
+//	public void getCartSuccessTestCase()
+//	{
+//		cart= cartDAO.get(1);
+//		assertNotNull("get cart test case", cart);
+//	}
+//	@Test
+//	public void getCartFailureTestCase()
+//	{
+//		cart= cartDAO.get(2);
+//		assertNull("get cart test case fails", cart);
+//	}
+//	
+//	@Test
+//	public void deleteCartSuccessTestCase()	
+//	{
+//		boolean status= cartDAO.delete(3);
+//		assertEquals("delete cart success test case", true, status);
+//	}
+//	@Test
+//	public void deleteCartFailureTestCase()	
+//	{
+//		boolean status= cartDAO.delete(4);
+//		assertEquals("delete cart failure test case", false, status);
+//	}
+//	
+//	@Test
+//	public void getAllCartsTestCase()
+//	{
+//		List<Cart> carts= cartDAO.list("michelle@gmail.com");
+//		assertEquals("get all carts", 1, carts.size());
+//	}
 }

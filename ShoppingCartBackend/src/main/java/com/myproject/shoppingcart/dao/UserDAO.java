@@ -20,5 +20,5 @@ public interface UserDAO {
 	public List<User> list();								//gets all the users
 		
 	public User validate(String emailId, String password);	//validate if credentials are correct or not
-	
+	public User getbyname(String name) ;
 }

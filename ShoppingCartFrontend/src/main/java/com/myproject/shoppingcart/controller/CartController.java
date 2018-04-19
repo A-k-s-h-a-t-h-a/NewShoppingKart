@@ -42,13 +42,14 @@ public class CartController {
 	@Autowired
 	private User user; 
 	
-	@GetMapping("cart/add/{productID}")					//Get or Post? //@PathVariable for both?
+	@GetMapping("/cart/add/{productID}")					//Get or Post? //@PathVariable for both?
 	public ModelAndView addToCart(@PathVariable("productID") String p_id)
 	{
 		log.debug("Starting of the addToCart method");
 		
 		ModelAndView mv= new ModelAndView("redirect:/");
 		String loggedInUserID= (String)httpSession.getAttribute("loggedInUserId");
+		System.out.println("Loggedin mail id in cart ctrler "+loggedInUserID);
 		if (loggedInUserID== null)
 		{
 			mv.addObject("errormsg", "Please login to add any product to cart");
@@ -62,19 +63,37 @@ public class CartController {
 		cart.setQuantity(1);
 		cart.setProductID(p_id);
 		
-		List<Cart> usercart= cartDAO.list(user.getEmailID());
-		if (usercart== null)
+		List<Cart> usercart= cartDAO.list(loggedInUserID);
+		if(usercart.size()==0)
 		{
 			cartDAO.save(cart);
+			System.out.println("cart is added when cart size is "+usercart.size());
 		}
-		else{
-			cartDAO.update(cart);
+		else
+		{
+		for(Cart row:usercart)
+		{
+			if (row.getProductID().equals(p_id)&&row.getEmailID().equals(loggedInUserID))
+			{
+				row.setQuantity(row.getQuantity()+1);
+				cartDAO.update(row);
+				System.out.println("cart is updated when cart size is "+usercart.size());
+
+				mv.addObject("successmsg", "Product added to cart successfully");		
+				httpSession.setAttribute("size", usercart.size());
+				httpSession.setAttribute("carts", usercart);
+				return mv;
+			}
 		}
-		
+			
+				cartDAO.save(cart);
+				System.out.println("cart is added in loop when cart size is "+usercart.size());
+			
 			mv.addObject("successmsg", "Product added to cart successfully");		
 			httpSession.setAttribute("size", usercart.size());
 			httpSession.setAttribute("carts", usercart);
-
+		
+		}
 		
 		log.debug("End of the addToCart method");
 		return mv;
@@ -127,7 +146,7 @@ public class CartController {
 		ModelAndView mv= new ModelAndView("redirect:/mycart");
 		cart=cartDAO.get(id);
 		cart.setQuantity((cart.getQuantity()+1));
-		cartDAO.save(cart);
+		cartDAO.update(cart);
 		
 		String loggedInUserID= (String) httpSession.getAttribute("loggedInUserId");
 		List<Cart> usercart= cartDAO.list(loggedInUserID);
@@ -144,7 +163,7 @@ public class CartController {
 		
 		cart=cartDAO.get(id);
 		cart.setQuantity((cart.getQuantity()-1));
-		cartDAO.save(cart);
+		cartDAO.update(cart);
 		String loggedInUserID= (String) httpSession.getAttribute("loggedInUserId");
 		List<Cart> usercart= cartDAO.list(loggedInUserID);
 		

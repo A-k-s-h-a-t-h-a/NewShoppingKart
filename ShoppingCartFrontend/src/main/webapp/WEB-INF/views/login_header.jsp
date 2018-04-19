@@ -17,25 +17,20 @@
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 	  <div class="container-fluid">
 	  
-	    <div class="navbar-header">
+	    <div class="navbar-header" style="padding-top:15px">
 	      <a class="navbar-brand" href="home">Shopping Kart</a>
 	    </div>
 	   
     	<ul class="nav navbar-nav navbar-left">
 	      <c:if test="${ifLoggedIn!=true}">
+	      <c:if test="${pageContext.request.userPrincipal.name  == null}">
 	      	<li><a href="signin"><button class="btn btn-success navbar-btn"><span class="glyphicon glyphicon-log-in"></span> Log in</button></a></li>
-	     	<li><a href="signup"><button class="btn btn-warning navbar-btn"><span class="glyphicon glyphicon-user"></span> Sign Up</button></a></li> 
+	     	<li><a href="signup"><button class="btn btn-warning navbar-btn"><span class="glyphicon glyphicon-user"></span> Sign Up</button></a></li>
+	     	</c:if> 
 	      </c:if>
 	    </ul>
-
-	    <ul class="nav navbar-nav navbar-right">
-	      <c:if test= "${ifLoggedIn==true}">
-		     <c:if test= "${isAdmin!=true}"><li><a href="mycart"><button class="btn btn-primary navbar-btn"><span class="glyphicon glyphicon-shopping-cart"></span> My Cart(${size})</button></a></li></c:if>
-		      <li><a href="signout"><button class="btn btn-danger navbar-btn"><span class="glyphicon glyphicon-log-out"></span> Log out</button></a></li>
-	      </c:if>
-	    </ul>
-		    
-	    <form class="navbar-form navbar-left" action="search">
+ 
+	    <form class="navbar-form navbar-right" action="search" style="padding-top:15px">
 	      <div class="input-group">
 	        <input type="text" class="form-control" placeholder="Search" name="searchString">
 	        <div class="input-group-btn">
@@ -45,7 +40,16 @@
 	        </div>
 	      </div>
 	    </form>
-	    		
+	   
+	    <ul class="nav navbar-nav navbar-right">
+	     <c:if test="${ifLoggedIn==true}">
+		     <c:if test= "${isAdmin!=true}"><li><a href="mycart"><button class="btn btn-primary navbar-btn"><span class="glyphicon glyphicon-shopping-cart"></span> My Cart(${size})</button></a></li></c:if>
+		     <c:if test="${pageContext.request.userPrincipal.name!=null}">
+		      <li><a href="signout"><button class="btn btn-danger navbar-btn"><span class="glyphicon glyphicon-log-out"></span> Log out</button></a></li>
+		      </c:if>
+	    </c:if>
+	    </ul>
+		   
 	  </div>
 	</nav>
 

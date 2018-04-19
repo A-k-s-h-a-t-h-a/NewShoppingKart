@@ -47,8 +47,7 @@ public class CartDAOImpl implements CartDAO {
 	public boolean update(Cart cart) {
 		log.debug("Starting of the update method");
 		try {
-			cart.getEmailID();
-			cart.setProductID(cart.getProductID());
+			cart.getId();
 			sessionFactory.getCurrentSession().update(cart);
 			
 			log.debug("Ending of the update method");
@@ -63,6 +62,7 @@ public class CartDAOImpl implements CartDAO {
 	public Cart get(int ID) {
 		return sessionFactory.getCurrentSession().get(Cart.class, ID);
 	}
+
 
 	
 //	public Cart get(String emailid, String productid) {
@@ -97,22 +97,22 @@ public class CartDAOImpl implements CartDAO {
 	}
 	
 	
-	public boolean update(String emailid){
-		log.debug("Staring of the update by emailid method");
-		log.debug("Going to place order of" + emailid);
-		
-		String hql= "Update cart set status='O' where emailid='" + emailid + "'";
-		
-		log.info("The given query is " + hql);
-		
-		try{
-			sessionFactory.getCurrentSession().createQuery(hql).executeUpdate();
-			log.debug("Ending of the update by emailid method");
-			return true;
-		}
-		catch(Exception e){
-			e.printStackTrace();
-			return false;
-		}
-	}
+//	public boolean update(String emailid){
+//		log.debug("Staring of the update by emailid method");
+//		log.debug("Going to place order of" + emailid);
+//		
+//		String hql= "Update cart set status='O' where emailid='" + emailid + "'";
+//		
+//		log.info("The given query is " + hql);
+//		
+//		try{
+//			sessionFactory.getCurrentSession().createQuery(hql).executeUpdate();
+//			log.debug("Ending of the update by emailid method");
+//			return true;
+//		}
+//		catch(Exception e){
+//			e.printStackTrace();
+//			return false;
+//		}
+//	}
 }

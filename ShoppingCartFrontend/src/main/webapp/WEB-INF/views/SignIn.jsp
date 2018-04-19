@@ -116,7 +116,7 @@ span.psw {
 		<div class="col-md-3"></div>
 		<div class="col-md-6 col-sm-4 col-xs-12">
 		
-			<form class= "form-container" action="validate" method="post">
+			<form class= "form-container" action="j_spring_security_check" method="post">
 				<h2>Sign In</h2>
 				<a href="signup" style="color: darkblue">New to this site? Sign Up</a><br>
 				
@@ -126,7 +126,7 @@ span.psw {
 			
 					<div class="form-group">
 						<label for="exampleInputEmail1"><b>Username / Email id</b></label> 
-						<input class="form-control" id="exampleInputEmail1" type="email" placeholder="Enter Email" name="mailid" required>
+						<input class="form-control" id="exampleInputEmail1" type="text" placeholder="Enter Email" name="mailid" required>
 			
 						<label for="exampleInputPassword1"><b>Password</b></label> 
 						<input class="form-control" id="exampleInputPassword1" type="password" placeholder="Enter Password" name="psw" required><br><br>
@@ -137,6 +137,7 @@ span.psw {
 						</div>	
 					
 					</div>
+					 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 			</form>
 		
 		</div>

@@ -61,7 +61,7 @@ public class PaymentController {
 	{
 		return new Payment();
 	}
-	@PostMapping("proceed")
+	@PostMapping("/proceed")
 	public ModelAndView proceedToPayment(@ModelAttribute("shipping")  Payment order, ModelMap model)
 	{
 		log.debug("Starting of the proceed to payment method");
@@ -90,7 +90,7 @@ public class PaymentController {
 	{
 		return new Payment();
 	}
-	@PostMapping("paid")
+	@PostMapping("/paid")
 	public ModelAndView payAmount(@ModelAttribute("payment") Payment purchase)
 	{
 		log.debug("Starting of the payment method");
@@ -109,7 +109,7 @@ public class PaymentController {
 	}
 	
 	
-	@PostMapping("calculate")
+	@PostMapping("/calculate")
 	public ModelAndView calculateTotal()
 	{
 		log.debug("Starting of the calculateTotal method");
@@ -130,7 +130,7 @@ public class PaymentController {
 	}
 
 	
-	@PostMapping("check")
+	@PostMapping("/check")
 	public ModelAndView checkStock(String id)
 	{
 		log.debug("Starting of the checkStock method");

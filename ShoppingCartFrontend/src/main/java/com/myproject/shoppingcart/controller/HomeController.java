@@ -60,7 +60,7 @@ public class HomeController {
 		ModelAndView mv= new ModelAndView("Home");
 		
 		List<Category> categories= categoryDAO.list();
-		httpSession.setAttribute("categories", categories);
+		httpSession.setAttribute("categoryList", categories);
 		mv.addObject("brandLogoClicked", true);
 		mv.addObject("carouselDisplayedOnce", true);
 		
@@ -96,11 +96,9 @@ public class HomeController {
 	@GetMapping("/signout")
 	public ModelAndView lg()
 	{
-		//at the time of login, we add userid in http session
-		//at the time of logout, we need to remove user id from http session
 		log.debug("Start of the logout method");
 		
-		ModelAndView mv= new ModelAndView("Home");
+		ModelAndView mv= new ModelAndView("SignIn");
 		httpSession.removeAttribute("loggedInUserId");
 		httpSession.removeAttribute("ifLoggedIn");
 		httpSession.removeAttribute("isAdmin");

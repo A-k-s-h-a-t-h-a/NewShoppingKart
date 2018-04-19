@@ -143,7 +143,8 @@ button:hover {
 			
 			<div class="form-group">
 			      <label for="sel1" style="color: grey">Select State</label>
-			      <select class="form-control" id="sel1" placeholder="Select state" name="state">
+			      <select class="form-control" placeholder="Select state" name="state">
+			      	<option>Select state</option>
 			        <option>Delhi</option>
 			        <option>Goa</option>
 			        <option>Jammu and Kashmir</option>

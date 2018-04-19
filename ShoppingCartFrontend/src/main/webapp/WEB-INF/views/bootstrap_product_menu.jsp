@@ -11,43 +11,26 @@
 </head>
 
 <body>
-<!-- 	<div class="container"> -->
-<!-- 		<ul class="nav nav-pills" role="tablist"> -->
-<%-- 			<c:forEach items="${categories}" var="category"> --%>
-<!-- 				<li class="dropdown"> -->
-<!-- 					<a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)"> -->
-<%-- 						<span class="caret"> ${category.name} </span> --%>
-<!-- 					</a> -->
-					
-<!-- 					<ul class="dropdown-menu" role="menu"> -->
-<%-- 						<c:forEach var="product" items="${category.products}"> --%>
-<!-- 							<div class="dropdown-content"> -->
-<!-- 								<li> -->
-<%-- 									<a href="product/get/${product.product_id}">${product.name}</a> --%>
-<!-- 								</li> -->
-<!-- 							</div> -->
-<%-- 						</c:forEach> --%>
-<!-- 					</ul> -->
-<!-- 				</li> -->
-<%-- 			</c:forEach> --%>
-<!-- 		</ul> -->
-<!-- 	</div>    -->
-	
-	<div class="container">
-		<c:forEach var="category" items="${categoryList}">
-			<div class="dropdown col-md-1">
-			    <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">${category.name}
-					<span class="caret"></span>
-				</button>
-					
-				<ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-					<c:forEach var="product" items="${category.products}">
-						<li><a href="product/get/${product.product_id}">${product.name}</a></li>
-					</c:forEach>  
-	   			</ul>
-	   		</div>
-  		</c:forEach>
+	<div class="row">	
+		<div class="col-md-1 col-sm-4 col-xs-12">
+			<div class="container">
+				<c:forEach var="category" items="${categoryList}">
+					<div class="dropdown col-xs-2">
+					    <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">${category.name}
+							<span class="caret"></span>
+						</button>
+							
+						<ul class="dropdown-menu">
+							<c:forEach var="product" items="${category.products}">
+								<li><a href="product/get/${product.product_id}">${product.name}</a></li>
+							</c:forEach>  
+			   			</ul>
+			   		</div>
+		  		</c:forEach>
+			</div>
+		</div>
+		<div class="col-md-11"></div>
 	</div>
-
+</div>
 </body>
 </html>

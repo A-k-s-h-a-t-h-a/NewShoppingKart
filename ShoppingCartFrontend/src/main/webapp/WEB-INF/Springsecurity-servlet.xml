@@ -40,15 +40,15 @@
 	
 	<security:authentication-manager>
 		<security:authentication-provider>
-<!-- 			<security:user-service> -->
-<!-- 	   			<security:user name="admin" password="admin" authorities="ROLE_ADMIN" /> -->
-<!-- 	   			<security:user name="admin1" password="admin1" authorities="ROLE_USER" /> -->
-<!-- 	   		</security:user-service> -->
+			<security:user-service>
+	   			<security:user name="admin" password="admin" authorities="ROLE_ADMIN" />
+	   			<security:user name="admin1" password="admin1" authorities="ROLE_USER" />
+	   		</security:user-service>
    			
-		<security:jdbc-user-service
-			data-source-ref="dataSource"
-			users-by-username-query="select emailID, pwd, status from User where emailID=?"
-			authorities-by-username-query="select emailID, role, status from User where emailID=?" />
+<!-- 		<security:jdbc-user-service -->
+<!-- 			data-source-ref="dataSource" -->
+<!-- 			users-by-username-query="select emailID, pwd, status as false from User where emailID=?" -->
+<!-- 			authorities-by-username-query="select emailID, role, status as true from User where emailID=?" /> -->
 
 		</security:authentication-provider>
 	</security:authentication-manager>

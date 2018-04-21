@@ -1,81 +1,139 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
 <head>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <style>
-ul {
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
-	overflow: hidden;
-	background-color: #333;
+.video-wrapper {
+  background: #000 none repeat scroll 0 0;
+  overflow: hidden;
+  width: 100%;
 }
 
-li {
-	float: left;
+.small-video-row {
+  padding: 60px 0px;
 }
 
-li a, .dropbtn {
-	display: inline-block;
-	color: white;
-	text-align: center;
-	padding: 14px 16px;
-	text-decoration: none;
+.slick-slide {
+  transition: ease-in-out all .15s ease;
+  transform: scale(1, 1);
+  background-color: rgba(0, 0, 0, 0.75);
+  position: relative;
 }
 
-li a:hover, .dropdown:hover .dropbtn {
-	background-color: red;
+.slick-current {
+  transform: scale(1.25, 1.25);
+  transition: ease-in-out all .15s ease;
+  z-index: 2;
+  overflow:hidden;
 }
 
-li.dropdown {
-	display: inline-block;
+.slick-current:hover {
+  cursor: pointer;
 }
 
-.dropdown-content {
-	display: none;
-	position: absolute;
-	background-color: #f9f9f9;
-	min-width: 160px;
-	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-	z-index: 1;
+.video-overlay {
+  background-color: rgba(0, 0, 0, 0.75);
+  height: 100%;
+  position: absolute;
+  width: 100%;
 }
 
-.dropdown-content a {
-	color: black;
-	padding: 12px 16px;
-	text-decoration: none;
-	display: block;
-	text-align: left;
+.slick-current .video-overlay {
+  background-color: rgba(0, 0, 0, 0);
 }
 
-.dropdown-content a:hover {
-	background-color: #f1f1f1
+.small-video-text {color:#fff;}
+
+
+.slick-slide img {
+    display: block;
+    width: 100%;
 }
 
-.dropdown:hover .dropdown-content {
-	display: block;
+/************** Custom overflow ********/
+
+.slick-list {
+    overflow: visible; 
 }
 </style>
 </head>
 
 <body>
-	<ul>
-		<c:forEach var="category" items="${categories}">
-			<li class="dropdown">
-				<a href="javascript:void(0)" class="dropbtn">${category.name}</a> 
-				<c:forEach var="product" items="${category.products}">
-					<div class="dropdown-content">
-						<a href="product/get/${product.product_id}">${product.name}</a>
-					</div>
-				</c:forEach>
-			</li>
-		</c:forEach>
-	</ul>
+	<div class="video-wrapper">
+		<div class="center   small-video-row">
+		
+			<div>
+	      		<div class="video-overlay"> </</div>
+		      	<img src="http://yourshot.nationalgeographic.com/u/fQYSUbVfts-T7pS2VP2wnKyN8wxywmXtY0-FwsgxpCmdjxQkHT2R4ZKvfpvX6LuaSAOx1M7zmssq38qcSTRYoZ86ivjBf8r-rzQWfpyZTsOoYQpB-0skhim5hOpw-Wn0oLYk7f-aBot-OvzY3DMhfhC5p2RdCM_B_dR8oHY2skO24uKDrWWgmqHR7pzSUmRQ0C79_MfYJOaXxab4cubd/">
+		        <div class="small-video-text">
+		        The wonder of life beneath the waves in videos
+		        </div>
+		    </div>
+		    
+		    <div>
+		      <div class="video-overlay"> </div>
+		      <img src="http://i1.wp.com/thenewcamera.com/wp-content/uploads/2015/11/Fujifilm-X-Pro-2-coming-ima.jpg">
+		      <div class="small-video-text">
+		        The wonder of life beneath the waves in videos
+		      </div>
+		    </div>
+	
+		    <div>
+		      <div class="video-overlay"> </div>
+		      <img src="http://www.tatnews.org/wp-content/uploads/2015/03/Nat-Geo-The-Beach_03.jpg">
+		      <div class="small-video-text">
+		        The wonder of life beneath the waves in videos
+		      </div>
+	    	</div>
+	
+		    <div>
+		      <div class="video-overlay"> </div>
+		      <img src="http://www.sparticl.org/assets/uploads/images/resource-images/24296-cropped.png">
+		      <div class="small-video-text">
+		        The wonder of life beneath the waves in videos
+		      </div>
+			</div>
+		    <div>
+		      <div class="video-overlay"> </div>
+		      <img src="http://petapixel.com/assets/uploads/2015/03/thirds.jpg">
+		      <div class="small-video-text">
+		        The wonder of life beneath the waves in videos
+		  	  </div>
+	    	</div>
+	    	
+  		</div>
+	</div>
+
+<script>
+$('.center').slick({
+	  centerMode: true,
+	  // cssEase: 'cubic-bezier(0.950, 0.050, 0.795, 0.035)',
+	  easing: 'easeOutElastic',
+	  focusOnSelect: true,
+	  centerPadding: '60px',
+	  slidesToShow: 3,
+	  responsive: [{
+	    breakpoint: 768,
+	    settings: {
+	      arrows: false,
+	      centerMode: true,
+	      centerPadding: '40px',
+	      slidesToShow: 3
+	    }
+	  }, {
+	    breakpoint: 480,
+	    settings: {
+	      arrows: false,
+	      centerMode: true,
+	      centerPadding: '40px',
+	      slidesToShow: 1
+	    }
+	  }]
+	});
+</script>
+
 </body>
 </html>

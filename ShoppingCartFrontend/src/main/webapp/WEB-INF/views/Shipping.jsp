@@ -29,42 +29,24 @@ input {
 	background: #f1f1f1;
 }
 
-input[type=text]:focus, input[type=password]:focus {
-	background-color: #fff;
-	outline: none;
-}
-
 hr {
 	border: 1px solid #f1f1f1;
 	margin-bottom: 25px;
 }
 
 /* Set a style for all buttons */
-button {
+#s1 {
 	background-color: #4CAF50;
 	color: white;
 	padding: 14px 20px;
 	margin: 8px 0;
 	border: none;
 	cursor: pointer;
-	width: 100%;
 	opacity: 0.9;
 }
 
-button:hover {
+#s1:hover {
 	opacity: 1;
-}
-
-/* Extra styles for the cancel button */
-.cancelbtn {
-	padding: 14px 20px;
-	background-color: #f44336;
-}
-
-/* Float cancel and signup buttons and add an equal width */
-.cancelbtn, .signupbtn {
-	float: left;
-	width: 50%;
 }
 
 /* Add padding to container elements */
@@ -79,19 +61,12 @@ button:hover {
 	clear: both;
 	display: table;
 }
-
-/* Change styles for cancel button and signup button on extra small screens */
-@media screen and (max-width: 300px) {
-	.cancelbtn, .signupbtn {
-		width: 100%;
-	}
-}
 </style>
 </head>
 
 <body>
 	<div class="container">
-		<form:form action="proceed" method="post" modelAttribute="shipping">
+		<form:form action="proceed" method="post" modelAttribute="payment">
 			<div class="form-group">
 
 			    <fieldset>
@@ -107,7 +82,7 @@ button:hover {
 				            </li>
 				            <li>
 				                <form:label path="quantity">Quantity</form:label>
-               					<form:input path="quantity" type="text" required="true" />
+               					<form:input path="quantity" type="number" required="true" />
 				            </li>
 				        </ol>
 			    </fieldset>
@@ -121,21 +96,15 @@ button:hover {
 			            </li>
 			            <li>
 			                 <form:label path="pincode">Pin Code</form:label>
-               				 <form:input path="pincode" type="text" required="true" />
+               				 <form:input path="pincode" type="number" required="true" />
 			            </li>
 			        </ol>
 			    </fieldset>
 			    
-			    <a href="calculate"><button class="btn btn-primary btn-lg" onclick="showPayment()">Proceed To Pay</button></a>
-			    
-			    <p id="order"></p>
-			    <script>
-			    	function showPayment(){
-			    		document.getElementById("order").innerHTML= "Hello";
-			    	}
-			    </script>
+			    <button id="s1" class="btn btn-md pull-right">Proceed To Pay</button></a>
 			</div>
 		</form:form>
 	</div>
+	
 </body>
 </html>

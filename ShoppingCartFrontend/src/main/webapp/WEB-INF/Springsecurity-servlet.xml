@@ -15,7 +15,7 @@
 <!-- 	all urls beginning with 'mapping' are accessible to the admin only -->
 
 		<security:form-login    
-			login-page="/signin"
+			login-page="/"
 			username-parameter="mailid" 
 			password-parameter="psw"
 			authentication-failure-url="/loginError"
@@ -43,12 +43,13 @@
 			<security:user-service>
 	   			<security:user name="admin" password="admin" authorities="ROLE_ADMIN" />
 	   			<security:user name="admin1" password="admin1" authorities="ROLE_USER" />
+	   			<security:user name="admin2" password="admin2" authorities="ROLE_USER" />
 	   		</security:user-service>
    			
 <!-- 		<security:jdbc-user-service -->
 <!-- 			data-source-ref="dataSource" -->
-<!-- 			users-by-username-query="select emailID, pwd, status as false from User where emailID=?" -->
-<!-- 			authorities-by-username-query="select emailID, role, status as true from User where emailID=?" /> -->
+<!-- 			users-by-username-query="select emailID, pwd, enabled from User where emailID=?" -->
+<!-- 			authorities-by-username-query="select emailID, role from User where emailID=?" /> -->
 
 		</security:authentication-provider>
 	</security:authentication-manager>

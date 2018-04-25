@@ -58,7 +58,7 @@ input[type=text]:focus, input[type=password]:focus {
 	outline: none;
 }
 
-button {
+#l1 button {
 	background-color: white;
 	color: black;
 	padding: 14px 20px;
@@ -68,7 +68,7 @@ button {
 	width: 100%;
 }
 
-button:hover {
+#l1 button:hover {
 	background-color: #008CBA;
     color: white;
 }
@@ -85,27 +85,12 @@ img.avatar {
 	border-radius: 50%;
 }
 
-span.psw {
-	float: right;
-	padding-top: 16px;
-}
-
 .clearfix::after {
 	content: "";
 	clear: both;
 	display: table;
 }
 
-/* Change styles for span and cancel button on extra small screens */
-@media screen and (max-width: 300px) {
-	span.psw {
-		display: block;
-		float: none;
-	}
-	.cancelbtn {
-		width: 100%;
-	}
-}
 </style>
 </head>
 
@@ -132,8 +117,8 @@ span.psw {
 						<input class="form-control" id="exampleInputPassword1" type="password" placeholder="Enter Password" name="psw" required><br><br>
 					
 						<div class="clearfix">
-							<button type="submit" class="btn btn-info btn-md">Sign In</button>
-							<button type="reset" class="btn btn-danger btn-md">Cancel</button>		
+							<button id="l1" type="submit" class="btn btn-info btn-md" style="width:100%">Sign In</button><br>
+							<button id="l1" type="reset" class="btn btn-danger btn-md" style="width:100%">Cancel</button>		
 						</div>	
 					
 					</div>

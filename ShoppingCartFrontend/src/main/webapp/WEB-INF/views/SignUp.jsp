@@ -165,11 +165,11 @@ button:hover {
 		      </div>
 
 			<div class="clearfix">
-				<button type="submit" class="signupbtn">Sign Up</button>
-				<button type=reset class="cancelbtn">Cancel</button>
+				<button id="r1" type="submit" class="signupbtn">Sign Up</button>
+				<button id="r1" type=reset class="cancelbtn">Cancel</button>
 			</div>
 			
-			<p>
+			<p style="color: dodgerblue">
 				By creating an account you agree to our <a href="#" style="color: dodgerblue">Terms & Privacy</a>.
 			</p>
 		</div>

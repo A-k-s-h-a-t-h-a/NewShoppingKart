@@ -8,7 +8,9 @@
 </head>
 
 <body>
-	Your payment is confirmed! Thank you for shopping with us.
-	<a href="home"><button class="btn btn-warning">Continue shopping</button></a>
+	<center>
+		<p>Your payment is confirmed! Thank you for shopping with us. </p>
+		<a href="home"><button class="btn btn-warning">Continue shopping</button></a>
+	</center>
 </body>
 </html>

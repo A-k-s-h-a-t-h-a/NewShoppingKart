@@ -47,7 +47,8 @@ public class SecurityController {
 		ModelAndView mv= new ModelAndView("Home");
 		user=userDAO.getbyname(p.getName());
 		httpSession.setAttribute("success", "Welcome "+ user.getFullname());
-		System.out.println("mail id of user "+user.getFullname());
+		
+//		System.out.println("mail id of user "+user.getFullname());
 		httpSession.setAttribute("loggedInUserId", user.getEmailID());
 		httpSession.setAttribute("ifLoggedIn", true);
 		
@@ -56,7 +57,7 @@ public class SecurityController {
 		System.out.println("logging in" + user.getFullname());
 		if (user.getRole().equals("ROLE_ADMIN"))
 		{
-			System.out.println("logging in" + user.getFullname());
+//			System.out.println("logging in" + user.getFullname());
 			httpSession.setAttribute("isAdmin", true);
 			return mv;
 		}

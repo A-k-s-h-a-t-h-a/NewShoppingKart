@@ -13,12 +13,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.myproject.shoppingcart.dao.CartDAO;
 import com.myproject.shoppingcart.dao.CategoryDAO;
+import com.myproject.shoppingcart.domain.Cart;
 import com.myproject.shoppingcart.domain.Category;
 
 @Controller
 public class HomeController {
 
+	@Autowired
+	private CartDAO cartDAO; 
+	
 	@Autowired
 	private CategoryDAO categoryDAO;
 	
@@ -42,6 +47,10 @@ public class HomeController {
 		httpSession.setAttribute("categoryList", categories);
 		mv.addObject("carouselDisplayedOnce", true);
 		
+		String loggedInUserID= (String)httpSession.getAttribute("loggedInUserId");
+		List<Cart> usercart= cartDAO.list(loggedInUserID);
+		httpSession.setAttribute("size", usercart.size());
+		
 //		httpSession.setAttribute("imageDirectory", imageDirectory);
 //		String root= request.getContextPath();
 //		String imageFolder =  root + File.separator +"src" + File.separator + "main" +File.separator + "webapp"+File.separator + "resources"+File.separator;	
@@ -61,6 +70,11 @@ public class HomeController {
 		
 		List<Category> categories= categoryDAO.list();
 		httpSession.setAttribute("categoryList", categories);
+		
+		String loggedInUserID= (String)httpSession.getAttribute("loggedInUserId");
+		List<Cart> usercart= cartDAO.list(loggedInUserID);
+		httpSession.setAttribute("size", usercart.size());
+		
 		mv.addObject("brandLogoClicked", true);
 		mv.addObject("carouselDisplayedOnce", true);
 		
@@ -75,6 +89,9 @@ public class HomeController {
 		log.debug("Start of the sign in method");
 		
 		ModelAndView mv= new ModelAndView("Home");
+		List<Category> categories= categoryDAO.list();
+		httpSession.setAttribute("categoryList", categories);
+		
 		mv.addObject("sinceUserClickedSignIn", true);
 		
 		log.debug("End of the sign in method");
@@ -87,6 +104,9 @@ public class HomeController {
 		log.debug("Start of the sign up method");
 		
 		ModelAndView mv= new ModelAndView("Home");
+		List<Category> categories= categoryDAO.list();
+		httpSession.setAttribute("categoryList", categories);
+		
 		mv.addObject("sinceUserClickedSignUp", true);
 		
 		log.debug("End of the sign up method");
@@ -99,6 +119,9 @@ public class HomeController {
 		log.debug("Start of the logout method");
 		
 		ModelAndView mv= new ModelAndView("SignIn");
+		List<Category> categories= categoryDAO.list();
+		httpSession.setAttribute("categoryList", categories);
+		
 		httpSession.removeAttribute("loggedInUserId");
 		httpSession.removeAttribute("ifLoggedIn");
 		httpSession.removeAttribute("isAdmin");

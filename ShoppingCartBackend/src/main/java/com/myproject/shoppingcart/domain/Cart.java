@@ -1,13 +1,11 @@
 package com.myproject.shoppingcart.domain;
 
-import java.util.Set;
+import java.io.Serializable;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -16,7 +14,7 @@ import org.springframework.stereotype.Component;
 @Entity
 @Component
 @Table
-public class Cart {
+public class Cart implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy= GenerationType.AUTO)

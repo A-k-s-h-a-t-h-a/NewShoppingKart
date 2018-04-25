@@ -27,9 +27,10 @@ public class User {
 	private String state;
 	
 	private String address;
-	private String pincode;
+	private int pincode;
 	
-	private boolean status;
+	private boolean enabled;
+	
 	
 	public String getAddress() {
 		return address;
@@ -37,12 +38,13 @@ public class User {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public String getPincode() {
+	public int getPincode() {
 		return pincode;
 	}
-	public void setPincode(String pincode) {
+	public void setPincode(int pincode) {
 		this.pincode = pincode;
 	}
+	
 	
 	public String getEmailID() {
 		return emailID;
@@ -87,12 +89,13 @@ public class User {
 	public void setState(String state) {
 		this.state = state;
 	}
-	
-	public boolean isStatus() {
-		return status;
+
+
+	public boolean isEnabled() {
+		return enabled;
 	}
-	public void setStatus(boolean status) {
-		this.status = status;
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
 	}
 	
 }

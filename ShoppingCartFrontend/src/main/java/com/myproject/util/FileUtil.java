@@ -19,7 +19,7 @@ public class FileUtil {
 	public static boolean fileCopyNIO(MultipartFile file, String fileName,HttpServletRequest request) {
 		
 		String rootDirectory= request.getSession().getServletContext().getRealPath("/");
-		path = Paths.get(rootDirectory + "\\resources\\images\\ShoppingCartImages\\"+fileName);
+		path = Paths.get(rootDirectory + "\\resources\\images\\"+fileName);
 		
 		
 		File dest = new File(path.toString());

@@ -5,63 +5,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Payment</title>
-<link rel="stylesheet" href="paymentstyles.css">
+<link rel="stylesheet" href="resources/css-styles/shipping.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<style>
-body {
-	font-family: Arial, Helvetica, sans-serif;
-}
-
-* {
-	box-sizing: border-box
-}
-
-/* Full-width input fields */
-input {
-	width: 100%;
-	padding: 15px;
-	margin: 5px 0 22px 0;
-	display: inline-block;
-	border: none;
-	background: #f1f1f1;
-}
-
-hr {
-	border: 1px solid #f1f1f1;
-	margin-bottom: 25px;
-}
-
-/* Set a style for all buttons */
-#s1 {
-	background-color: #4CAF50;
-	color: white;
-	padding: 14px 20px;
-	margin: 8px 0;
-	border: none;
-	cursor: pointer;
-	opacity: 0.9;
-}
-
-#s1:hover {
-	opacity: 1;
-}
-
-/* Add padding to container elements */
-.container {
-	padding: 16px;
-	width: 75%;
-}
-
-/* Clear floats */
-.clearfix::after {
-	content: "";
-	clear: both;
-	display: table;
-}
-</style>
 </head>
 
 <body>
@@ -101,7 +50,7 @@ hr {
 			        </ol>
 			    </fieldset>
 			    
-			    <button id="s1" class="btn btn-md pull-right">Proceed To Pay</button></a>
+			    <button class="animate pull-right">Proceed To Pay</button></a>
 			</div>
 		</form:form>
 	</div>

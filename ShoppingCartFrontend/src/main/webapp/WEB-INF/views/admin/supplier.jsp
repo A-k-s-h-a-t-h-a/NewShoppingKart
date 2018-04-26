@@ -6,20 +6,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Supplier</title>
+<link rel="stylesheet" href="resources/css-styles/adminlinks.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-<style>
-input[type=text], input[type=password] {
-	width: 100%;
-	padding: 12px 20px;
-	margin: 8px 0;
-	display: inline-block;
-	border: 1px solid #ccc;
-	box-sizing: border-box;
-}
-</style>
 </head>
 
 <body>
@@ -46,7 +36,7 @@ input[type=text], input[type=password] {
 					<td><input type="text" name='address' value="${supplier.address}" required></td>
 				</tr>
 			</table>
-			<input type="submit" value='Submit Supplier'>
+			<input type="submit" class="btn btn-default" value='Submit Supplier'>
 			<button type="reset" class="btn btn-default">Cancel</button><br><br>
 		</form> 	
 	</div>

@@ -5,92 +5,13 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sign up</title>
-<link rel="stylesheet" href="signINstyles.css">
+<link rel="stylesheet" href="resources/css-styles/signin.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link href="css/global.css" type="text/css" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <style>
-
-.bg{
-	background: url("resources/images/background4.jpg");
-	height: 100%; 
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-form.container{
-	border:1px solid #fff; 
-	padding:50px 60px; 
-	margin-top:20vh;
-	-webkit-box-shadow: -1px 4px 26px 11px rgba(0,0,0,0.75);
-	-moz-box-shadow:  -1px 4px 26px 11px rgba(0,0,0,0.75);
-	box-shadow:  -1px 4px 26px 11px rgba(0,0,0,0.75);
-}
-
-a{
-	float:right
-}
-
-body {
-	font-family: Arial, Helvetica, sans-serif;
-}
-
-form {
-	border: 1px solid #ccc;
-}
-
-input {
-	width: 100%;
-	padding: 15px;
-	margin: 5px 0 22px 0;
-	display: inline-block;
-	border: none;
-	background:#000;
-	color:#fff;
-	filter:alpha(opacity=60);
-	opacity:0.6;
-}
-
-input[type=text]:focus, input[type=password]:focus {
-	background-color: #fff;
-	outline: none;
-}
-
-#l1 button {
-	background-color: white;
-	color: black;
-	padding: 14px 20px;
-	margin: 8px 0;
-	border: 2px solid #008CBA;
-	cursor: pointer;
-	width: 100%;
-}
-
-#l1 button:hover {
-	background-color: #008CBA;
-    color: white;
-}
-
-.imgcontainer {
-	padding-top: 10px;
-	text-align: center;
-	margin: 6px 0 3px 0;
-	padding-bottom: 15px;
-}
-
-img.avatar {
-	width: auto;
-	border-radius: 50%;
-}
-
-.clearfix::after {
-	content: "";
-	clear: both;
-	display: table;
-}
-
+.bg {background: url("resources/images/background4.jpg");}
 </style>
 </head>
 
@@ -103,7 +24,7 @@ img.avatar {
 		
 			<form class= "form-container" action="j_spring_security_check" method="post">
 				<h2>Sign In</h2>
-				<a href="signup" style="color: darkblue">New to this site? Sign Up</a><br>
+				<a href="signup">New to this site? Sign Up</a><br>
 				
 					<div class="imgcontainer">
 						<img src="resources/images/avatar1.png" alt="Avatar" class="avatar">
@@ -111,14 +32,14 @@ img.avatar {
 			
 					<div class="form-group">
 						<label for="exampleInputEmail1"><b>Username / Email id</b></label> 
-						<input class="form-control" id="exampleInputEmail1" type="text" placeholder="Enter Email" name="mailid" required>
+						<input class="form-control" id="exampleInputEmail1" type="text" placeholder="Enter Email" name="mailid" required><br>
 			
 						<label for="exampleInputPassword1"><b>Password</b></label> 
 						<input class="form-control" id="exampleInputPassword1" type="password" placeholder="Enter Password" name="psw" required><br><br>
 					
 						<div class="clearfix">
-							<button id="l1" type="submit" class="btn btn-info btn-md" style="width:100%">Sign In</button><br>
-							<button id="l1" type="reset" class="btn btn-danger btn-md" style="width:100%">Cancel</button>		
+							<button type="submit" class="block1 btn">Sign In</button><br>
+							<button type="reset" class="block2 btn">Cancel</button>		
 						</div>	
 					
 					</div>

@@ -5,58 +5,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link rel="stylesheet" href="paymentstyles.css">
+<link rel="stylesheet" href="resources/css-styles/payment.css">
 <title>Payment page</title>
 <style>
-
-/* CSS for Credit Card Payment form */
-.credit-card-box .panel-title {
-	display: inline;
-	font-weight: bold;
-}
-
-.credit-card-box .form-control.error {
-	border-color: red;
-	outline: 0;
-	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px
-		rgba(255, 0, 0, 0.6);
-}
-
-.credit-card-box label.error {
-	font-weight: bold;
-	color: red;
-	padding: 2px 8px;
-	margin-top: 2px;
-}
-
-.credit-card-box .payment-errors {
-	font-weight: bold;
-	color: red;
-	padding: 2px 8px;
-	margin-top: 2px;
-}
-
-.credit-card-box label {
-	display: block;
-}
-/* The old "center div vertically" hack */
-.credit-card-box .display-table {
-	display: table;
-}
-
-.credit-card-box .display-tr {
-	display: table-row;
-}
-
-.credit-card-box .display-td {
-	display: table-cell;
-	vertical-align: middle;
-	width: 50%;
-}
-/* Just looks nicer */
-.credit-card-box .panel-heading img {
-	min-width: 180px;
-}
 </style>
 </head>
 

@@ -23,19 +23,19 @@
 	    <div class="carousel-inner">
 	
 	      <div class="item active">
-	        <img src="resources\images\ShoppingCartImages\offer1_watches.jpg" alt="Offer on watches" width="460" height="345">
+	        <img src="resources\images\offer1_watches.jpg" alt="Offer on watches" width="460" height="345">
 	      </div>
 	
 	      <div class="item">
-	        <img src="resources\images\ShoppingCartImages\offer2_shoes.jpg" alt="Offer on shoes" width="460" height="345">
+	        <img src="resources\images\offer2_shoes.jpg" alt="Offer on shoes" width="460" height="345">
 	      </div>
 	    
 	      <div class="item">
-	        <img src="resources\images\ShoppingCartImages\offer3_bags.jpg" alt="Offer on bags" width="460" height="345">
+	        <img src="resources\images\offer3_bags.jpg" alt="Offer on bags" width="460" height="345">
 	      </div>
 	
 	      <div class="item">
-	        <img src="resources\images\ShoppingCartImages\offer4_mobiles.jpg" alt="Offer on mobiles" width="460" height="345">
+	        <img src="resources\images\offer4_mobiles.jpg" alt="Offer on mobiles" width="460" height="345">
 	      </div>
 	  
 	    </div>

@@ -3,113 +3,14 @@
 
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sign up</title>
-<link rel="stylesheet" href="signUPstyles.css">
+<link rel="stylesheet" href="resources/css-styles/signup.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <style>
-
-.bg{
-	background: url("resources/images/background4.jpg");
-	height: 100%; 
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-body {
-	font-family: Arial, Helvetica, sans-serif;
-}
-
-/* * { */
-/* 	box-sizing: border-box */
-/* } */
-
-form.container{
-	border:1px solid #fff; 
-	padding:50px 60px; 
-	margin-top:20vh;
-	-webkit-box-shadow: -1px 4px 26px 11px rgba(0,0,0,0.75);
-	-moz-box-shadow:  -1px 4px 26px 11px rgba(0,0,0,0.75);
-	box-shadow:  -1px 4px 26px 11px rgba(0,0,0,0.75);
-}
-
-form {
-	border: 1px solid grey;
-}
-
-/* Full-width input fields */
-input {
-	width: 100%;
-	padding: 15px;
-	margin: 5px 0 22px 0;
-	display: inline-block;
-	border: none;
-	background:#000;
-	color:#fff;
-	filter:alpha(opacity=60);
-	opacity:0.6;
-}
-
-input[type=text]:focus, input[type=password]:focus {
-	background-color: #fff;
-	outline: none;
-}
-
-hr {
-	border: 1px solid #f1f1f1;
-	margin-bottom: 25px;
-}
-
-/* Set a style for all buttons */
-button {
-	background-color: #4CAF50;
-	color: white;
-	padding: 14px 20px;
-	margin: 8px 0;
-	border: none;
-	cursor: pointer;
-	width: 100%;
-	opacity: 0.9;
-}
-
-button:hover {
-	opacity: 1;
-}
-
-/* Extra styles for the cancel button */
-.cancelbtn {
-	padding: 14px 20px;
-	background-color: #f44336;
-}
-
-/* Float cancel and signup buttons and add an equal width */
-.cancelbtn, .signupbtn {
-	float: left;
-	width: 50%;
-}
-
-/* Add padding to container elements */
-.container {
-	padding: 16px;
-	width: 75%;
-}
-
-/* Clear floats */
-.clearfix::after {
-	content: "";
-	clear: both;
-	display: table;
-}
-
-/* Change styles for cancel button and signup button on extra small screens */
-@media screen and (max-width: 300px) {
-	.cancelbtn, .signupbtn {
-		width: 100%;
-	}
-}
+.bg {background: url("resources/images/background4.jpg");}
 </style>
 </head>
 
@@ -122,24 +23,24 @@ button:hover {
 		<div class="form-group">
 		
 			<h1>Sign Up</h1>
-			<a href="signin" style="float:right; color: darkblue">Already a member? Log in</a>
-			<p>Please fill in this form to create an account.</p>
+			<a href="signin" style="float:right">Already a member? Log in</a>
+			<p>Please fill in this form to create an account.</p><br>
 			
 
 			<label for="fullname"><b>Full Name</b></label> 
-			<input class="form-control" type="text" placeholder="Enter Name" name="fullname" required> 
+			<input class="form-control" type="text" placeholder="Enter Name" name="fullname" required> <br>
 			
 			<label for="email"><b>Email</b></label> 
-			<input class="form-control" type="email" placeholder="Enter Email" name="email" required> 
+			<input class="form-control" type="email" placeholder="Enter Email" name="email" required> <br>
 			
 			<label for="psw"><b>Password</b></label> 
-			<input class="form-control" type="password" placeholder="Enter Password" name="psw" required> 
+			<input class="form-control" type="password" placeholder="Enter Password" name="psw" required> <br>
 			
 			<label for="psw-repeat"><b>Repeat Password</b></label> 
-			<input class="form-control" type="password" placeholder="Repeat Password" name="psw-repeat"required> 
+			<input class="form-control" type="password" placeholder="Repeat Password" name="psw-repeat"required> <br>
 			
 			<label for="mob"><b>Mobile number</b></label> 
-			<input class="form-control" type="text" placeholder="Enter mobile no" name="mob" required>
+			<input class="form-control" type="text" placeholder="Enter mobile no" name="mob" required> <br>
 			
 			<div class="form-group">
 			      <label for="sel1" style="color: grey">Select State</label>
@@ -164,10 +65,10 @@ button:hover {
 			      <br>
 		      </div>
 
-			<div class="clearfix">
-				<button id="r1" type="submit" class="signupbtn">Sign Up</button>
-				<button id="r1" type=reset class="cancelbtn">Cancel</button>
-			</div>
+			
+				<button type="submit" class="block1 btn">Sign Up</button>
+				<button type=reset class="block2 btn">Cancel</button><br><br>
+			
 			
 			<p style="color: dodgerblue">
 				By creating an account you agree to our <a href="#" style="color: dodgerblue">Terms & Privacy</a>.

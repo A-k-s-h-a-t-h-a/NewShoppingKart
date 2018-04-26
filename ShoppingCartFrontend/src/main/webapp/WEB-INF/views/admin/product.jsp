@@ -6,20 +6,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Product</title>
+<link rel="stylesheet" href="resources/css-styles/adminlinks.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<style>
-input[type=text], input[type=password] {
-	width: 100%;
-	padding: 12px 20px;
-	margin: 8px 0;
-	display: inline-block;
-	border: 1px solid #ccc;
-	box-sizing: border-box;
-}
-</style>
-
 </head>
 
 <body>
@@ -114,7 +104,7 @@ input[type=text], input[type=password] {
 						<td>${product.stock} </td>
 						<td>${product.cat_id} </td>
 						<td>${product.sup_id} </td>
-						<td><img src="resources/images/ShoppingCartImages/${product.product_id}.png" height="100px" width="75px"> </td>
+						<td><img src="resources/images/${product.product_id}.png" height="100px" width="75px"> </td>
 						<td style="text-align:left">
 			
 								<a href="product/delete/?id=${product.product_id}"><button type="button" class="btn btn-danger btn-sm">Delete</button></a> | 

@@ -4,6 +4,7 @@
 
 <html>
 <head>
+<title>Product menu</title>
 </head>
 
 <body>

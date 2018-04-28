@@ -32,23 +32,23 @@ public class CategoryDAOTestCase {
 		category= (Category)context.getBean("category");
 	}
 	
-	@Test
-	public void saveCategoryTestCase() {
-		category.setCategory_id("Mob-001");
-		category.setDescription("This is mobile category");
-		category.setName("Mobile");
-		categoryDAO.save(category);
-		
-		category.setCategory_id("Elec-001");
-		category.setDescription("This is electronics category");
-		category.setName("Electronics");
-		categoryDAO.save(category);
-		
-		category.setCategory_id("Books-001");
-		category.setDescription("This is books category");
-		category.setName("Books");
-		categoryDAO.save(category);
-	}
+//	@Test
+//	public void saveCategoryTestCase() {
+//		category.setCategory_id("Mob-001");
+//		category.setDescription("This is mobile category");
+//		category.setName("Mobile");
+//		categoryDAO.save(category);
+//		
+//		category.setCategory_id("Elec-001");
+//		category.setDescription("This is electronics category");
+//		category.setName("Electronics");
+//		categoryDAO.save(category);
+//		
+//		category.setCategory_id("Books-001");
+//		category.setDescription("This is books category");
+//		category.setName("Books");
+//		categoryDAO.save(category);
+//	}
 
 	@Test
 	public void updateCategoryTestCase(){

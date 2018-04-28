@@ -2,10 +2,8 @@ package com.myproject.shoppingcart.controller;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.omg.CORBA.Request;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +33,7 @@ public class HomeController {
 	
 	Logger log= LoggerFactory.getLogger(HomeController.class);
 	
-//	private static String imageDirectory= "D:\\aks\\NewShoppingKart\\ShoppingCartFrontend\\src\\main\\webapp\\resources\\images\\ShoppingCartImages";
+//	private static String imageDirectory= "D:\\aks\\NewShoppingKart\\ShoppingCartFrontend\\src\\main\\webapp\\resources\\images";
 	
 	@GetMapping("/")
 	public ModelAndView h(/*HttpServletRequest request*/)

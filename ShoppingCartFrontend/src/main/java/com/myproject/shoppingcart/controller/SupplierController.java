@@ -33,15 +33,15 @@ public class SupplierController {
 	Logger log= LoggerFactory.getLogger(SupplierController.class);
 	
 	@PostMapping("/supplier/save/")
-	public ModelAndView saveSupplier(@RequestParam("supplier_id") String id, @RequestParam("name") String name, 
-									 @RequestParam("address") String address)
+	public ModelAndView saveSupplier(@RequestParam("supplier_id") String s_id, @RequestParam("name") String s_name, 
+									 @RequestParam("address") String s_address)
 	{
 		log.debug("Start of the supplier save method");
 		
 		ModelAndView mv= new ModelAndView("redirect:/managesuppliers");
-		supplier.setSupplier_id(id);
-		supplier.setName(name);
-		supplier.setAddress(address);
+		supplier.setSupplier_id(s_id);
+		supplier.setName(s_name);
+		supplier.setAddress(s_address);
 		
 		if (supplierDAO.save(supplier)){
 			mv.addObject("suppliersuccess", "Supplier saved successfully");
@@ -91,12 +91,12 @@ public class SupplierController {
 	}
 	
 	@GetMapping("/supplier/delete")
-	public ModelAndView deleteSupplier(@RequestParam("id") String id)
+	public ModelAndView deleteSupplier(@RequestParam("id") String s_id)
 	{
 		log.debug("Start of the supplier delete method");
 		
 		ModelAndView mv= new ModelAndView("redirect:/managesuppliers");
-		if (supplierDAO.delete(id)==true){
+		if (supplierDAO.delete(s_id)==true){
 			mv.addObject("suppliersuccess", "Deleted");
 		}
 		else{
@@ -108,12 +108,12 @@ public class SupplierController {
 	}
 	
 	@GetMapping("/supplier/edit")
-	public ModelAndView editsupplier(@RequestParam String id){
+	public ModelAndView editsupplier(@RequestParam String s_id){
 		
 		log.debug("Start of the supplier edit method");
 		
 		ModelAndView mv= new ModelAndView("redirect:/managesuppliers");
-		supplier= supplierDAO.get(id);
+		supplier= supplierDAO.get(s_id);
 		httpSession.setAttribute("supplier", supplier);
 
 		log.debug("End of the supplier save method");
@@ -121,11 +121,11 @@ public class SupplierController {
 	}	
 	
 	@GetMapping("/supplier/get/{supplier_id}")
-	public ModelAndView getSupplier(@RequestParam("supplier_id") String id)
+	public ModelAndView getSupplier(@RequestParam("supplier_id") String s_id)
 	{
 		log.debug("Start of the get supplier by id method");
 	
-		supplier= supplierDAO.get(id);
+		supplier= supplierDAO.get(s_id);
 		ModelAndView mv= new ModelAndView("Home");
 
 		log.debug("End of the get all suppliers method");

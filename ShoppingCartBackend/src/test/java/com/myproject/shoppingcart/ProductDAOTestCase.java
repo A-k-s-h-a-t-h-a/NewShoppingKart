@@ -31,31 +31,29 @@ public class ProductDAOTestCase {
 		product= (Product)context.getBean("product");
 	}
 	
-	@Test
-	public void saveProductTestCase() {
-		product.setProduct_id("01");
-		product.setName("Dell");
-		product.setDescription("Best deals");
-		product.setPrice(25000);
-		product.setStock(80);
-		productDAO.save(product);
-//		product.setCategory();
-//		product.setSupplier(supplier);
-		
-		product.setProduct_id("02");
-		product.setName("Hewlett-Packard");
-		product.setDescription("Offers available");
-		product.setPrice(43000);
-		product.setStock(40);
-		productDAO.save(product);
-		
-		product.setProduct_id("03");
-		product.setName("Vaio");
-		product.setDescription("Latest edition");
-		product.setPrice(125000);
-		product.setStock(10);
-		productDAO.save(product);
-	}
+//	@Test
+//	public void saveProductTestCase() {
+//		product.setProduct_id("01");
+//		product.setName("Dell");
+//		product.setDescription("Best deals");
+//		product.setPrice(25000);
+//		product.setStock(80);
+//		productDAO.save(product);
+//		
+//		product.setProduct_id("02");
+//		product.setName("Hewlett-Packard");
+//		product.setDescription("Offers available");
+//		product.setPrice(43000);
+//		product.setStock(40);
+//		productDAO.save(product);
+//		
+//		product.setProduct_id("03");
+//		product.setName("Vaio");
+//		product.setDescription("Latest edition");
+//		product.setPrice(125000);
+//		product.setStock(10);
+//		productDAO.save(product);
+//	}
 
 	@Test
 	public void updateProductTestCase(){

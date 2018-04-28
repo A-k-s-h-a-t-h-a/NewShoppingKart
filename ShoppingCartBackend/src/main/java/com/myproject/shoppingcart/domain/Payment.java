@@ -6,6 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
 
 @Entity
@@ -27,6 +28,13 @@ public class Payment {
 	private String shippingAddress; //form
 	private int pincode;
 	
+	@Nullable
+	private int grandTotal;
+	@Nullable
+	private int subTotal;
+	@Nullable
+	private String productName;
+	
 	
 	public int getId() {
 		return id;
@@ -46,30 +54,16 @@ public class Payment {
 	public void setMobile(String mobile) {
 		this.mobile = mobile;
 	}
-//	public String getProductName() {
-//		return productName;
-//	}
-//	public void setProductName(String productName) {
-//		this.productName = productName;
-//	}
+	
+	
 	public int getQuantity() {
 		return quantity;
 	}
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
+	public void setQuantity(int i) {
+		this.quantity = i;
 	}
-//	public int getSubtotal() {
-//		return subtotal;
-//	}
-//	public void setSubtotal(int subtotal) {
-//		this.subtotal = subtotal;
-//	}
-//	public int getGrandTotal() {
-//		return grandTotal;
-//	}
-//	public void setGrandTotal(int grandTotal) {
-//		this.grandTotal = grandTotal;
-//	}
+
+	
 	public String getShippingAddress() {
 		return shippingAddress;
 	}
@@ -81,6 +75,26 @@ public class Payment {
 	}
 	public void setPincode(int pincode) {
 		this.pincode = pincode;
+	}
+	
+	
+	public int getGrandTotal() {
+		return grandTotal;
+	}
+	public void setGrandTotal(int grandTotal) {
+		this.grandTotal = grandTotal;
+	}
+	public int getSubTotal() {
+		return subTotal;
+	}
+	public void setSubTotal(int subTotal) {
+		this.subTotal = subTotal;
+	}
+	public String getProductName() {
+		return productName;
+	}
+	public void setProductName(String productName) {
+		this.productName = productName;
 	}
 	
 }

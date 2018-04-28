@@ -19,21 +19,22 @@
 	<legend>Order Summary</legend>
 		<table class="table table-striped table-bordered table-hover">
 			<tr style="text-align:center">
-				<p>Order no:		 ${id} </p><br>
-				<p>Name:			 ${name} </p><br>
-				<p><c:forEach var="u" items="${usercart}">
-				Product Ordered: ${u.productName}
-				Quantity:		 ${u.quantity}
-				Sub Total:		 ${u.subtotal}
-				</c:forEach></p>
-				<p>Grand Total:	 ${grandTotal} </p><br>
-				<p>Shipping Address:${shippingAddress} </p><br>
-				<p>Pin Code:		 ${pincode} </p><br>
+<%-- 				<p>Order no:		 ${order.id} </p><br> --%>
+<%-- 				<p>Name:			 ${order.name} </p><br> --%>
+<%-- 				<p><c:forEach var="u" items="${productsOrdered}"> --%>
+<%-- 						Product Ordered: ${u.productName} --%>
+<%-- 						Quantity:		 ${u.quantity} --%>
+<%-- 						Sub Total:		 ${u.subtotal} --%>
+<%-- 				</c:forEach></p> --%>
+<%-- 				<p>Grand Total:	 	${order.grandTotal} </p><br> --%>
+<%-- 				<p>Shipping Address:${order.shippingAddress} </p><br> --%>
+<%-- 				<p>Pin Code:		${order.pincode} </p><br> --%>
+				Products ordered: ${payment.ProductName}
 			</tr>
 		</table>
 	
 	
-		<form action="pay" method="post">
+		<form>
 			<div class="row">
 			<!-- I'm making it full width on <= small devices and 4/12 page width on >= medium devices -->
 				<div class="col-xs-12 col-md-8">
@@ -59,7 +60,7 @@
 									</div>
 									<div class="col-xs-7 col-md-4 pull-right">
 										<div class="form-group">
-											<input name="grandTotal" type="text" class="form-control" value="Rs ${grandTotal}" disabled="disabled"/>
+											<input name="grandTotal" type="text" class="form-control" value="Rs ${payment.grandTotal}" disabled="disabled"/>
 										</div>
 									</div> <br>
 								</div>
@@ -107,7 +108,7 @@
 							
 								<div class="row">
 									<div class="col-xs-12">
-										<i class="icon-lock"></i><button class="btn btn-success btn-lg btn-block" type="submit">Pay Rs ${grandTotal}</button>
+										<a href="pay"></a><i class="icon-lock"></i><button class="btn btn-success btn-lg btn-block" type="submit">Pay Rs ${payment.grandTotal}</button></a>
 									</div>
 								</div>
 							

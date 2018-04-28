@@ -33,15 +33,15 @@ public class CategoryController {
 	Logger log= LoggerFactory.getLogger(CategoryController.class);
 	
 	@PostMapping("/category/save/")
-	public ModelAndView saveCategory(@RequestParam("category_id") String id, @RequestParam("name") String name, 
-									 @RequestParam("description") String description)
+	public ModelAndView saveCategory(@RequestParam("category_id") String c_id, @RequestParam("name") String c_name, 
+									 @RequestParam("description") String c_description)
 	{
 		log.debug("Start of the category save method");
 		
 		ModelAndView mv= new ModelAndView("redirect:/managecategories");
-		category.setCategory_id(id);
-		category.setName(name);
-		category.setDescription(description);
+		category.setCategory_id(c_id);
+		category.setName(c_name);
+		category.setDescription(c_description);
 		
 		if (categoryDAO.save(category))
 		{
@@ -50,8 +50,8 @@ public class CategoryController {
 			category.setName("");
 			category.setDescription("");
 			
-			List<Category> categories = categoryDAO.list();					//fetches all categories again
-			httpSession.setAttribute("categoryList", categories);			//and sets to http session
+			List<Category> categories = categoryDAO.list();
+			httpSession.setAttribute("categoryList", categories);
 		}
 		else{
 			mv.addObject("categoryerror", "Couldn't save");
@@ -92,12 +92,12 @@ public class CategoryController {
 	}
 	
 	@GetMapping("/category/delete")
-	public ModelAndView deleteCategory(@RequestParam("id") String id)
+	public ModelAndView deleteCategory(@RequestParam("id") String c_id)
 	{
 		log.debug("Start of the category delete method");
 		
 		ModelAndView mv= new ModelAndView("redirect:/managecategories");
-		if (categoryDAO.delete(id)==true){
+		if (categoryDAO.delete(c_id)==true){
 			mv.addObject("categorysuccess", "Deleted");
 		}
 		else{
@@ -109,12 +109,12 @@ public class CategoryController {
 	}
 	
 	@GetMapping("/category/edit")
-	public ModelAndView editCategory(@RequestParam("id") String id)
+	public ModelAndView editCategory(@RequestParam("id") String c_id)
 	{
 		log.debug("Start of the category edit method");
 		
 		ModelAndView mv= new ModelAndView("redirect:/managecategories");
-		category= categoryDAO.get(id);
+		category= categoryDAO.get(c_id);
 		httpSession.setAttribute("category", category);
 
 		log.debug("End of the category edit method");
@@ -122,11 +122,11 @@ public class CategoryController {
 	}	
 
 	@GetMapping("/category/get/{category_id}")								//to display fields in the text boxes on clicking edit
-	public ModelAndView getCategory(@RequestParam("category_id") String id)
+	public ModelAndView getCategory(@RequestParam("category_id") String c_id)
 	{
 		log.debug("Start of the get category method");
 	
-		category= categoryDAO.get(id);
+		category= categoryDAO.get(c_id);
 		ModelAndView mv= new ModelAndView("Home");
 		
 		log.debug("End of the get category method");

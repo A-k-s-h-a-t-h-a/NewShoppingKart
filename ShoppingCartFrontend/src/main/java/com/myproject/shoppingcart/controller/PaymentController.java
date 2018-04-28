@@ -9,8 +9,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -63,28 +61,28 @@ public class PaymentController {
 		return new Payment();
 	}
 	@PostMapping("/proceed")
-	public ModelAndView proceedToPayment( @ModelAttribute("payment")  Payment payment, Model model)
+	public ModelAndView proceedToPayment( @ModelAttribute("payment")  Payment order, Model model)
 	{
 		log.debug("Starting of the proceed to payment method");
-		
 		ModelAndView mv= new ModelAndView("Home"); 
-				
-		if (paymentDAO.save(payment)== true){
-			mv.addObject("proceedingToPayment", true);
-			
-			String loggedInUserID= (String) httpSession.getAttribute("loggedInUserId");
-			List<Cart> usercart= cartDAO.list(loggedInUserID);
-			
-			int subtotal, grandTotal=0;
-			for(Cart row:usercart)
+		
+		String loggedInUserID= (String) httpSession.getAttribute("loggedInUserId");
+		List<Payment> userorder= paymentDAO.list(loggedInUserID);
+		String purchase= (String)httpSession.getAttribute("purchaseDetails");
+		
+		for(Payment row:userorder)
+		{
+			if (row.getId()== order.getId())
 			{
-				subtotal= row.getQuantity()* row.getPrice();
-				grandTotal= grandTotal + subtotal;
-				model.addAttribute("grandTotal", grandTotal);
+				int grandTotal= order.getSubTotal()* order.getQuantity();
+				order.setGrandTotal(grandTotal);
+				httpSession.setAttribute("purchase", order);
+				
+				mv.addObject("proceedingToPayment", true);
 			}
-		}
-		else{
-			mv.addObject("cannotProceed", "Unable to proceed to payment. Please check your details again");
+			else{
+				mv.addObject("cannotProceed", "Unable to proceed to payment. Please check your details again");
+			}
 		}
 		log.debug("End of the proceed to payment method");
 		return mv;
@@ -92,55 +90,34 @@ public class PaymentController {
 	
 	
 	@PostMapping("/pay")
-	public ModelAndView payAmount(Payment purchase)
+	public ModelAndView payAmount()
 	{
 		log.debug("Starting of the payment method");
-		
 		ModelAndView mv= new ModelAndView("Home"); 
-		if (paymentDAO.save(purchase)== true)
-		{
-			mv.addObject("finalPaymentDone", "Your payment was confirmed.");
-			mv.addObject("orderPlaced", true);
-			
-//			List<Product> products= productDAO.list();
-//			for(Product row:products)
-//			{
-//				product=productDAO.get(cart.getId());
-//				product.setStock((product.getStock()-1));
-//				productDAO.save(product);
-//				if (product.getStock()==0)
-//				{
-//							mv.addObject("over", "This product is out of stock");
-//				}
-//			}
-			
-		}
-		else{
-			mv.addObject("finalPaymentFailed", "Payment was unsuccessful.");
-		}
-		log.debug("End of the payment method");
-		return mv;
-	}
-	
-	
-	@PostMapping("/check")
-	public ModelAndView checkStock(String id)
-	{
-		log.debug("Starting of the checkStock method");
 		
-		ModelAndView mv= new ModelAndView("Home");
-		List<Product> products= productDAO.list();
-		for(Product row:products)
+		String loggedInUserID= (String)httpSession.getAttribute("loggedInUserId");
+		List<Payment> userorder= paymentDAO.list(loggedInUserID);
+		
+		for(Payment row:userorder)
 		{
-			product=productDAO.get(id);
-			product.setStock((product.getStock()-1));
-			productDAO.save(product);
-			if (product.getStock()==0)
+			int number= product.getStock() - row.getQuantity();
+			if(number>=0)
 			{
-						mv.addObject("over", "This product is out of stock");
+				paymentDAO.save(row);
+				product.setStock(number);
+				productDAO.update(product);
 			}
+			else{
+				mv= new ModelAndView("redirect:/proceed");
+				return mv;
+			}
+			//delete the entire cart after purchasing
 		}
-		log.debug("End of the checkStock method");
+		
+		mv.addObject("finalPaymentDone", "Your payment was confirmed.");
+		mv.addObject("orderPlaced", true);
+	
+		log.debug("End of the payment method");
 		return mv;
 	}
 	

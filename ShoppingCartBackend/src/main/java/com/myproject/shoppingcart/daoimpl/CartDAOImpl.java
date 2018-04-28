@@ -2,7 +2,6 @@ package com.myproject.shoppingcart.daoimpl;
 
 import java.util.List;
 
-import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
@@ -64,6 +63,9 @@ public class CartDAOImpl implements CartDAO {
 	}
 
 
+	public Cart get(String pr_id) {
+		return sessionFactory.getCurrentSession().get(Cart.class, pr_id);
+	}
 	
 //	public Cart get(String emailid, String productid) {
 //		Cart cart= (Cart) sessionFactory.getCurrentSession().createCriteria(Cart.class).add(Restrictions.eq("emailID", emailid)).add(Restrictions.eq("productID", productid));
@@ -71,7 +73,6 @@ public class CartDAOImpl implements CartDAO {
 //		cartDAO.update(cart);
 //		return cart;
 //	}
-
 	
 	public List<Cart> list(String emailid) {
 		log.debug("Starting of the list method");
@@ -95,8 +96,7 @@ public class CartDAOImpl implements CartDAO {
 			return false;
 		}
 	}
-	
-	
+
 //	public boolean update(String emailid){
 //		log.debug("Staring of the update by emailid method");
 //		log.debug("Going to place order of" + emailid);

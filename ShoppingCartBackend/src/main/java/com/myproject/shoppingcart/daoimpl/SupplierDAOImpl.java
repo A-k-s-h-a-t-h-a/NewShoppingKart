@@ -35,7 +35,6 @@ public class SupplierDAOImpl implements SupplierDAO{
 			log.debug("Ending of the save method");
 			return true;
 		} catch (HibernateException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return false;
 		}
@@ -48,7 +47,6 @@ public class SupplierDAOImpl implements SupplierDAO{
 			log.debug("Ending of the update method");
 			return false;
 		} catch (HibernateException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return false;
 		}

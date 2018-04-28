@@ -15,6 +15,8 @@ public interface CartDAO {
 	
 	public Cart get(int id);
 	
+	public Cart get(String pr_id);
+	
 	public List<Cart> list(String userid);
 	
 	public boolean delete(int id);

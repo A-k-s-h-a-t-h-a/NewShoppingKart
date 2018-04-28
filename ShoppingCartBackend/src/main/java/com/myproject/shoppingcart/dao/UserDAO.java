@@ -8,17 +8,18 @@ import com.myproject.shoppingcart.domain.User;
 
 @Repository("userDAO")
 public interface UserDAO {
-															//declare the methods
-	public boolean save(User user);							//create new user
 	
-	public boolean update(User user);						//update the existing user
+	public boolean save(User user);
 	
-	public User get(String emailId);						//get the user details
+	public boolean update(User user);
 	
-	public boolean delete(String emailId);					//delete the user
+	public User get(String emailId);
 	
-	public List<User> list();								//gets all the users
+	public boolean delete(String emailId);
+	
+	public List<User> list();
 		
-	public User validate(String emailId, String password);	//validate if credentials are correct or not
-	public User getbyname(String name) ;
+	public User validate(String emailId, String password);
+
+	public User getByName(String name);
 }

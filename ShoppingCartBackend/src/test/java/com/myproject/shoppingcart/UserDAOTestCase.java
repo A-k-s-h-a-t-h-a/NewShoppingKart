@@ -1,5 +1,4 @@
-package com.myproject.shoppingcart;						/*To check if impl i.e logic works properly or not, we had only written it, 
-														except we can't test validate function because we cannot click anything in the test case*/
+package com.myproject.shoppingcart;			/*We can't test validate function because we cannot click anything in the test case*/
 
 import static org.junit.Assert.*;
 
@@ -21,7 +20,7 @@ public class UserDAOTestCase {
 	private static UserDAO userDAO;
 	
 	@Autowired
-	private static User user;								// ?
+	private static User user;
 	
 	@BeforeClass
 	public static void init()
@@ -33,33 +32,33 @@ public class UserDAOTestCase {
 		user= (User)context.getBean("user");
 	}
 	
-	@Test
-	public void saveUserTestCase()
-	{
-		user.setEmailID("jaskaran@gmail.com");
-		user.setMobile("9871201670");
-		user.setFullname("Jaskaran Singh");
-		user.setPwd("jas@123");
-		user.setState("Delhi");
-		boolean status= userDAO.save(user);
-		assertEquals("save user test case", true, status);
-		
-		user.setEmailID("kiran@gmail.com");
-		user.setMobile("9472198218");
-		user.setFullname("Kiran Rao");
-		user.setPwd("kir@123");
-		user.setState("Karnataka");
-		boolean status1= userDAO.save(user);
-		assertEquals("save user test case", true, status1);
-		
-		user.setEmailID("michelle@gmail.com");
-		user.setMobile("8812836718");
-		user.setFullname("Michelle Gomes");
-		user.setPwd("mic@123");
-		user.setState("Goa");
-		boolean status2= userDAO.save(user);
-		assertEquals("save user test case", true, status2);
-}
+//	@Test
+//	public void saveUserTestCase()
+//	{
+//		user.setEmailID("jaskaran@gmail.com");
+//		user.setMobile("9871201670");
+//		user.setFullname("Jaskaran Singh");
+//		user.setPwd("jas@123");
+//		user.setState("Delhi");
+//		boolean status= userDAO.save(user);
+//		assertEquals("save user test case", true, status);
+//		
+//		user.setEmailID("kiran@gmail.com");
+//		user.setMobile("9472198218");
+//		user.setFullname("Kiran Rao");
+//		user.setPwd("kir@123");
+//		user.setState("Karnataka");
+//		boolean status1= userDAO.save(user);
+//		assertEquals("save user test case", true, status1);
+//		
+//		user.setEmailID("michelle@gmail.com");
+//		user.setMobile("8812836718");
+//		user.setFullname("Michelle Gomes");
+//		user.setPwd("mic@123");
+//		user.setState("Goa");
+//		boolean status2= userDAO.save(user);
+//		assertEquals("save user test case", true, status2);
+//	}
 	
 	@Test
 	public void updateUserTestCase()

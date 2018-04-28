@@ -57,8 +57,8 @@ public class Product implements Serializable {
 	public String getName() {
 		return name;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public String setName(String name) {
+		return this.name = name;
 	}
 	public int getPrice() {
 		return price;

@@ -68,7 +68,7 @@ public class AdminController {
 		mv.addObject("isadminClickCategories", true);
 //		category=(Category) httpSession.getAttribute("category");
 //		mv.addObject("category",category);
-		List<Category> categories= categoryDAO.list();					//fetches all categories again
+		List<Category> categories= categoryDAO.list();
 		httpSession.setAttribute("categoryList", categories);
 		
 		log.debug("Ending of the method adminClickedCategories");
@@ -95,9 +95,9 @@ public class AdminController {
 		
 		ModelAndView mv= new ModelAndView("Home");
 		mv.addObject("isadminClickProducts", true);
-		List<Product> products= productDAO.list();		//to fetch the table
-		List<Category> categories= categoryDAO.list();	//to fetch in the dropdown and navbar
-		List<Supplier> suppliers= supplierDAO.list();	//same
+		List<Product> products= productDAO.list();
+		List<Category> categories= categoryDAO.list();
+		List<Supplier> suppliers= supplierDAO.list();
 
 		httpSession.setAttribute("productList", products);
 		httpSession.setAttribute("categoryList", categories);

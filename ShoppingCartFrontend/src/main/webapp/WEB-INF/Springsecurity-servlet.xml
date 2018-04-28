@@ -26,15 +26,11 @@
 <!-- 		if login is successful, by default it should show the page mapped at the "/" url -->
 
 		<security:access-denied-handler error-page="/accessDenied" />
-		<!-- <security:csrf /> -->
 <!-- 	if the admin tries to accesss any cart or if a user tries to access a page meant for admin -->
 
 		<security:logout logout-url="/signout" />
 <!-- 	so that the user logs out only on clicking the button, not by typing the url -->
 
-		<!-- <security:form-login login-page="/loginHear" /> -->
-		<!-- authentication-success-forward-url="/login" -->
-		
 	</security:http>
 	
 	

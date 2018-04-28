@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
 @Table(name="user") 							//to specify to which database table we need to map this class
 public class User {
 
-	@Id 										//to specify that it is a primary key
+	@Id
 	private String emailID;
 	private String fullname;
 	@Column(name="password") 					//to specify to map to a certain column in database table

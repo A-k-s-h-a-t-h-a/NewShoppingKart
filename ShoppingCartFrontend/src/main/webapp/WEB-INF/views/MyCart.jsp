@@ -21,7 +21,7 @@
 		
 		<c:forEach var="a" items="${cartList}">
 			<tr style="text-align:center">
-				<td><img alt="" src="resources/images/ShoppingCartImages/${a.productID}.png"></td>
+				<td><img alt="" src="resources/images/${a.productID}.png"></td>
 				<td>${a.productName}</td>
 				<td>${a.price}</td>
 				<td>${a.quantity}    :
@@ -32,7 +32,10 @@
 		</c:forEach>
 		</table>
 		
-		<a href="buy"><button class="img-responsive pull-right btn-primary btn-lg">Buy</button></a>
+		<c:if test="${emptyCart!= true}">
+		<a href="empty"><button class="img-responsive pull-right btn-primary btn-lg">Empty Cart</button></a>
+		<a href="buy?buyreq=cart"><button class="img-responsive pull-right btn-primary btn-lg">Buy</button></a>
+		</c:if>
 	</div>
 	
 	${buyingError}

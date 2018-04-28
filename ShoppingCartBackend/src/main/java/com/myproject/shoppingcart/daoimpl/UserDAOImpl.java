@@ -1,4 +1,4 @@
-package com.myproject.shoppingcart.daoimpl;									//This is where the implementation of all logic happens
+package com.myproject.shoppingcart.daoimpl;
 
 import java.sql.Date;
 import java.util.List;
@@ -28,7 +28,7 @@ public class UserDAOImpl implements UserDAO{
 	Logger log= LoggerFactory.getLogger(UserDAOImpl.class);
 	
 	public boolean save(User user) {
-																		//stores in the database
+	
 		log.debug("Starting of the save method");
 		try{
 			user.setRole("ROLE_USER");
@@ -55,22 +55,21 @@ public class UserDAOImpl implements UserDAO{
 			log.error("Error occurred in update method"+ e.getMessage());
 			return false;
 		}
-		
 	}
 
 	public User get(String emailId) { 								//based on emailId fetches the record & stores in User class
 		return sessionFactory.getCurrentSession().get(User.class, emailId);
 	}
 	
-	public User getbyname(String name) { 								//based on emailId fetches the record & stores in User class
+	public User getByName(String name) {
 		return sessionFactory.getCurrentSession().get(User.class, name);
 	}
-
+	
 	public boolean delete(String emailId) {
 		log.debug("Starting of the delete method");
 		try{
-			user= get(emailId);								//?
-			if(user==null){									//?
+			user= get(emailId);	
+			if(user==null){	
 				return false;
 			}
 			sessionFactory.getCurrentSession().delete(user);
@@ -89,11 +88,10 @@ public class UserDAOImpl implements UserDAO{
 	}
 
 	public User validate(String emailId, String password){
-																					//select * from user where emailId= 'jaskaran@gmail.com' and password='jas@123'
 		log.debug("Starting of the validate method");
 		log.info("user"+ emailId+ "trying to login");
 		return (User)sessionFactory.getCurrentSession().createCriteria(User.class)
 		.add(Restrictions.eq("emailID", emailId)).add(Restrictions.eq("pwd", password)).uniqueResult();
-																					//emailID- from database, emailId- entered by user
+																		//emailID- from database, emailId- entered by user
 	}
 }

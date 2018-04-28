@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.myproject.shoppingcart.dao.CartDAO;
 import com.myproject.shoppingcart.dao.CategoryDAO;
+import com.myproject.shoppingcart.dao.PaymentDAO;
 import com.myproject.shoppingcart.dao.ProductDAO;
 import com.myproject.shoppingcart.domain.Cart;
 import com.myproject.shoppingcart.domain.Category;
@@ -39,24 +40,30 @@ public class CartController {
 	
 	@Autowired
 	private Cart cart; 
-	
+
 	@Autowired
 	private ProductDAO productDAO;
 	
 	@Autowired
 	private Product product;
+
+	@Autowired
+	private PaymentDAO paymentDAO;
+	
+	@Autowired
+	private Payment payment; 
 		
 	@Autowired
 	private User user; 
 	
-	@GetMapping("/cart/add/{productID}")					//Get or Post? //@PathVariable for both?
+	@GetMapping("/cart/add/{productID}")					//Get or Post?
 	public ModelAndView addToCart(@PathVariable("productID") String p_id)
 	{
 		log.debug("Starting of the addToCart method");
 		
 		ModelAndView mv= new ModelAndView("redirect:/");
 		String loggedInUserID= (String)httpSession.getAttribute("loggedInUserId");
-		System.out.println("Loggedin mail id in cart ctrler "+loggedInUserID);
+//		System.out.println("Loggedin mail id in cart ctrler "+loggedInUserID);
 		if (loggedInUserID== null)
 		{
 			mv.addObject("errormsg", "Please login to add any product to cart");
@@ -73,8 +80,10 @@ public class CartController {
 		List<Cart> usercart= cartDAO.list(loggedInUserID);
 		if(usercart.size()==0)
 		{
-			cartDAO.save(cart);
-			System.out.println("cart is added when cart size is "+usercart.size());
+			if(product.getStock()>0){
+				cartDAO.save(cart);
+				System.out.println("cart is added when cart size is "+usercart.size());
+			}
 		}
 		else
 		{
@@ -83,8 +92,10 @@ public class CartController {
 				if (row.getProductID().equals(p_id)/* && row.getEmailID().equals(loggedInUserID)*/)
 				{
 					row.setQuantity(row.getQuantity()+1);
-					cartDAO.update(row);
-					System.out.println("cart is updated when cart size is "+usercart.size());
+					if(product.getStock()>0){
+						cartDAO.update(row);
+						System.out.println("cart is updated when cart size is "+usercart.size());
+					}
 	
 					mv.addObject("successmsg", "Product added to cart successfully");		
 					httpSession.setAttribute("size", usercart.size());
@@ -92,8 +103,10 @@ public class CartController {
 					return mv;
 				}
 			}
-			cartDAO.save(cart);
-			System.out.println("cart is added in loop when cart size is "+usercart.size());
+			if(product.getStock()>0){
+				cartDAO.save(cart);
+				System.out.println("cart is added in loop when cart size is "+usercart.size());
+			}
 			
 			mv.addObject("successmsg", "Product added to cart successfully");		
 			httpSession.setAttribute("size", usercart.size());
@@ -115,6 +128,7 @@ public class CartController {
 		httpSession.setAttribute("categoryList", categories);
 		
 		mv.addObject("sinceUserClickedMyCart", true);
+		httpSession.setAttribute("buyAllInTheCart", true);
 		String loggedInUserID= (String) httpSession.getAttribute("loggedInUserId");
 
 		log.info("Logged in user id: "+ loggedInUserID);
@@ -129,6 +143,7 @@ public class CartController {
 			System.out.println(usercart+" is empty");
 			if (usercart==null)
 			{
+				mv.addObject("emptyCart", true);
 				mv.addObject("noItems", "Your cart is empty");
 				System.out.println("cart inside if condition is empty");
 			}
@@ -151,9 +166,12 @@ public class CartController {
 		ModelAndView mv= new ModelAndView("redirect:/mycart");
 		
 		cart=cartDAO.get(id);
-		cart.setQuantity((cart.getQuantity()+1));
-		cartDAO.update(cart);
-		
+		product=productDAO.get((cart.getProductID()));
+		if(product.getStock()>cart.getQuantity())
+		{
+			cart.setQuantity((cart.getQuantity()+1));
+			cartDAO.update(cart);
+		}
 		String loggedInUserID= (String) httpSession.getAttribute("loggedInUserId");
 		List<Cart> usercart= cartDAO.list(loggedInUserID);
 		
@@ -168,8 +186,11 @@ public class CartController {
 		ModelAndView mv= new ModelAndView("redirect:/mycart");
 		
 		cart=cartDAO.get(id);
-		cart.setQuantity((cart.getQuantity()-1));
-		cartDAO.update(cart);
+		if(cart.getQuantity()>1)
+		{
+			cart.setQuantity((cart.getQuantity()-1));
+			cartDAO.update(cart);
+		}
 		String loggedInUserID= (String) httpSession.getAttribute("loggedInUserId");
 		List<Cart> usercart= cartDAO.list(loggedInUserID);
 		
@@ -196,8 +217,25 @@ public class CartController {
 		return mv;
 	}
 	
+	@GetMapping("/empty")
+	public ModelAndView emptyCart()
+	{
+		log.debug("Starting of the method emptyCart");
+		ModelAndView mv= new ModelAndView("Home");
+		
+		String loggedInUserID= (String)httpSession.getAttribute("loggedInUserId");
+		List<Cart> usercart= cartDAO.list(loggedInUserID);
+		for(Cart row:usercart)
+		{
+			cartDAO.delete(row.getId());
+		}
+		
+		log.debug("Ending of the method emptyCart");
+		return mv;
+	}
+	
 	@GetMapping("/buy")
-	public ModelAndView order()
+	public ModelAndView order(@RequestParam("buyreq") String buyreq, @RequestParam("prid") String pr_id)
 	{
 		log.debug("Starting of the method order");
 		ModelAndView mv= new ModelAndView("Home");
@@ -206,13 +244,36 @@ public class CartController {
 		if(loggedInUserID!= null)
 		{	
 			List<Cart> usercart= cartDAO.list(loggedInUserID);
-//			System.out.println(loggedInUserID + " buying" + usercart);
-			
-			if(usercart!= null)
+			if(buyreq== "cart" && usercart!= null)
 			{
-				mv.addObject("sinceUserClickedBuy", true);
+				int subtotal=0, grandTotal=0, qty=0, totalQty=0;
+				String all_pr_names = null, one_pr_name = null;
+				
+				for(Cart row:usercart)
+					{
+						subtotal= row.getQuantity()* row.getPrice();
+						grandTotal= grandTotal + subtotal;
+						payment.setSubTotal(subtotal);
+						payment.setGrandTotal(grandTotal);
+						
+						all_pr_names=all_pr_names + row.getProductName();
+						payment.setProductName(all_pr_names);
+						
+						qty= row.getQuantity();
+						totalQty= totalQty + qty;
+						payment.setQuantity(totalQty);
+					}
 			}
+			else if(buyreq== "prpage")
+			{
+				product= productDAO.get(pr_id);
+				payment.setSubTotal(product.getPrice());
+				payment.setProductName(product.getName()); 
+			}
+			httpSession.setAttribute("purchaseDetails", payment);
+			mv.addObject("sinceUserClickedBuy", true);
 		}
+		
 		else{
 			mv.addObject("buyingError", "Please login to continue with the purchase");
 		}

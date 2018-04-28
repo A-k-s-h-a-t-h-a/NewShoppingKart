@@ -75,6 +75,7 @@
 	
 	<br>
 	 ${fail}
+	 ${forbidden}
 	 
 </body>
 </html>

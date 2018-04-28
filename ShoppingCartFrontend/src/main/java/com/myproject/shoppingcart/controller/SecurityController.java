@@ -45,7 +45,7 @@ public class SecurityController {
 	public ModelAndView secure(Principal p)
 	{
 		ModelAndView mv= new ModelAndView("Home");
-		user=userDAO.getbyname(p.getName());
+		user=userDAO.getByName(p.getName());
 		httpSession.setAttribute("success", "Welcome "+ user.getFullname());
 		
 //		System.out.println("mail id of user "+user.getFullname());

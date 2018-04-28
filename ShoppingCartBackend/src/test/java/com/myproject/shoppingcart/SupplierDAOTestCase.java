@@ -32,23 +32,23 @@ public class SupplierDAOTestCase {
 		supplierDAO= (SupplierDAO)context.getBean("supplierDAO");
 	}
 	
-	@Test
-	public void saveSupplierTestCase() {
-		supplier.setSupplier_id("sup-01");
-		supplier.setName("The Souled Store");
-		supplier.setAddress("Mumbai");
-		supplierDAO.save(supplier);
-		
-		supplier.setSupplier_id("sup-02");
-		supplier.setName("Retail.net");
-		supplier.setAddress("NH-33");
-		supplierDAO.save(supplier);
-		
-		supplier.setSupplier_id("sup-03");
-		supplier.setName("India Mart");
-		supplier.setAddress("Nagpur");
-		supplierDAO.save(supplier);
-	}
+//	@Test
+//	public void saveSupplierTestCase() {
+//		supplier.setSupplier_id("sup-01");
+//		supplier.setName("The Souled Store");
+//		supplier.setAddress("Mumbai");
+//		supplierDAO.save(supplier);
+//		
+//		supplier.setSupplier_id("sup-02");
+//		supplier.setName("Retail.net");
+//		supplier.setAddress("NH-33");
+//		supplierDAO.save(supplier);
+//		
+//		supplier.setSupplier_id("sup-03");
+//		supplier.setName("India Mart");
+//		supplier.setAddress("Nagpur");
+//		supplierDAO.save(supplier);
+//	}
 
 	@Test
 	public void updateSupplierTestCase(){

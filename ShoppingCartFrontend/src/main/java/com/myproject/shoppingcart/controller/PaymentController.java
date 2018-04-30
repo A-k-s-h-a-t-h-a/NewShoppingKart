@@ -68,7 +68,7 @@ public class PaymentController {
 		
 		String loggedInUserID= (String) httpSession.getAttribute("loggedInUserId");
 		List<Payment> userorder= paymentDAO.list(loggedInUserID);
-		String purchase= (String)httpSession.getAttribute("purchaseDetails");
+		Payment purchase= (Payment)httpSession.getAttribute("purchaseDetails");
 		
 		for(Payment row:userorder)
 		{

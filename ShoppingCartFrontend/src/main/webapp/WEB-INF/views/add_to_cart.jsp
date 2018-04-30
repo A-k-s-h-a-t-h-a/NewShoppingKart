@@ -26,17 +26,27 @@
 	
 	<c:if test="${isUserSelectedProduct}">
 		<div class="container">
-			<img src="${selectedProductImage}"><br><br>
-			<p>
-				${selectedProduct.name}<br>
-				Rs. ${selectedProduct.price}<br><br>
-				
-				${over}
-			</p>
-
-			<a href="cart/add/${selectedProduct.product_id}"><button class="btn btn-default">Add To Cart</button></a>
-			<a href="buy?buyreq=prpage&prid=${selectedProduct.product_id} }"><button class="btn btn-default">Buy</button></a>
+			<div class="row">
+				<div class="col-md-3 img-thumbnail">
+					<img src="${selectedProductImage}"><br><br>
+					<p>
+						${selectedProduct.name}<br>
+						Rs. ${selectedProduct.price}
+						
+						${over}
+					</p>
 			
+					<c:if test="${pageContext.request.userPrincipal.name==null}">
+						Please <a href="signin">login here</a> to Add To Cart <br><br>
+					</c:if>
+					
+					<c:if test="${pageContext.request.userPrincipal.name!=null}">
+						<a href="cart/add/${selectedProduct.product_id}"><button class="btn btn-warning">Add To Cart</button></a>
+					</c:if>
+					<a href="buy?buyreq=prpage&prid=${selectedProduct.product_id}"><button class="btn btn-primary">Buy</button></a>
+					
+				</div>
+			</div>
 		</div>
 	</c:if>
 	

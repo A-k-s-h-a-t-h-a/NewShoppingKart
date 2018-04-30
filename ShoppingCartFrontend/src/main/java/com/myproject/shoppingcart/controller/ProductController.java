@@ -173,19 +173,19 @@ public class ProductController {
 		return mv;
 	}
 	
-	@GetMapping("search")
-	public ModelAndView searchProduct(@RequestParam("searchString") String searchString)
-	{
-		log.debug("Start of the search method");
-		
-		ModelAndView mv= new ModelAndView("Home");
-		List<Product> products= productDAO.search(searchString);
-		mv.addObject("selectedProduct", products);
-		mv.addObject("didUserSearchProducts", true);
-		
-		log.info("Number of products with search string" + searchString + "is/are" + products.size());
-		log.debug("End of the search method");
-		
-		return mv;
-	}
+//	@GetMapping("search")
+//	public ModelAndView searchProduct(@RequestParam("searchString") String searchString)
+//	{
+//		log.debug("Start of the search method");
+//		
+//		ModelAndView mv= new ModelAndView("Home");
+//		List<Product> products= productDAO.search(searchString);
+//		mv.addObject("selectedProduct", products);
+//		mv.addObject("didUserSearchProducts", true);
+//		
+//		log.info("Number of products with search string" + searchString + "is/are" + products.size());
+//		log.debug("End of the search method");
+//		
+//		return mv;
+//	}
 }

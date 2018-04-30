@@ -30,13 +30,13 @@
 				                <form:label path="mobile">Mobile</form:label>
                					<form:input path="mobile" type="text" required="true" />
 				            </li>
-				            <c:if test="${!empty payment.Quantity}">
+				            <c:if test="${!empty purchaseDetails.quantity}">
 				            <li>
 				                <form:label path="quantity">Quantity</form:label>
-               					<form:input path="quantity" type="number" value="${payment.Quantity}" disabled="true" required="true" />
+               					<form:input path="quantity" type="number" value="${purchaseDetails.quantity}" disabled="true" required="true" />
 				            </li>
 				            </c:if>
-				             <c:if test="${empty payment.Quantity}">
+				             <c:if test="${empty purchaseDetails.quantity}">
 				            <li>
 				                <form:label path="quantity">Quantity</form:label>
                					<form:input path="quantity" type="number" required="true" />

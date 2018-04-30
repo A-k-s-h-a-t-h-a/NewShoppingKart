@@ -13,8 +13,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.myproject.shoppingcart.dao.CartDAO;
 import com.myproject.shoppingcart.dao.CategoryDAO;
+import com.myproject.shoppingcart.dao.ProductDAO;
 import com.myproject.shoppingcart.domain.Cart;
 import com.myproject.shoppingcart.domain.Category;
+import com.myproject.shoppingcart.domain.Product;
 
 @Controller
 public class HomeController {
@@ -27,7 +29,8 @@ public class HomeController {
 	
 	@Autowired
 	private Category category;
-
+@Autowired
+ProductDAO productDAO;
 	@Autowired
 	HttpSession httpSession;
 	
@@ -39,10 +42,13 @@ public class HomeController {
 	public ModelAndView h(/*HttpServletRequest request*/)
 	{
 		log.debug("Start of the home method");
-		
 		ModelAndView mv= new ModelAndView("Home");
+
 		List<Category> categories= categoryDAO.list();
 		httpSession.setAttribute("categoryList", categories);
+		List<Product> products= productDAO.list();
+		httpSession.setAttribute("productList", products);
+		
 		mv.addObject("carouselDisplayedOnce", true);
 		
 		String loggedInUserID= (String)httpSession.getAttribute("loggedInUserId");

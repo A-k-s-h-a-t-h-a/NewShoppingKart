@@ -33,7 +33,7 @@
 		</table>
 		
 		<c:if test="${emptyCart!= true}">
-		<a href="empty"><button class="img-responsive pull-right btn-primary btn-lg">Empty Cart</button></a>
+		<a href="empty"><button class="img-responsive pull-right btn-danger btn-lg">Empty Cart</button></a>
 		<a href="buy?buyreq=cart"><button class="img-responsive pull-right btn-primary btn-lg">Buy</button></a>
 		</c:if>
 	</div>

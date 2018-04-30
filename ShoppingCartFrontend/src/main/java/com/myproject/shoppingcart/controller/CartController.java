@@ -58,17 +58,22 @@ public class CartController {
 	
 	@GetMapping("/cart/add/{productID}")					//Get or Post?
 	public ModelAndView addToCart(@PathVariable("productID") String p_id)
-	{
+	{	System.out.println("Trying to add to cart");
+		
 		log.debug("Starting of the addToCart method");
 		
 		ModelAndView mv= new ModelAndView("redirect:/");
 		String loggedInUserID= (String)httpSession.getAttribute("loggedInUserId");
+		
 //		System.out.println("Loggedin mail id in cart ctrler "+loggedInUserID);
-		if (loggedInUserID== null)
-		{
-			mv.addObject("errormsg", "Please login to add any product to cart");
-			return mv;
-		}
+//		System.out.println(loggedInUserID);
+//		if (loggedInUserID== null)
+//		{
+//			System.out.println(loggedInUserID);
+//			System.out.println("Please login to add any product to cart");
+//			httpSession.setAttribute("errormsg", "Please login to add any product to cart");
+//			return mv;
+//		}
 		product= productDAO.get(p_id);
 		
 		cart.setEmailID(loggedInUserID); 				//from Cart.java domain class
@@ -221,7 +226,7 @@ public class CartController {
 	public ModelAndView emptyCart()
 	{
 		log.debug("Starting of the method emptyCart");
-		ModelAndView mv= new ModelAndView("Home");
+		ModelAndView mv= new ModelAndView("redirect:/");
 		
 		String loggedInUserID= (String)httpSession.getAttribute("loggedInUserId");
 		List<Cart> usercart= cartDAO.list(loggedInUserID);
@@ -229,13 +234,14 @@ public class CartController {
 		{
 			cartDAO.delete(row.getId());
 		}
+		httpSession.setAttribute("cartList", usercart);
 		
 		log.debug("Ending of the method emptyCart");
 		return mv;
 	}
 	
 	@GetMapping("/buy")
-	public ModelAndView order(@RequestParam("buyreq") String buyreq, @RequestParam("prid") String pr_id)
+	public ModelAndView order(@RequestParam("buyreq") String buyreq, @RequestParam(value="prid",required = false) String pr_id)
 	{
 		log.debug("Starting of the method order");
 		ModelAndView mv= new ModelAndView("Home");
@@ -261,11 +267,14 @@ public class CartController {
 						
 						qty= row.getQuantity();
 						totalQty= totalQty + qty;
-						payment.setQuantity(totalQty);
+						System.out.println(totalQty);
+						
 					}
+				payment.setQuantity(totalQty);
 			}
 			else if(buyreq== "prpage")
 			{
+				System.out.println(buyreq);
 				product= productDAO.get(pr_id);
 				payment.setSubTotal(product.getPrice());
 				payment.setProductName(product.getName()); 
@@ -274,9 +283,9 @@ public class CartController {
 			mv.addObject("sinceUserClickedBuy", true);
 		}
 		
-		else{
-			mv.addObject("buyingError", "Please login to continue with the purchase");
-		}
+//		else{
+//			mv.addObject("buyingError", "Please login to continue with the purchase");
+//		}
 		log.debug("Ending of the method order");
 		return mv;
 	}

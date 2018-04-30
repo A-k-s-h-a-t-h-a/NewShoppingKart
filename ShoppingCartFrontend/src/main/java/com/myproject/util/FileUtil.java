@@ -21,7 +21,7 @@ public class FileUtil {
 		String rootDirectory= request.getSession().getServletContext().getRealPath("/");
 		path = Paths.get(rootDirectory + "\\resources\\images\\"+fileName);
 		
-		
+		System.out.println(path);
 		File dest = new File(path.toString());
 		System.out.println("Where is it uploading?"+ dest.getAbsolutePath());
 		if (!dest.exists()) {

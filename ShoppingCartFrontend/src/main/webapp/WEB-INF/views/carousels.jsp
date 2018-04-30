@@ -53,5 +53,42 @@
 	  </div>
 	</div>
 
+<div class="container">
+
+<div class="row">
+<c:forEach items="${productList}" var="p"> 
+<div class="col-md-4">
+			<a href ="product/get/${p.product_id}"><img src="resources\images\${p.product_id}.png" width="200px" height="200px"></a>
+			</div>
+			</c:forEach>
+		</div>
+</div>
+
+	<div class="container">	<br><br>
+		<div> <legend>Kids Toys</legend>
+			<a href ="cart/add/Kid-1"><img src="resources\images\Kid-1.png" width="200px" height="200px"></a>
+			<a href ="cart/add/Kid-02"><img src="resources\images\Kid-02.png" width="200px" height="200px"></a>
+		</div><br><br>
+		<div> <legend>Watches</legend>
+			<a href ="cart/add/Men-02"><img src="resources\images\Men-02.png" width="200px" height="200px"></a>
+			<a href ="cart/add/Wom-1"><img src="resources\images\Wom-1.png" width="200px" height="200px"></a>
+		</div><br><br>
+		<div> <legend>Laptops</legend>
+			<a href ="cart/add/El-1"><img src="resources\images\El-1.png" width="200px" height="150px"></a>
+			<a href ="cart/add/El-2"><img src="resources\images\El-2.png" width="200px" height="150px"></a>
+		</div><br><br>
+		<div> <legend>Books</legend>
+			<a href ="cart/add/Pau-02"><img src="resources\images\Pau-02.png" width="200px" height="300px"></a>
+			<a href ="cart/add/Kha-03"><img src="resources\images\Kha-03.png" width="200px" height="300px"></a>
+		</div><br><br>
+		<div> <legend>Shoes</legend>
+			<a href ="cart/add/Men-03"><img src="resources\images\Men-03.png" width="200px" height="200px"></a>
+			<a href ="cart/add/Wom-3"><img src="resources\images\Wom-3.png" width="200px" height="200px"></a>
+		</div><br><br>
+		<div> <legend>Sports</legend>
+			<a href ="cart/add/Spo-01"><img src="resources\images\Spo-01.png" width="200px" height="200px"></a>
+			<a href ="cart/add/Spo-02"><img src="resources\images\Spo-02.png" width="200px" height="200px"></a>
+		</div>
+	</div>
 </body>
 </html>
